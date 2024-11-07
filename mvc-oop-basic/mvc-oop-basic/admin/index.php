@@ -23,5 +23,5 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
      // Trang chủ
-     "danh-muc" => (new AdminDanhMucController())->danhSachDanhMuc(),
+     "/" => (new AdminDanhMucController())->danhSachDanhMuc(),
 };

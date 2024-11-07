@@ -9,8 +9,6 @@ class AdminDanhMucController
      public function danhSachDanhMuc()
      {
           $listDanhMuc = $this->AdminDanhMuc->getAllDanhMuc();
-          // var_dump($listDanhMuc);
-          // die;
           require_once "./views/DanhMuc.php";
      }
 }

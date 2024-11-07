@@ -65,21 +65,23 @@ include "./views/layout/header.php"
                                                     <td><?= $danhmuc['mo_ta'] ?></td>
                                                     <td>
                                                         <button class="btn btn-warning">Sửa </button>
+                                                        <button class="btn btn-warning">Thêm</button>
                                                         <button class="btn btn-danger">Xóa</button>
+
                                                     </td>
                                                 </tr>
                                             <?php
                                             }
                                             ?>
                                         </tbody>
-                                        <!-- <tfoot> -->
-                                        <!-- <tr>
-                                            <th>STT</th>
-                                            <th>Tên Danh Mục</th>
-                                            <th>Mô Tả</th>
-                                            <th>Thao Tác</th>
-                                        </tr>
-                                        </tfoot> -->
+                                        <tfoot>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Tên Danh Mục</th>
+                                                <th>Mô Tả</th>
+                                                <th>Thao Tác</th>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
