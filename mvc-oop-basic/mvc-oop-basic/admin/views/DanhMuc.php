@@ -1,6 +1,6 @@
 <!-- header -->
 <?php
-include "../views/layout/header.php"
+include "./views/layout/header.php"
 ?>
 <!-- end header -->
 
@@ -8,13 +8,13 @@ include "../views/layout/header.php"
     <div class="wrapper">
         <!-- Navbar -->
         <?php
-        include "../views/layout/navbar.php"
+        include "./views/layout/navbar.php"
         ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <?php
-        include "../views/layout/sidebar.php"
+        include "./views/layout/sidebar.php"
         ?>
         <!-- end sidebar -->
         <!-- Content Wrapper. Contains page content -->
@@ -57,7 +57,7 @@ include "../views/layout/header.php"
                                         <tbody>
 
                                             <?php
-                                            foreach ($listDanhMuc as $key->danhmuc) {
+                                            foreach ($listDanhMuc as $key => $danhmuc) {
                                             ?>
                                                 <tr>
                                                     <td><?= $key + 1 ?></td>
@@ -72,14 +72,14 @@ include "../views/layout/header.php"
                                             }
                                             ?>
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>Tên Danh Mục</th>
-                                                <th>Mô Tả</th>
-                                                <th>Thao Tác</th>
-                                            </tr>
-                                        </tfoot>
+                                        <!-- <tfoot> -->
+                                        <!-- <tr>
+                                            <th>STT</th>
+                                            <th>Tên Danh Mục</th>
+                                            <th>Mô Tả</th>
+                                            <th>Thao Tác</th>
+                                        </tr>
+                                        </tfoot> -->
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -119,7 +119,7 @@ include "../views/layout/header.php"
         <!-- Code injected by live-server -->
         <!-- footer -->
         <?php
-        include "../views/layout/footer.php"
+        include "./views/layout/footer.php"
         ?>
 
         <!-- end footer -->
