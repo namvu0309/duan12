@@ -59,17 +59,17 @@ include "./views/layout/header.php"
                                             <?php
                                             foreach ($listDanhMuc as $key => $danhmuc) {
                                             ?>
-                                                <tr>
-                                                    <td><?= $key + 1 ?></td>
-                                                    <td><?= $danhmuc['ten_danh_muc'] ?></td>
-                                                    <td><?= $danhmuc['mo_ta'] ?></td>
-                                                    <td>
-                                                        <button class="btn btn-warning">Sửa </button>
-                                                        <button class="btn btn-warning">Thêm</button>
-                                                        <button class="btn btn-danger">Xóa</button>
+                                            <tr>
+                                                <td><?= $key + 1 ?></td>
+                                                <td><?= $danhmuc['ten_danh_muc'] ?></td>
+                                                <td><?= $danhmuc['mo_ta'] ?></td>
+                                                <td>
+                                                    <button class="btn btn-warning">Sửa </button>
+                                                    <button class="btn btn-danger">Thêm</button>
+                                                    <button class="btn btn-warning">Xóa</button>
 
-                                                    </td>
-                                                </tr>
+                                                </td>
+                                            </tr>
                                             <?php
                                             }
                                             ?>
@@ -100,23 +100,23 @@ include "./views/layout/header.php"
 
         <!-- Page specific script -->
         <script>
-            $(function() {
-                $("#example1").DataTable({
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
             });
+        });
         </script>
         <!-- Code injected by live-server -->
         <!-- footer -->

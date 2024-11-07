@@ -5,7 +5,7 @@
 
 define('BASE_URL', 'http://localhost/mvc-oop-basic/mvc-oop-basic/');
 // duong dan vao phan Admin
-define('BASE_URL_ADMIN', 'http://localhost/mvc-oop-basic/mvc-oop-basic/admin/');
+define('BASE_URL_ADMIN', 'http://localhost:3000/mvc-oop-basic/mvc-oop-basic/admin/');
 
 define('DB_HOST', 'localhost');
 define('DB_PORT', 3306);
