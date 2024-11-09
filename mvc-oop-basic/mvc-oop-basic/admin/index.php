@@ -14,8 +14,6 @@ require_once './models/AdminDanhMuc.php';
 
 // Require toàn bộ file Views
 
-
-
 // Route
 $act = $_GET['act'] ?? '/';
 
@@ -24,4 +22,9 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
      // Trang chủ
      "/" => (new AdminDanhMucController())->danhSachDanhMuc(),
+     "form-them-danh-muc" => (new AdminDanhMucController())->formAddDanhMuc(),
+     "them-danh-muc" => (new AdminDanhMucController())->postAddDanhMuc(),
+     "form-sua-danh-muc" => (new AdminDanhMucController())->formEditDanhMuc(),
+     "sua-danh-muc" => (new AdminDanhMucController())->postEditDanhMuc(),
+     "form-xoa-danh-muc" => (new AdminDanhMucController())->deleteDanhMuc(),
 };
