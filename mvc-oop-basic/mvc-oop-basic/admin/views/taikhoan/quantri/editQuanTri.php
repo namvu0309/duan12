@@ -30,7 +30,7 @@
                     </div>
 
 
-                    <form action="<?='?act=sua-quan-tri' ?>" method="POST">
+                    <form action="?act=sua-quan-tri" method="POST">
                         <input type="hidden" name="quan_tri_id" value="<?=$quanTri['ho_ten'] ?>">
                         <div class="card-body">
                             <div class="form-group">

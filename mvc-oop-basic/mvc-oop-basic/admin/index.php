@@ -27,21 +27,21 @@ match ($act) {
   // Trang chủ
   // router danh muc
   '/' => (new AdminBaoCaoThongKeController())->home(),
-     "danh-muc-mi-pham" => (new AdminDanhMucController())->danhSachDanhMuc(),
-     "form-them-danh-muc" => (new AdminDanhMucController())->formAddDanhMuc(),
-     "them-danh-muc" => (new AdminDanhMucController())->postAddDanhMuc(),
-     "form-sua-danh-muc" => (new AdminDanhMucController())->formEditDanhMuc(),
-     "sua-danh-muc" => (new AdminDanhMucController())->postEditDanhMuc(),
-     "form-xoa-danh-muc" => (new AdminDanhMucController())->deleteDanhMuc(),
+    "danh-muc-mi-pham" => (new AdminDanhMucController())->danhSachDanhMuc(),
+    "form-them-danh-muc" => (new AdminDanhMucController())->formAddDanhMuc(),
+    "them-danh-muc" => (new AdminDanhMucController())->postAddDanhMuc(),
+    "form-sua-danh-muc" => (new AdminDanhMucController())->formEditDanhMuc(),
+    "sua-danh-muc" => (new AdminDanhMucController())->postEditDanhMuc(),
+    "form-xoa-danh-muc" => (new AdminDanhMucController())->deleteDanhMuc(),
 
-     // router san pham
+    // router san pham
 
-     "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
-     "form-them-san-pham" => (new AdminSanPhamController())->formAddSanPham(),
-     "them-san-pham" => (new AdminSanPhamController())->postAddSanPham(),
-     "form-sua-san-pham" => (new AdminSanPhamController())->formEditSanPham(),
-     "sua-san-pham" => (new AdminSanPhamController())->postEditSanPham(),
-     "form-xoa-san-pham" => (new AdminSanPhamController())->deleteSanPham(),
+    "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
+    "form-them-san-pham" => (new AdminSanPhamController())->formAddSanPham(),
+    "them-san-pham" => (new AdminSanPhamController())->postAddSanPham(),
+    "form-sua-san-pham" => (new AdminSanPhamController())->formEditSanPham(),
+    "sua-san-pham" => (new AdminSanPhamController())->postEditSanPham(),
+    "form-xoa-san-pham" => (new AdminSanPhamController())->deleteSanPham(),
 
   //  router tai khoan quan tri
   'list-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->danhSachQuanTri(),

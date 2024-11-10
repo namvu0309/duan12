@@ -22,27 +22,38 @@ class AdminSanPham
             echo 'lỗi: ' . $e->getMessage();
         }
     }
-    public function insertSanPham($ten_danh_muc, $mo_ta)
+    public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $hinh_anh)
     {
         try {
-            // Prepare SQL query with placeholders for data binding
-            $sql = 'INSERT INTO san_phams (ten_danh_muc, mo_ta) VALUES (:ten_danh_muc, :mo_ta)';
+            // Chuẩn bị câu lệnh SQL với các placeholders cho dữ liệu
+            $sql = 'INSERT INTO san_phams (ten_san_pham, gia_san_pham, gia_khuyen_mai, so_luong, ngay_nhap, danh_muc_id, trang_thai, mo_ta, hinh_anh)
+                VALUES (:ten_san_pham, :gia_san_pham, :gia_khuyen_mai, :so_luong, :ngay_nhap, :danh_muc_id, :trang_thai, :mo_ta, :hinh_anh)';
+
+            // Chuẩn bị statement
             $stmt = $this->conn->prepare($sql);
 
-            // Execute the statement with bound values
+            // Thực thi statement với các giá trị đã bind
             $stmt->execute([
-                ':ten_danh_muc' => $ten_danh_muc,
-                ':mo_ta' => $mo_ta
+                ':ten_san_pham' => $ten_san_pham,
+                ':gia_san_pham' => $gia_san_pham,
+                ':gia_khuyen_mai' => $gia_khuyen_mai,
+                ':so_luong' => $so_luong,
+                ':ngay_nhap' => $ngay_nhap,
+                ':danh_muc_id' => $danh_muc_id,
+                ':trang_thai' => $trang_thai,
+                ':mo_ta' => $mo_ta,
+                ':hinh_anh' => $hinh_anh,
             ]);
 
-            // Return true if insertion is successful
+            // Trả về true nếu thêm thành công
             return true;
         } catch (Exception $e) {
-            // Display error message if any exception occurs
+            // Hiển thị thông báo lỗi nếu có lỗi xảy ra
             echo 'Lỗi: ' . $e->getMessage();
             return false;
         }
     }
+
     public function getDetailSanPham($id)
     {
         try {

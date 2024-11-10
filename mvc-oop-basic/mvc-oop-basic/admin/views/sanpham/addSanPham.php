@@ -40,7 +40,7 @@ include "./views/layout/header.php"
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="index.php?act=them-san-pham" method="post">
+                <form action="index.php?act=them-san-pham" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-12">
@@ -69,10 +69,14 @@ include "./views/layout/header.php"
 
                             <div class="form-group col-md-6">
                                 <label>Hình Ảnh</label>
-                                <input type="text" class="form-control" name="hinh_anh" placeholder="Nhập Hình Ảnh Sản Phẩm">
+                                <input type="file" class="form-control" name="hinh_anh" placeholder="Nhập Hình Ảnh Sản Phẩm">
                                 <?php if (isset($errors['hinh_anh'])) { ?>
                                     <p class="text-danger"><?= $errors['hinh_anh']; ?></p>
                                 <?php } ?>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Album Ảnh</label>
+                                <input type="file" class="form-control" name="img_array[]" multiple placeholder="Nhập Album Sản Phẩm">
                             </div>
 
                             <div class="form-group col-md-6">
@@ -85,27 +89,50 @@ include "./views/layout/header.php"
 
                             <div class="form-group col-md-6">
                                 <label>Ngày Nhập</label>
-                                <input type="text" class="form-control" name="ngay_nhap" placeholder="Nhập Ngày Nhập Sản Phẩm">
+                                <input type="date" class="form-control" name="ngay_nhap" placeholder="Nhập Ngày Nhập Sản Phẩm">
                                 <?php if (isset($errors['ngay_nhap'])) { ?>
                                     <p class="text-danger"><?= $errors['ngay_nhap']; ?></p>
                                 <?php } ?>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label>Id Sản Phẩm</label>
-                                <input type="number" class="form-control" name="id_san_pham" placeholder="Nhập Id Sản Phẩm">
-                                <?php if (isset($errors['id_san_pham'])) { ?>
-                                    <p class="text-danger"><?= $errors['id_san_pham']; ?></p>
+                                <label>Danh Mục</label>
+                                <select class="form-control" name='danh_muc_id' id="exampleFormControlSelect1">
+                                    <option selected disabled>Chọn Danh Mục Sản Phẩm</option>
+                                    <?php
+                                    foreach ($listDanhMuc as $danhmuc) {  ?>
+                                        <option value="<?= $danhmuc['id'] ?>"><?= $danhmuc['ten_danh_muc'] ?></option>
+                                    <?php     } ?>
+                                </select>
+                                <?php if (isset($errors['danh_muc'])) { ?>
+                                    <p class="text-danger"><?= $errors['danh_muc']; ?></p>
                                 <?php } ?>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Trạng Thái</label>
+                                <select class="form-control" name='trang_thai' id="exampleFormControlSelect1">
+                                    <option selected disabled>Chọn Danh Mục Sản Phẩm</option>
+                                    <option value="1">Còn Bán</option>
+                                    <option value="2">Dừng Bán</option>
+                                </select>
+                                <?php if (isset($errors['trang_thai'])) { ?>
+                                    <p class="text-danger"><?= $errors['trang_thai']; ?></p>
+                                <?php } ?>
+                            </div>
+                            <div class="form-group col-12">
+                                <label>Mô tả</label>
+                                <textarea name='mo_ta' class="form-control" placeholder="Nhập Mô Tả"></textarea>
                             </div>
                         </div>
                     </div>
-                </form>
+                
 
                 <!-- /.card-body -->
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
+
                 </div>
                 </form>
             </div>
