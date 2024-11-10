@@ -9,12 +9,12 @@ class AdminDanhMucController
      public function danhSachDanhMuc()
      {
           $listDanhMuc = $this->AdminDanhMuc->getAllDanhMuc();
-          require_once "./views/listDanhMuc.php";
+          require_once "./views/danhmuc/listDanhMuc.php";
      }
      public function formAddDanhMuc()
      {
           //ham nay hien thi form nhap
-          require_once "./views/addDanhMuc.php";
+          require_once "./views/danhmuc/addDanhMuc.php";
      }
      public function postAddDanhMuc()
      {
@@ -43,7 +43,7 @@ class AdminDanhMucController
                     exit();
                } else {
                     // Trả về form và hiển thị lỗi
-                    require_once './views/addDanhMuc.php';
+                    require_once './views/danhmuc/addDanhMuc.php';
                }
           }
      }
@@ -53,7 +53,7 @@ class AdminDanhMucController
           $id=$_GET['id_danh_muc'];
           $danhmuc=$this->AdminDanhMuc->getDetailDanhMuc($id);
           if($danhmuc){
-               require_once "./views/editDanhMuc.php";
+               require_once "./views/danhmuc/editDanhMuc.php";
           }else{
                header('location:index.php');
                exit();
@@ -89,7 +89,7 @@ class AdminDanhMucController
                } else {
                     // Trả về form và hiển thị lỗi
                     $danhmuc=['id'=>$id,'ten_danh_muc'=>$ten_danh_muc,'mo_ta'=>$mo_ta];
-                    require_once './views/editDanhMuc.php';
+                    require_once './views/danhmuc/editDanhMuc.php';
                }
           }
      }

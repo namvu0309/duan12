@@ -27,7 +27,7 @@ include "./views/layout/header.php"
 
 
                             <a href="index.php?act=form-them-danh-muc">
-                                <h1>Quản Lý Danh Mục Sản Phẩm</h1>
+                                <h1>Quản Lý Mỹ Phẩm</h1>
                             </a>
                         </div>
 
@@ -36,15 +36,15 @@ include "./views/layout/header.php"
             </section>
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Thêm Danh Mục</h3>
+                    <h3 class="card-title">Thêm Sản Phẩm</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form action='index.php?act=them-danh-muc' method="post">
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Tên Danh Mục</label>
-                            <input type="text" class="form-control" name=' ten_danh_muc' placeholder="Nhập Danh Mục">
+                            <label>Tên Sản Phẩm</label>
+                            <input type="text" class="form-control" name='ten_danh_muc' placeholder="Nhập Sản Phẩm">
                             <?php
                             if (isset($errors['ten_danh_muc'])) { ?>
                                 <p class="text-danger"><?= $errors['ten_danh_muc']; ?></p>

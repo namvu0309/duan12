@@ -27,7 +27,7 @@ include "./views/layout/header.php"
 
 
                             <a href="index.php?act=form-sua-danh-muc">
-                                <h1>Quản Lý Danh Mục Sản Phẩm</h1>
+                                <h1>Quản Lý Mỹ Phẩm</h1>
                             </a>
                         </div>
 
@@ -36,7 +36,7 @@ include "./views/layout/header.php"
             </section>
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Sửa Danh Mục Sản Phẩm</h3>
+                    <h3 class="card-title">Sửa Sản Phẩm</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->

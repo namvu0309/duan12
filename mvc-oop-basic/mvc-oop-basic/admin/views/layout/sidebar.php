@@ -36,19 +36,19 @@
                          </li>
 
                          <li class="nav-item">
-                             <a href="index.php" class="nav-link">
+                             <a href="index.php?act=/" class="nav-link">
                                  <i class="nav-icon fas fa-th"></i>
                                  <p>
-                                     Danh Mục Sản Phẩm
+                                     Danh Mục Mỹ Phẩm
                                  </p>
                              </a>
                          </li>
 
                          <li class="nav-item">
-                             <a href="<?= BASE_URL_ADMIN . "index.php" ?>" class="nav-link">
+                             <a href="index.php?act=san-pham" class="nav-link">
                                  <i class="nav-icon fas fa-coins"></i>
                                  <p>
-                                     Sản Phẩm
+                                     Danh Sách Mỹ Phẩm
                                  </p>
                              </a>
                          </li>
