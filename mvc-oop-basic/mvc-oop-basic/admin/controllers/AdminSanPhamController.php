@@ -22,10 +22,9 @@ class AdminSanPhamController
     }
     public function postAddSanPham()
     {
-        //dung de xu li them du lieu
-        // Kiểm tra xem dữ liệu có phải do submit lên không
+        // Xử lý khi có yêu cầu POST
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Lấy ra dữ liệu
+            // Lấy dữ liệu từ form
             $ten_san_pham = $_POST['ten_san_pham'];
             $gia_san_pham = $_POST['gia_san_pham'];
             $gia_khuyen_mai = $_POST['gia_khuyen_mai'];
@@ -35,17 +34,14 @@ class AdminSanPhamController
             $trang_thai = $_POST['trang_thai'];
             $mo_ta = $_POST['mo_ta'];
 
-            $hinh_anh=$_FILES['hinh_anh'];
+            // Xử lý upload ảnh chính
+            $hinh_anh = $_FILES['hinh_anh'];
+            $file_thumb = uploadFile($hinh_anh, './uploads/');
 
-            //luu hinnh anh vaoo
-            $file_thumb=uploadFile($hinh_anh,'./uploads/');
-
-            //mang hinh anh
-            $img_array=$_FILES['img_array'];
-            // Tạo một mảng trống để chứa dữ liệu lỗi
-            // Tạo một mảng trống để chứa dữ liệu lỗi
+            // Mảng chứa lỗi
             $errors = [];
 
+            // Kiểm tra dữ liệu đầu vào
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = 'Tên sản phẩm không được để trống';
             }
@@ -68,20 +64,36 @@ class AdminSanPhamController
                 $errors['trang_thai'] = 'Trạng thái sản phẩm không được để trống';
             }
 
+            // Kiểm tra ảnh đã upload thành công chưa nếu ảnh là bắt buộc
+            if (!$file_thumb) {
+                $errors['hinh_anh'] = 'Lỗi upload ảnh, vui lòng thử lại.';
+            }
+
             // Nếu không có lỗi, tiến hành thêm sản phẩm
             if (empty($errors)) {
-                // Code xử lý khi không có lỗi, ví dụ thêm vào cơ sở dữ liệu
-                // echo 'Dữ liệu hợp lệ. Tiến hành thêm sản phẩm...';
-                // Bạn có thể thêm lệnh chèn dữ liệu vào cơ sở dữ liệu ở đây
-                $this->AdminSanPham->insertSanPham($ten_san_pham,$gia_san_pham,$gia_khuyen_mai,$so_luong,$ngay_nhap,$danh_muc_id,$trang_thai ,$mo_ta, $hinh_anh);
+                // Gọi hàm insert để lưu sản phẩm vào cơ sở dữ liệu
+                $this->AdminSanPham->insertSanPham(
+                    $ten_san_pham,
+                    $gia_san_pham,
+                    $gia_khuyen_mai,
+                    $so_luong,
+                    $ngay_nhap,
+                    $danh_muc_id,
+                    $trang_thai,
+                    $mo_ta,
+                    $file_thumb
+                );
+
+                // Chuyển hướng đến danh sách sản phẩm sau khi thêm thành công
                 header('location:index.php?act=san-pham');
                 exit();
             } else {
-                // Trả về form và hiển thị lỗi
+                // Trả về form và hiển thị lỗi nếu có lỗi
                 require_once './views/sanpham/addSanPham.php';
             }
         }
     }
+
     public function formEditSanPham()
     {
         //ham nay hien thi form nhap

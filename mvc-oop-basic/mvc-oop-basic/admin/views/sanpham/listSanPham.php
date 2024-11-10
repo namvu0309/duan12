@@ -72,7 +72,8 @@ include "./views/layout/header.php"
                                                 <tr>
                                                     <td><?= $key + 1 ?></td>
                                                     <td><?= $sanpham['ten_san_pham'] ?></td>
-                                                    <td><img width="200" src="../assets/image/<?= $sanpham['hinh_anh'] ?>"></td>
+                                                    <td><img src="<?= '.' . $sanpham['hinh_anh']?>" width=200 alt=""></td>
+
 
                                                     <td><?= $sanpham['gia_san_pham'] ?></td>
                                                     <td><?= $sanpham['so_luong'] ?></td>
