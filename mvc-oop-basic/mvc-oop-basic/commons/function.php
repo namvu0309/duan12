@@ -1,7 +1,13 @@
 <?php
 
 // Kết nối CSDL qua PDO
-function connectDB() {
+
+function deleteSessionError()
+{
+    if (isset($_SESSION['error'])) {
+        unset($_SESSION['error']);
+    }
+}function connectDB() {
     // Kết nối CSDL
     $host = DB_HOST;
     $port = DB_PORT;
