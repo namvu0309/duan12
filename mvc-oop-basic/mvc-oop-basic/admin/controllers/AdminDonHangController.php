@@ -13,6 +13,18 @@ class AdminDonHangController
         $listDonHang = $this->AdminDonHang->getAllDonHang();
         require_once "./views/DonHang/listDonHang.php";
     }
+    public function detailDonHang()
+    {
+        $don_hang_id = $_GET['id_don_hang'];
+        // Lấy thông tin đơn hàng ở bảng don_hangs
+        $donHang = $this->AdminDonHang->getDetailDonHang($don_hang_id);
+        // Lấy danh sách sản phẩm đã đặt của đơn hàng ở bảng chi_tiet_don_hangs
+        $sanPhamDonHang = $this->AdminDonHang->getListSpDonHang($don_hang_id);
+        $listTrangThaiDonHang = $this->AdminDonHang->getAllTrangThaiDonHang();
+        // var_dump($sanPhamDonHang);DIE();
+        require_once './views/donhang/detailDonHang.php';
+    }
+
     // public function formAddDonHang()
     // {
     //     //ham nay hien thi form nhap
@@ -122,21 +134,22 @@ class AdminDonHangController
     // }}
 
 
-    // public function formEditDonHang()
-    // {
-    //     //ham nay hien thi form nhap
-    //     $id = $_GET['id_san_pham'];
-    //     $DonHang = $this->AdminDonHang->getDetailDonHang($id);
-    //     $listDonHang = $this->AdminDonHang->getListAnhDonHang($id);
-    //     $listDanhMuc = $this->AdminDanhMuc->getAllDanhMuc($id);
-    //     if ($DonHang) {
-    //         require_once "./views/DonHang/editDonHang.php";
-    //         deleteSessionError();
-    //     } else {
-    //         header('location:index.php?act=san-pham');
-    //         exit();
-    //     }
-    // }
+    public function formEditDonHang()
+    {
+        //ham nay hien thi form nhap
+        $id = $_GET['id_don_hang'];
+        $DonHang = $this->modelDonHang->getDetailDonHang($id);
+        $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
+        if ($DonHang) {
+            require_once "./views/donang/editDonHang.php";
+            deleteSessionError();
+        } else {
+            header('location:index.php?act=Don-Hang');
+            exit();
+        }
+     }
+    
+    
     // public function postEditDonHang()
     // {
     //     // Xử lý khi có yêu cầu POST
@@ -343,3 +356,4 @@ class AdminDonHangController
     // }
 
 }
+
