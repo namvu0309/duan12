@@ -66,13 +66,13 @@
                                      </a>
                                  </li>
                                  <li class="nav-item">
-                                     <a href="" class="nav-link">
+                                     <a href="<?= 'index.php?act=list-tai-khoan-khach-hang' ?>" class="nav-link">
                                          <i class="nav-icon far fa-user"></i>
                                          <p>Tài khoản khách hàng</p>
                                      </a>
                                  </li>
                                  <li class="nav-item">
-                                     <a href="" class="nav-link">
+                                     <a href="<?= 'index.php?act=form-sua-thong-tin-ca-nhan-quan-tri' ?>" class="nav-link">
                                          <i class="nav-icon far fa-user"></i>
                                          <p>Tài khoản cá nhân</p>
                                      </a>

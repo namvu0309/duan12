@@ -48,7 +48,6 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                        </form>
 
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>

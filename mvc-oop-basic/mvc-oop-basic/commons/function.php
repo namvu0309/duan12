@@ -4,8 +4,10 @@
 
 function deleteSessionError()
 {
-    if (isset($_SESSION['error'])) {
-        unset($_SESSION['error']);
+    if (isset($_SESSION['flash'])) {
+        unset($_SESSION['flash']);
+        session_unset();
+        //session_destroy();
     }
 }function connectDB() {
     // Kết nối CSDL
@@ -49,4 +51,10 @@ function deleteFile($file)
         unlink($pathDelete);
     }
 }
-
+ function checkLoginAdmin(){
+    if(!isset($_SESSION['user_admin'])){
+        header("Location: " . '?act=login-admin');
+        //var_dump('abc');die;
+        exit();
+    }
+ }

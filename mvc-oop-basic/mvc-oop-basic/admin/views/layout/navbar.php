@@ -14,15 +14,16 @@
 
              <!-- Right navbar links -->
              <ul class="navbar-nav ml-auto">
-
-
-                 <!-- Notifications Dropdown Menu -->
-
-                 <li class="nav-item">
+             <li class="nav-item">
                      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                          <i class="fas fa-expand-arrows-alt"></i>
                      </a>
-                 </li>
+                     </li>
+                     <li class="nav-item"></li>
+                     <a class="nav-link" href="<?='?act=logout-admin'?>" onclick="return confirm('Bạn muốn đăng xuất tài khoản')">
+                         <i class="fas fa-sign-out-alt"></i>
+                     </a>
+                    </li>
 
              </ul>
          </nav>
