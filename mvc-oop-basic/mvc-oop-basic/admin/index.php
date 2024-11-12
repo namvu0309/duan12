@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Require file Common
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
@@ -42,6 +43,7 @@ match ($act) {
     "form-sua-san-pham" => (new AdminSanPhamController())->formEditSanPham(),
     "sua-san-pham" => (new AdminSanPhamController())->postEditSanPham(),
     "form-xoa-san-pham" => (new AdminSanPhamController())->deleteSanPham(),
+  "sua-album-anh-san-pham" => (new AdminSanPhamController())->postEditAnhSanPham(),
 
   //  router tai khoan quan tri
   'list-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->danhSachQuanTri(),

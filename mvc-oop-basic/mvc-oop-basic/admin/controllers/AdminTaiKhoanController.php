@@ -1,7 +1,6 @@
 
 <?php
 // Bắt đầu session để truy cập các biến session
-session_start();
 
 
 class AdminTaiKhoanController

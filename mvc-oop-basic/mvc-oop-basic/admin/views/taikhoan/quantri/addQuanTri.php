@@ -8,7 +8,7 @@
 <?php include './views/layout/sidebar.php'; ?>
 
 <!-- Content Wrapper. Contains page ontent -->
-<div class="content-wrapper">
+<div class="content-wrapper">3
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -28,8 +28,6 @@
                         <div class="card-header">
                             <h3 class="card-title">Thêm tài khoản quản trị</h3>
                         </div>
-
-
                         <form action="?act=them-quan-tri" method="POST">
                             <div class="card-body">
                                 <div class="form-group">
@@ -48,8 +46,6 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                        </form>
-
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
 

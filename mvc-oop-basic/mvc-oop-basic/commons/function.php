@@ -2,12 +2,8 @@
 
 // Kết nối CSDL qua PDO
 
-function deleteSessionError()
-{
-    if (isset($_SESSION['error'])) {
-        unset($_SESSION['error']);
-    }
-}function connectDB() {
+
+function connectDB() {
     // Kết nối CSDL
     $host = DB_HOST;
     $port = DB_PORT;
@@ -50,3 +46,29 @@ function deleteFile($file)
     }
 }
 
+// xoa section sau khi load trang
+function deleteSessionError(){
+    if(isset($_SESSION['flash'])){
+        // huy session sau khi da tai trang
+        unset($_SESSION['flash']);
+        session_unset();
+        session_destroy();
+    }
+}
+function uploadFileAlbum($file, $folderUpload, $key)
+{
+    // Define the file path with the folder and filename, including the timestamp for uniqueness
+    $pathStorage = $folderUpload . time() . $file['name'][$key];
+
+    // Define source and destination paths
+    $from = $file['tmp_name'][$key];
+    $to = PATH_ROOT . $pathStorage;  // Assuming PATH_ROOT is defined elsewhere in your code
+
+    // Move the uploaded file to the desired location
+    if (move_uploaded_file($from, $to)) {
+        return $pathStorage;
+    }
+
+    // Return null if the file upload fails
+    return null;
+}

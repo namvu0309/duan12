@@ -72,7 +72,7 @@ include "./views/layout/header.php"
                                                 <tr>
                                                     <td><?= $key + 1 ?></td>
                                                     <td><?= $sanpham['ten_san_pham'] ?></td>
-                                                    <td><img src="<?= '.' . $sanpham['hinh_anh']?>" width=200 alt=""></td>
+                                                    <td><img src="<?= '.' . $sanpham['hinh_anh'] ?>" width=200 alt="" onerror="this.onerror=null;this.src='https://www.droppii.com/wp-content/uploads/2023/04/quang-cao-my-pham-3.jpg'"></td>
 
 
                                                     <td><?= $sanpham['gia_san_pham'] ?></td>
