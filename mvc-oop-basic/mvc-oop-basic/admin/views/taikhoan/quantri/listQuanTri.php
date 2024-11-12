@@ -121,6 +121,7 @@ include "./views/layout/header.php"
                 "responsive": true,
             });
         });
+        
         </script>
         <!-- Code injected by live-server -->
         <!-- footer -->
