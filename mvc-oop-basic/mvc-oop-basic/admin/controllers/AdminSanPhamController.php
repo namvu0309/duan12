@@ -7,7 +7,6 @@ class AdminSanPhamController
     {
         $this->AdminSanPham = new AdminSanPham();
         $this->AdminDanhMuc = new AdminDanhMuc();
-
     }
     public function danhSachSanPham()
     {
@@ -17,7 +16,7 @@ class AdminSanPhamController
     public function formAddSanPham()
     {
         //ham nay hien thi form nhap
-        $listDanhMuc=$this->AdminDanhMuc->getAllDanhMuc();
+        $listDanhMuc = $this->AdminDanhMuc->getAllDanhMuc();
         require_once "./views/sanpham/addSanPham.php";
         //xoa session sau khi error
         deleteSessionError();
@@ -68,8 +67,8 @@ class AdminSanPhamController
             if ($hinh_anh['error'] !== 0) {
                 $errors['hinh_anh'] = 'Phải chọn ảnh sản phẩm';
             }
-                
-            $_SESSION['error']=$errors;
+
+            $_SESSION['error'] = $errors;
             // Kiểm tra ảnh đã upload thành công chưa nếu ảnh là bắt buộc
             if (!$file_thumb) {
                 $errors['hinh_anh'] = 'Lỗi upload ảnh, vui lòng thử lại.';
@@ -78,7 +77,7 @@ class AdminSanPhamController
             // Nếu không có lỗi, tiến hành thêm sản phẩm
             if (empty($errors)) {
                 // Gọi hàm insert để lưu sản phẩm vào cơ sở dữ liệu
-                $san_pham_id=$this->AdminSanPham->insertSanPham(
+                $san_pham_id = $this->AdminSanPham->insertSanPham(
                     $ten_san_pham,
                     $gia_san_pham,
                     $gia_khuyen_mai,
@@ -116,12 +115,13 @@ class AdminSanPhamController
             } else {
                 // Trả về form và hiển thị lỗi nếu có lỗi
                 //dat chi thi xoa session sau khi hien thi form
-                $_SESSION['flash'] =true;
+                $_SESSION['flash'] = true;
                 header('location:index.php?act=form-them-san-pham');
                 exit();
+            }
         }
-    }}
-    
+    }
+
 
     public function formEditSanPham()
     {
@@ -202,7 +202,7 @@ class AdminSanPhamController
             // Nếu không có lỗi, tiến hành cập nhật sản phẩm
             if (empty($errors)) {
                 // Cập nhật sản phẩm vào cơ sở dữ liệu
-                $status=$this->AdminSanPham->updateSanPham(
+                $status = $this->AdminSanPham->updateSanPham(
                     $san_pham_id,
                     $ten_san_pham,
                     $gia_san_pham,
@@ -282,7 +282,7 @@ class AdminSanPhamController
                     $this->AdminSanPham->destroyAnhSanPham($anh_id);
 
                     // Xóa file khỏi hệ thống tệp
-                    
+
                     deleteFile($anhSP['link_hinh_anh']);
                 }
             }
@@ -290,8 +290,6 @@ class AdminSanPhamController
             // Chuyển hướng sau khi xử lý xong
             header("Location: index.php?act=form-sua-san-pham&id_san_pham=$san_pham_id");
             exit();
-
-           
         }
     }
     public function detailSanPham()
@@ -302,7 +300,6 @@ class AdminSanPhamController
         $listAnhSanPham = $this->AdminSanPham->getListAnhSanPham($id);
         if ($sanpham) {
             require_once "./views/sanpham/detailSanPham.php";
-            var_dump($sanpham['hinh_anh']);die();
         } else {
             header('location:index.php?act=san-pham');
             exit();
@@ -343,5 +340,4 @@ class AdminSanPhamController
         header("Location: index.php?act=san-pham");
         exit();
     }
-
 }
