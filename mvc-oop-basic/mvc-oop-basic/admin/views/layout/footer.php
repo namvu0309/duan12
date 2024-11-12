@@ -1,17 +1,8 @@
-    <footer class="main-footer">
-         <div class="float-right d-none d-sm-block">
-              BY <b>NBH</b>
-         </div>
-         <strong>Tiệm Mỹ Phẩm</strong>
-    </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-         <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+ <!-- Scroll to top start -->
+ <div class="scroll-top not-visible">
+        <i class="fa fa-angle-up"></i>
     </div>
-    <!-- ./wrapper -->
+    <!-- Scroll to Top End -->
 
     <!-- jQuery -->
     <script src="./assets/plugins/jquery/jquery.min.js"></script>

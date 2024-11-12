@@ -80,3 +80,7 @@ function uploadFileAlbum($file, $folderUpload, $key)
     // Return null if the file upload fails
     return null;
 }
+function formatDate($date)
+{
+    return date("d-m-Y", strtotime($date));
+}
