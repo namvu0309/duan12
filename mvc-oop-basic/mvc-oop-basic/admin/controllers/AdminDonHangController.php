@@ -13,6 +13,18 @@ class AdminDonHangController
         $listDonHang = $this->AdminDonHang->getAllDonHang();
         require_once "./views/DonHang/listDonHang.php";
     }
+    public function detailDonHang()
+    {
+        $don_hang_id = $_GET['id_don_hang'];
+        // Lấy thông tin đơn hàng ở bảng don_hangs
+        $donHang = $this->AdminDonHang->getDetailDonHang($don_hang_id);
+        // Lấy danh sách sản phẩm đã đặt của đơn hàng ở bảng chi_tiet_don_hangs
+        $sanPhamDonHang = $this->AdminDonHang->getListSpDonHang($don_hang_id);
+        $listTrangThaiDonHang = $this->AdminDonHang->getAllTrangThaiDonHang();
+        // var_dump($sanPhamDonHang);DIE();
+        require_once './views/donhang/detailDonHang.php';
+    }
+
     // public function formAddDonHang()
     // {
     //     //ham nay hien thi form nhap
