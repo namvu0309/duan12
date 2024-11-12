@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Require file Common
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
@@ -8,6 +9,7 @@ require_once './controllers/AdminDanhMucController.php';
 require_once './controllers/AdminSanPhamController.php';
 require_once './controllers/AdminBaoCaoThongKeController.php';
 require_once './controllers/AdminTaiKhoanController.php';
+require_once './controllers/AdminDonHangController.php';
 
 
 
@@ -15,6 +17,7 @@ require_once './controllers/AdminTaiKhoanController.php';
 require_once './models/AdminSanPham.php';
 require_once './models/AdminDanhMuc.php';
 require_once './models/AdminTaiKhoan.php';
+require_once './models/AdminDonHang.php';
 
 // Require toàn bộ file Views
 
@@ -46,6 +49,17 @@ match ($act) {
     "form-sua-san-pham" => (new AdminSanPhamController())->formEditSanPham(),
     "sua-san-pham" => (new AdminSanPhamController())->postEditSanPham(),
     "form-xoa-san-pham" => (new AdminSanPhamController())->deleteSanPham(),
+  "sua-album-anh-san-pham" => (new AdminSanPhamController())->postEditAnhSanPham(),
+  "chi-tiet-san-pham" => (new AdminSanPhamController())->detailSanPham(),
+
+  // router don hang
+
+  "don-hang" => (new AdminDonHangController())->danhSachDonHang(),
+  "form-sua-don-hang" => (new AdminDonHangController())->formEditDonHang(),
+  "sua-don-hang" => (new AdminDonHangController())->postEditDonHang(),
+  "xoa-don-hang" => (new AdminDonHangController())->deleteDonHang(),
+  "chi-tiet-don-hang" => (new AdminDonHangController())->detailDonHang(),
+
 
   //  router tai khoan quan tri
   'list-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->danhSachQuanTri(),

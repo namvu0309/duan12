@@ -46,8 +46,8 @@ include "./views/layout/header.php"
                             <label>Tên Sản Phẩm</label>
                             <input type="text" class="form-control" name='ten_danh_muc' placeholder="Nhập Sản Phẩm">
                             <?php
-                            if (isset($errors['ten_danh_muc'])) { ?>
-                                <p class="text-danger"><?= $errors['ten_danh_muc']; ?></p>
+                            if (isset($_SESSION['error']['ten_danh_muc'])) { ?>
+                                <p class="text-danger"><?= $_SESSION['error']['ten_danh_muc']; ?></p>
 
                             <?php
                             }

@@ -92,6 +92,14 @@
           </form>
           <hr>
           <h3>Đổi mật khẩu</h3>
+          <?php if (isset($_SESSION['success'])) { ?>
+            <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          <?= $_SESSION['success'];?>         
+        </div>
+          <?php } ?>
+
           <form action="<?= '?act=sua-mat-khau-ca-nhan-quan-tri' ?>" method="post">
           <div class="form-group">
             <label class="col-md-3 control-label">Mật khẩu cũ:</label>

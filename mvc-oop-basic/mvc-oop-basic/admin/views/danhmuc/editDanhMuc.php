@@ -27,7 +27,7 @@ include "./views/layout/header.php"
 
 
                             <a href="index.php?act=form-sua-danh-muc">
-                                <h1>Quản Lý Sản Phẩm</h1>
+                                <h1>Quản Lý Danh Muc</h1>
                             </a>
                         </div>
 

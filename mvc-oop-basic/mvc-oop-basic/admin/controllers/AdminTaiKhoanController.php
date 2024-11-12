@@ -1,7 +1,6 @@
 
 <?php
 // Bắt đầu session để truy cập các biến session
-session_start();
 
 
 class AdminTaiKhoanController
@@ -79,18 +78,18 @@ class AdminTaiKhoanController
         deleteSessionError();
     }
 
-    public function postEditQuanTri(){
+    public function postEditQuanTri() {
 
-        if  ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
             $quan_tri_id = $_POST['quan_tri_id'] ?? '';
             $email = $_POST['email'] ?? '';
             $ho_ten = $_POST['ho_ten'] ?? '';
             $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? '';
-           
+    
             $errors = [];
-
+    
             if (empty($ho_ten)) {
                 $errors['ho_ten'] = 'Tên người dùng không được để trống';
             }
@@ -101,22 +100,19 @@ class AdminTaiKhoanController
                 $errors['trang_thai'] = 'Vui lòng chọn trạng thái';
             }
             $_SESSION['error'] = $errors;
-            
-            if (empty($errors)){
-                $this->AdminTaiKhoan->updateTaiKhoan($quan_tri_id, $ho_ten, $email, $so_dien_thoai, $trang_thai,);
-                var_dump($this);
-                die();
-                header("Location: " . '?act=list-tai-khoan-quan-tri');
+    
+            if (empty($errors)) {
+                $this->AdminTaiKhoan->updateTaiKhoan($quan_tri_id, $ho_ten, $email, $so_dien_thoai, $trang_thai);
+                header('location:index.php?act=list-tai-khoan-quan-tri');
                 exit();
-            }else{
+            } else {
                 $_SESSION['flash'] = true;
-                
-                header("Location: " . '?act=form-sua-quan-tri&id_quan_tri=' . $quan_tri_id);
+                header("Location: index.php?act=form-sua-quan-tri&id_quan_tri=" . $quan_tri_id);
                 exit();
-                
-            }           
+            }   
         }
     }
+    
     
     public function resetPassword(){
         $tai_khoan_id = $_GET['id_quan_tri'];
@@ -168,9 +164,7 @@ class AdminTaiKhoanController
 
             $errors = [];
 
-            if (empty($ho_ten)) {
-                $errors['ho_ten'] = 'Tên người dùng không được để trống';
-            }
+            
             if (empty($email)) {
                 $errors['email'] = 'Email người dùng không được để trống';
             }
@@ -263,17 +257,56 @@ class AdminTaiKhoanController
                 $new_pass = $_POST['new_pass'];
                 $confirm_pass = $_POST['confirm_pass'];
 
+                
+
                 //lay thong tin user tu session
                 $user = $this->AdminTaiKhoan->getTaiKhoanformEmail($_SESSION['user_admin']);
                 //var_dump($user);die;
-                if(password_verify($old_pass, $user['mat_khau'])) {
-                    var_dump('trùng pass');die;
+               $checkPass= password_verify($old_pass, $user['mat_khau']);
+
+                    $errors = [];
+                if (!$checkPass) {
+                    $errors['old_pass'] = 'Mật khẩu người dùng không đúng';
+                }
+                if ($new_pass !== $confirm_pass) {
+                    $errors['confirm_pass'] = 'Mật khẩu nhập lại không đúng';
                 }
 
+                if (empty($old_pass)) {
+                    $errors['old_pass'] = 'Vui lòng điền trường dữ liệu này';
+                }
+                if (empty($new_pass)) {
+                    $errors['new_pass'] = 'Vui lòng điền trường dữ liệu này';
+                }
+                if (empty($confirm_pass)) {
+                    $errors['confirm_pass'] = 'Vui lòng điền trường dữ liệu này';
+                }
+                $_SESSION['error'] =$errors;
 
+
+                if(!$errors){
+                    $hashPass = password_hash($new_pass, PASSWORD_BCRYPT);
+                   $status = $this->AdminTaiKhoan->resetPassword($user['id'],$hashPass);
+                   if($status){
+                    $_SESSION['success'] =  "Đã đổi  mật khẩu thảnh công";
+                    $_SESSION['flash'] = true;
+                    header("Location: " . '?act=form-sua-thong-tin-ca-nhan-quan-tri');
+                   }
+                }else{
+                    // lỗi thì lưu lỗi ở session                  
+                    $_SESSION['flash'] = true;
+    
+                    header("Location: " . '?act=form-sua-thong-tin-ca-nhan-quan-tri');
+                    exit();
+    
+                }
+
+                }
 
             }
-        }
-    }
+
+            }
+
+    
   
 
