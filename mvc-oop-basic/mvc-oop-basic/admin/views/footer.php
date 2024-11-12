@@ -4,7 +4,7 @@
     </div>
     <!-- Scroll to Top End -->
 
-<<<<<<< HEAD
+
     <!-- footer area start -->
     <footer class="footer-widget-area">
         <div class="footer-top section-padding">
@@ -15,7 +15,7 @@
                             <div class="widget-title">
                                 <div class="widget-logo">
                                     <a href="index.html">
-                                        <img src="assets/img/logo/logo.png" alt="brand logo">
+                                        <img src="assets/img/image-removebg-preview" alt="brand logo">
                                     </a>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
 
 <!-- Mirrored from htmldemo.net/corano/corano/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 29 Jun 2024 09:53:43 GMT -->
 </html>
-=======
+
     <!-- jQuery -->
     <script src="./assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -180,4 +180,4 @@
               });
          });
     </script>
->>>>>>> 229156a2b6eec0fa6b81af2bd1631f6210aeda55
+

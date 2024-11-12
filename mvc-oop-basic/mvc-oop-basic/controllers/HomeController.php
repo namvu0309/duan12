@@ -2,13 +2,13 @@
 
 class HomeController
 {
-<<<<<<< HEAD
-    public $modelSanpham;
+    public $modelSanPham;
 
     public function __construct()
     {
-        $this->modelSanpham = new SanPham();   
+        $this->modelSanPham = new SanPham();   
     }
+    
     public function home(){
         require_once './views/home.php';
     }
@@ -16,8 +16,4 @@ class HomeController
         echo "Day laf trang chu cua tooi ";
     }
 
-=======
-    
-// tesst
->>>>>>> 229156a2b6eec0fa6b81af2bd1631f6210aeda55
 }
