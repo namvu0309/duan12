@@ -29,30 +29,36 @@
                             <h3 class="card-title">Thêm tài khoản quản trị</h3>
                         </div>
                         <form action="?act=them-quan-tri" method="POST">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>Họ tên</label>
-                                    <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ tên">
-                                    <?php if (!empty($_SESSION['error']['ho_ten'])) { ?>
-                                        <p class="text-danger"><?= $_SESSION['error']['ho_ten'] ?></p>
-                                    <?php } ?>
-                                </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label>Họ tên</label>
+            <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ tên" 
+                value="<?= isset($_POST['ho_ten']) ? $_POST['ho_ten'] : '' ?>" required>
+            <?php if (!empty($_SESSION['error']['ho_ten'])) { ?>
+                <p class="text-danger"><?= $_SESSION['error']['ho_ten'] ?></p>
+            <?php } ?>
+        </div>
 
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" name="email" placeholder="Nhập email">
-                                    <?php if (!empty($_SESSION['error']['email'])) { ?>
-                                        <p class="text-danger"><?= $_SESSION['error']['email'] ?></p>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Nhập email" 
+                value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" required>
+            <?php if (!empty($_SESSION['error']['email'])) { ?>
+                <p class="text-danger"><?= $_SESSION['error']['email'] ?></p>
+            <?php } ?>
+        </div>
+    </div>
 
-                        </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
 
+<?php
+// Clear session errors after displaying them
+unset($_SESSION['error']);
+?>
 
-                        </form>
                     </div>
                 </div>
             </div>

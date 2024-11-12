@@ -24,7 +24,7 @@ include "./views/layout/header.php"
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Quản Lý Tài khoản quản trị viên</h1>
+                            <h1>Quản Lý Tài khoản khách hàng</h1>
                         </div>
 
                     </div>
@@ -37,10 +37,7 @@ include "./views/layout/header.php"
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                   <a href="<?='?act=form-them-quan-tri'?>">
-                                    <button class="btn btn-success">Thêm tài khoản</button>
-                                   </a>
+                                <div class="card-header">                                  
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -49,6 +46,7 @@ include "./views/layout/header.php"
                                             <tr>
                                                 <th>STT</th>
                                                 <th>Gọi tên</th>
+                                                <th>Ảnh đại diện</th>
                                                 <th>Email</th>
                                                 <th>Số điện thoại</th>
                                                 <th>Trạng thái</th>
@@ -58,23 +56,35 @@ include "./views/layout/header.php"
                                         <tbody>
 
                                             <?php
-                                            foreach ($listQuanTri as $key => $quanTri) :?>
+                                            foreach ($listKhachHang as $key => $khachHang) :?>
                                             <tr>
                                                 <td><?= $key + 1 ?></td>
-                                                <td><?= $quanTri['ho_ten'] ?></td>
-                                                <td><?= $quanTri['email'] ?></td>
-                                                <td><?= $quanTri['so_dien_thoai'] ?></td>
-                                                <td><?= $quanTri['trang_thai'] == 1 ? 'Active':'Inactive' ?></td>
+                                                <td><?= $khachHang['ho_ten'] ?></td>
+                                                <td>
+    <img 
+        src="<?= '.' . $khachHang['anh_dai_dien'] ?>" 
+        width="100" 
+        alt="Avatar" 
+        onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'" 
+    />
+</td>
+                                                <td><?= $khachHang['email'] ?></td>
+                                                <td><?= $khachHang['so_dien_thoai'] ?></td>
+                                                <td><?= $khachHang['trang_thai'] == 1 ? 'Active':'Inactive' ?></td>
 
                                                 
                                                 <td>
-                                                    <a href="<?='?act=form-sua-quan-tri&id_quan_tri=' . $quanTri['id']?>">
+                                                    <div class="'btn-group">                          
+                                                    <a href="<?='?act=chi-tiet-khach-hang&id_khach_hang=' . $khachHang['id']?>">
+                                                    <button class="btn btn-primary">Chi tiết</button>
+                                                    </a>
+                                                    <a href="<?='?act=form-sua-khach-hang&id_khach_hang=' . $khachHang['id']?>">
                                                     <button class="btn btn-warning">Sửa </button>
                                                     </a>
-
-                                                    <a href="<?='?act=reset-password&id_quan_tri='. $quanTri['id']  ?>" onclick="return confirm('Bạn có muốn reset password của tài khoản này không?')">
+                                                    <a href="<?='?act=reset-password&id_quan_tri='. $khachHang['id']  ?>" onclick="return confirm('Bạn có muốn reset password của tài khoản này không?')">
                                                             <button class="btn btn-danger">Reset</button>
                                                         </a>
+                                                        </div>
                                             </tr>
                                                 </td>  
                                             <?php endforeach ?>
@@ -125,7 +135,6 @@ include "./views/layout/header.php"
                 "responsive": true,
             });
         });
-        
         </script>
         <!-- Code injected by live-server -->
         <!-- footer -->

@@ -3,6 +3,8 @@
 // Kết nối CSDL qua PDO
 
 
+
+
 function connectDB() {
     // Kết nối CSDL
     $host = DB_HOST;
@@ -45,14 +47,20 @@ function deleteFile($file)
         unlink($pathDelete);
     }
 }
-
+ function checkLoginAdmin(){
+    if(!isset($_SESSION['user_admin'])){
+        header("Location: " . '?act=login-admin');
+        //var_dump('abc');die;
+        exit();
+    }
+ }
 // xoa section sau khi load trang
 function deleteSessionError(){
     if(isset($_SESSION['flash'])){
         // huy session sau khi da tai trang
         unset($_SESSION['flash']);
         session_unset();
-        session_destroy();
+        //session_destroy();
     }
 }
 function uploadFileAlbum($file, $folderUpload, $key)
