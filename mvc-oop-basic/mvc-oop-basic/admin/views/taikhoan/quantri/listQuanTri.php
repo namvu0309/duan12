@@ -24,7 +24,7 @@ include "./views/layout/header.php"
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Quản Lý Danh Mục Sản Phẩm</h1>
+                            <h1>Quản Lý Tài khoản quản trị viên</h1>
                         </div>
 
                     </div>
@@ -36,12 +36,11 @@ include "./views/layout/header.php"
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-
-                            <!-- /.card -->
-
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">DataTable with default features</h3>
+                                   <a href="<?='?act=form-them-quan-tri'?>">
+                                    <button class="btn btn-success">Thêm tài khoản</button>
+                                   </a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -49,36 +48,41 @@ include "./views/layout/header.php"
                                         <thead>
                                             <tr>
                                                 <th>STT</th>
-                                                <th>Tên Danh Mục</th>
-                                                <th>Mô Tả</th>
+                                                <th>Gọ tên</th>
+                                                <th>Email</th>
+                                                <th>Số điện thoại</th>
                                                 <th>Thao Tác</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
                                             <?php
-                                            foreach ($listDanhMuc as $key => $danhmuc) {
-                                            ?>
+                                            foreach ($listQuanTri as $key => $quanTri) :?>
                                             <tr>
                                                 <td><?= $key + 1 ?></td>
-                                                <td><?= $danhmuc['ten_danh_muc'] ?></td>
-                                                <td><?= $danhmuc['mo_ta'] ?></td>
-                                                <td>
-                                                    <button class="btn btn-warning">Sửa </button>
-                                                    <button class="btn btn-danger">Thêm</button>
-                                                    <button class="btn btn-warning">Xóa</button>
+                                                <td><?= $quanTri['ho_ten'] ?></td>
+                                                <td><?= $quanTri['email'] ?></td>
+                                                <td><?= $quanTri['so_dien_thoai'] ?></td>
+                                                <td><?= $quanTri['trang_thai'] == 1 ? 'Active':'Inactive' ?></td>
 
+                                                
+                                                <td>
+                                                    <a href="<?='?act=form-sua-quan-tri&id_quan_tri=' . $quanTri['id']?>">
+                                                    <button class="btn btn-warning">Sửa </button>
+                                                    </a>
+                                                    
                                                 </td>
                                             </tr>
-                                            <?php
-                                            }
-                                            ?>
+                                            <?php endforeach ?>
+                                            
+                                           
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>STT</th>
-                                                <th>Tên Danh Mục</th>
-                                                <th>Mô Tả</th>
+                                                <th>Gọ tên</th>
+                                                <th>Email</th>
+                                                <th>Số điện thoại</th>
                                                 <th>Thao Tác</th>
                                             </tr>
                                         </tfoot>
