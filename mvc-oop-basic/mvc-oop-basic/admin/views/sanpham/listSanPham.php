@@ -80,12 +80,19 @@ include "./views/layout/header.php"
                                                     <td><?= $sanpham['ten_danh_muc'] ?></td>
                                                     <td><?= $sanpham['trang_thai'] == 1 ? 'Còn Hàng' : 'Hết Hàng' ?></td>
                                                     <td>
-                                                        <a href="?act=form-sua-san-pham&id_san_pham=<?= $sanpham['id']  ?>">
-                                                            <button class=" btn btn-warning">Sửa </button>
-                                                        </a>
-                                                        <a href="?act=form-xoa-san-pham&id_san_pham=<?= $sanpham['id']  ?>" onclick="return confirm('ban co dong y muon xoa khong?')">
-                                                            <button class="btn btn-danger">Xóa</button>
-                                                        </a>
+                                                        <div class="btn-group">
+                                                            <a href="?act=chi-tiet-san-pham&id_san_pham=<?= $sanpham['id']  ?>">
+                                                                <button class=" btn btn-primary">Chi Tiết </button>
+                                                            </a>
+                                                            <a href="?act=form-sua-san-pham&id_san_pham=<?= $sanpham['id']  ?>">
+                                                                <button class=" btn btn-warning">Sửa </button>
+                                                            </a>
+
+                                                            <a href="?act=form-xoa-san-pham&id_san_pham=<?= $sanpham['id']  ?>" onclick="return confirm('ban co dong y muon xoa khong?')">
+                                                                <button class="btn btn-danger">Xóa</button>
+                                                            </a>
+                                                        </div>
+
                                                     </td>
                                                 </tr>
                                             <?php

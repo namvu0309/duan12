@@ -44,6 +44,8 @@ match ($act) {
     "sua-san-pham" => (new AdminSanPhamController())->postEditSanPham(),
     "form-xoa-san-pham" => (new AdminSanPhamController())->deleteSanPham(),
   "sua-album-anh-san-pham" => (new AdminSanPhamController())->postEditAnhSanPham(),
+  "chi-tiet-san-pham" => (new AdminSanPhamController())->detailSanPham(),
+
 
   //  router tai khoan quan tri
   'list-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->danhSachQuanTri(),

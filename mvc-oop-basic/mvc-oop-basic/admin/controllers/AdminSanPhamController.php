@@ -294,6 +294,20 @@ class AdminSanPhamController
            
         }
     }
+    public function detailSanPham()
+    {
+        //ham nay hien thi form nhap
+        $id = $_GET['id_san_pham'];
+        $sanpham = $this->AdminSanPham->getDetailSanPham($id);
+        $listAnhSanPham = $this->AdminSanPham->getListAnhSanPham($id);
+        if ($sanpham) {
+            require_once "./views/sanpham/detailSanPham.php";
+            var_dump($sanpham['hinh_anh']);die();
+        } else {
+            header('location:index.php?act=san-pham');
+            exit();
+        }
+    }
 
 
     public function deleteSanPham()
@@ -326,7 +340,7 @@ class AdminSanPhamController
         }
 
         // Chuyển hướng về trang sản phẩm sau khi xóa
-        header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
+        header("Location: index.php?act=san-pham");
         exit();
     }
 

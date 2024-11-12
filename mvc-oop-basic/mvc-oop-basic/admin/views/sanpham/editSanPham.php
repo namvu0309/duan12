@@ -23,11 +23,13 @@ include "./views/layout/header.php"
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
-
+                        <div class="col-sm-11">
                             <a href="index.php?act=form-sua-san-pham">
                                 <h1>Sửa thông tin sản phẩm <?= $sanpham['ten_san_pham'] ?></h1>
                             </a>
+                        </div>
+                            <div class="col-sm-1">
+                                <a href="index.php?act=san-pham"class="btn btn-secondary">Back</a>
                         </div>
 
                     </div>
@@ -178,9 +180,7 @@ include "./views/layout/header.php"
                             <!-- /.card -->
                         </div>
                     </div>
-                    <div class="row">
-                       
-                    </div>
+
                 </section>
                 <!-- /.content -->
                 <!-- Main content -->
