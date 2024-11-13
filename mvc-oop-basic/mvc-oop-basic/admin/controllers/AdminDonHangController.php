@@ -136,83 +136,62 @@ class AdminDonHangController
 
     public function formEditDonHang()
     {
-        //ham nay hien thi form nhap
+        //lấy thông tin của danh mục cần sửa
         $id = $_GET['id_don_hang'];
-        $DonHang = $this->modelDonHang->getDetailDonHang($id);
-        $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
-        if ($DonHang) {
-            require_once "./views/donang/editDonHang.php";
-            deleteSessionError();
+        $donHang = $this->AdminDonHang->getDetailDonHang($id);
+        $listTrangThaiDonHang = $this->AdminDonHang->getAllTrangThaiDonHang();
+        if ($donHang) {
+            require_once './views/donHang/editDonHang.php';
         } else {
-            header('location:index.php?act=Don-Hang');  
+            header("Location: " . BASE_URL_ADMIN . '?act=don-hang');
             exit();
         }
-     }
-    
-    
+    }
+    // xử lý dữ liệu thêm
     public function postEditDonHang()
     {
-        // Xử lý khi có yêu cầu POST
+        //kiểm tra xem dữ liệu có phải được submit không
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Lấy dữ liệu từ form
-            $don_hang_id = $_POST['don_hang_id'];
-
-            // Truy vấn để lấy thông tin sản phẩm cũ
-           
+            //Lấy ra dữ liệu
+            $don_hang_id = $_POST['don_hang_id'] ?? '';
             $ten_nguoi_nhan = $_POST['ten_nguoi_nhan'] ?? '';
             $sdt_nguoi_nhan = $_POST['sdt_nguoi_nhan'] ?? '';
-            $email_nguoi_nhan = $_POST['emai_nguoi_nhan'] ?? '';
+            $email_nguoi_nhan = $_POST['email_nguoi_nhan'] ?? '';
             $dia_chi_nguoi_nhan = $_POST['dia_chi_nguoi_nhan'] ?? '';
             $ghi_chu = $_POST['ghi_chu'] ?? '';
             $trang_thai_id = $_POST['trang_thai_id'] ?? '';
-           
 
-            // Mảng chứa lỗi
-            $errors = [];
 
-            // Kiểm tra dữ liệu đầu vào
+            //tạo 1 mảng trống để chứa dữ liệu
+            $error = [];
             if (empty($ten_nguoi_nhan)) {
-                $errors['ten_nguoi_nhan'] = 'Tên người nhận không được để trống';
+                $error['ten_nguoi_nhan'] = 'Tên người nhận không được để trống';
             }
             if (empty($sdt_nguoi_nhan)) {
-                $errors['sdt_nguoi_nhan'] = 'sdt người nhận không được để trống';
+                $error['sdt_nguoi_nhan'] = 'Số điện thoại không được để trống';
             }
             if (empty($email_nguoi_nhan)) {
-                $errors['email_nguoi_nhan'] = 'Email người nhận không được để trống';
+                $error['email_nguoi_nhan'] = 'Email không được để trống';
             }
+
             if (empty($dia_chi_nguoi_nhan)) {
-                $errors['dia_chi_nguoi_nhan'] = 'Địa chỉ người nhận không được để trống';
-            }
-            if (empty($ghi_chu)) {
-                $errors['ghi_chu'] = 'ghi chú không được để trống';
+                $error['dia_chi_nguoi_nhan'] = 'Địa chỉ không được để trống';
             }
             if (empty($trang_thai_id)) {
-                $errors['trang_thai_id'] = 'Tráng thái id không được để trống';
+                $error['trang_thai_id'] = 'Trạng thái không được để trống';
             }
-           
 
-          
 
-            // Nếu không có lỗi, tiến hành thì sửaq
-            if (empty($errors)) {
-                // Cập nhật sản phẩm vào cơ sở dữ liệu
-                $this->modelDonHang->updateDonHang(
-                    $don_hang_id,
-                    $ten_nguoi_nhan,
-                    $sdt_nguoi_nhan,
-                    $email_nguoi_nhan,
-                    $dia_chi_nguoi_nhan,
-                    $ghi_chu,
-                    $trang_thai_id,
-                    
-                );
-                // Chuyển hướng đến danh sách sản phẩm sau khi cập nhật thành công
-                header('location:index.php?act=don_hang');
+
+            //nếu không có lỗi -> tiến hành sửa danh mục
+            if (empty($error)) {
+                $this->AdminDonHang->updateDonHang($don_hang_id, $ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id);
+                header("Location: " . BASE_URL_ADMIN . '?act=don-hang');
                 exit();
             } else {
-                // Nếu có lỗi, lưu lỗi vào session và chuyển hướng về form
-                $_SESSION['error'] = $errors;
-                header('location:index.php?act=form-sua-don_hang&id_don_hang=' . $don_hang_id);
+                //trả về form và báo lỗi
+                $_SESSION['flash'] = true;
+                header("Location: " . BASE_URL_ADMIN . '?act=form-sua-don-hang&id_don_hang=' . $don_hang_id);
                 exit();
             }
         }

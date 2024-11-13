@@ -25,39 +25,37 @@ class AdminDonHang
     public function getAllTrangThaiDonHang()
     {
         try {
-            $sql ='SELECT * FROM trang_thai_don_hangs';
+            $sql = 'SELECT * FROM trang_thai_don_hangs';
 
             $stmt = $this->conn->prepare($sql);
+
             $stmt->execute();
 
             return $stmt->fetchAll();
         } catch (Exception $e) {
-            echo 'lỗi: ' . $e->getMessage();
+            echo "Lỗi" . $e->getMessage();
         }
     }
     public function getDetailDonHang($id)
     {
         try {
-            $sql = 'SELECT don_hangs.*, 
-                        trang_thai_don_hangs.ten_trang_thai, 
-                        tai_khoans.ho_ten, 
-                        tai_khoans.email, 
-                        tai_khoans.so_dien_thoai, 
-                        phuong_thuc_thanh_toans.ten_phuong_thuc
-                FROM don_hangs
-                INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
-                INNER JOIN tai_khoans ON don_hangs.tai_khoan_id = tai_khoans.id
-                INNER JOIN phuong_thuc_thanh_toans ON don_hangs.phuong_thuc_thanh_toan_id = phuong_thuc_thanh_toans.id
-                WHERE don_hangs.id = :id';
+            $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai, 
+                    tai_khoans.ho_ten, tai_khoans.email, tai_khoans.so_dien_thoai,
+                    phuong_thuc_thanh_toans.ten_phuong_thuc
+                    FROM don_hangs
+                    INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
+                    INNER JOIN tai_khoans ON don_hangs.tai_khoan_id = tai_khoans.id
+                    INNER JOIN phuong_thuc_thanh_toans ON don_hangs.phuong_thuc_thanh_toan_id = phuong_thuc_thanh_toans.id
+                    WHERE don_hangs.id = :id';
             $stmt = $this->conn->prepare($sql);
+
             $stmt->execute([':id' => $id]);
+
             return $stmt->fetch();
         } catch (Exception $e) {
-            echo 'Error: ' . $e->getMessage();
-            return false;
+            echo "Lỗi" . $e->getMessage();
         }
     }
-
     public function getListSpDonHang($id)
     {
         try {
@@ -82,49 +80,53 @@ class AdminDonHang
 
 
 
-   
 
-    public function updateDonHang($id, $ten_nguoi_nhan,
-    $sdt_nguoi_nhan,
-    $email_nguoi_nhan,
-    $dia_chi_nguoi_nhan,
-    $ghi_chu,
-    $trang_thai_id
-    )
+
+    public function updateDonHang($id, $ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id)
     {
+
         try {
-            // Chuẩn bị câu lệnh SQL với các placeholders cho dữ liệu
-            $sql = 'UPDATE don_hang 
-        SET ten_nguoi_nhan = :ten_nguoi_nhan, 
-            sdt_nguoi_nhan = :sdt_nguoi_nhan, 
-            email_nguoi_nhan = :email_nguoi_nhan, 
-            dia_chi_nguoi_nhan = :dia_chi_nguoi_nhan, 
-            ghi_chu = :ghi_chu, 
-            trang_thai_id = :trang_thai_id
-          
-        WHERE id = :id';
-            // Chuẩn bị statement
+            $sql = "UPDATE don_hangs 
+            SET ten_nguoi_nhan =:ten_nguoi_nhan,
+                sdt_nguoi_nhan =:sdt_nguoi_nhan,
+                email_nguoi_nhan =:email_nguoi_nhan,
+                dia_chi_nguoi_nhan =:dia_chi_nguoi_nhan,
+                ghi_chu =:ghi_chu,
+                trang_thai_id =:trang_thai_id
+            WHERE id = :id
+            ";
             $stmt = $this->conn->prepare($sql);
 
-            // Thực thi statement với các giá trị đã bind
             $stmt->execute([
                 ':ten_nguoi_nhan' => $ten_nguoi_nhan,
                 ':sdt_nguoi_nhan' => $sdt_nguoi_nhan,
                 ':email_nguoi_nhan' => $email_nguoi_nhan,
                 ':dia_chi_nguoi_nhan' => $dia_chi_nguoi_nhan,
                 ':ghi_chu' => $ghi_chu,
+                ':trang_thai_id' => $trang_thai_id,
                 ':id' => $id
             ]);
 
-            // Trả về true nếu thêm thành công
+            // lấy id sản phẩm vừa thêm
             return true;
         } catch (Exception $e) {
-            // Hiển thị thông báo lỗi nếu có lỗi xảy ra
-            echo 'Lỗi: ' . $e->getMessage();
-            return false;
+            echo "lỗi" . $e->getMessage();
         }
     }
+    public function getDonHangFromKhachHang($id)
+    {
+        try {
+            $sql = "SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai FROM don_hangs
+            INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
+            WHERE don_hangs.tai_khoan_id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id' => $id]);
 
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
 
     // public function getDetailAnhDonHang($id)
     // {

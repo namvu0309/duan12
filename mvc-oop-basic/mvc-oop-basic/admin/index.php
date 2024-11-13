@@ -55,8 +55,8 @@ match ($act) {
   // router don hang
 
   "don-hang" => (new AdminDonHangController())->danhSachDonHang(),
-  // "form-sua-don-hang" => (new AdminDonHangController())->formEditDonHang(),
-  // "sua-don-hang" => (new AdminDonHangController())->postEditDonHang(),
+  "form-sua-don-hang" => (new AdminDonHangController())->formEditDonHang(),
+  "sua-don-hang" => (new AdminDonHangController())->postEditDonHang(),
   // "xoa-don-hang" => (new AdminDonHangController())->deleteDonHang(),
   "chi-tiet-don-hang" => (new AdminDonHangController())->detailDonHang(),
 
@@ -74,23 +74,21 @@ match ($act) {
   'list-tai-khoan-khach-hang' => (new AdminTaiKhoanController())->danhSachKhachHang(),
   'form-sua-khach-hang' => (new AdminTaiKhoanController())->formEditKhachHang(),
   'sua-khach-hang' => (new AdminTaiKhoanController())->postEditKhachHang(),
-  'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->deltailKhachHang(),
+  'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->detailKhachHang(),
+  'sua-anh-tai-khoan' => (new AdminTaiKhoanController)->suaAnhTaiKhoanAdmin(),
+  'sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController)->postEditCaNhanQuanTri(),
+  'sua-mat-khau-ca-nhan-quan-tri' => (new AdminTaiKhoanController)->postEditMatKhauCaNhan(),
 
-   // router auth
-   'login-admin' => (new AdminTaiKhoanController())->formLogin(),
-   'check-login-admin' => (new AdminTaiKhoanController())->login(),
-   'logout-admin' => (new AdminTaiKhoanController())->logout(),
+  // router auth9
+  'login-admin' => (new AdminTaiKhoanController())->formLogin(),
+  'check-login-admin' => (new AdminTaiKhoanController())->login(),
+  'logout-admin' => (new AdminTaiKhoanController())->logout(),
 
 
-   
+
   // router quản lý tài khoản  cá nhân(quản trị)
   'form-sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->formEditCaNhanQuanTri(),
-  'sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->postEditCaNhanQuanTri(),
+  // 'sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->postEditCaNhanQuanTri(),
 
   'sua-mat-khau-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->postEditMatKhauCaNhan(),
-
-  
-
-
-
 };

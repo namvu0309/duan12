@@ -43,11 +43,11 @@ include "./views/layout/header.php"
                             <!-- /.card -->
 
                             <div class="card">
-                                <div class="card-header">
+                                <!-- <div class="card-header">
                                     <a href="?act=form-them-don-hang">
                                         <button class="btn btn-success">Thêm Đơn Hàng</button>
                                     </a>
-                                </div>
+                                </div> -->
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
