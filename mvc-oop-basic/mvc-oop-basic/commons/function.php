@@ -49,7 +49,7 @@ function deleteFile($file)
 }
  function checkLoginAdmin(){
     if(!isset($_SESSION['user_admin'])){
-        header("Location: " . '?act=login-admin');
+        header("Location: index.php?act=login-admin");
         //var_dump('abc');die;
         exit();
     }
@@ -63,6 +63,33 @@ function deleteSessionError(){
         //session_destroy();
     }
 }
+function deleteSessionErrors()
+{
+    if (isset($_SESSION['flash'])) {
+        // Hủy session sau khi load trang
+        unset($_SESSION['flash']);
+        unset($_SESSION['errors']);
+        unset($_SESSION['thongBao']);
+        unset($_SESSION['old_data']);
+        unset($_SESSION['successMk']);
+        unset($_SESSION['successTt']);
+        unset($_SESSION['successAnh']);
+        unset($_SESSION['errorsKH']);
+        unset($_SESSION['tong']);
+        unset($_SESSION['layMk']);
+        unset($_SESSION['dat_hang_thanh_cong']);
+
+
+
+
+
+
+
+        //   session_unset();
+        //  session_destroy();
+    }
+}
+
 function uploadFileAlbum($file, $folderUpload, $key)
 {
     // Define the file path with the folder and filename, including the timestamp for uniqueness
