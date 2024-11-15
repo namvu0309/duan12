@@ -84,29 +84,18 @@ class AdminTaiKhoanController
 
         // Kiểm tra xem dữ dữ liệu có phải đc submit lên không
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-<<<<<<< HEAD
-    
-            $quan_tri_id = 1;
-            $email = $_POST['email'] ?? '';
-=======
             // Lấy ra dl
             // Lấy ra dữ liệu của sản phẩm
             $quan_tri_id = $_POST['quan_tri_id'] ?? '';
             // Truy vấn 
 
->>>>>>> dbbeeb88a089f23b1feec16c62884da82551de7e
             $ho_ten = $_POST['ho_ten'] ?? '';
             $email = $_POST['email'] ?? '';
             $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? '';
-<<<<<<< HEAD
-    
-            // var_dump($trang_thai);die;
-=======
 
 
             // Tạo 1 mảng trống để chứa dl
->>>>>>> dbbeeb88a089f23b1feec16c62884da82551de7e
             $errors = [];
             if (empty($ho_ten)) {
                 $errors['ho_ten'] = 'Tên người dùng không được để trống';
@@ -117,13 +106,6 @@ class AdminTaiKhoanController
             if (empty($trang_thai)) {
                 $errors['trang_thai'] = 'Vui lòng chọn trạng thái';
             }
-<<<<<<< HEAD
-            $_SESSION['error'] = $errors;
-            if (empty($errors)) {
-                $satus=$this->AdminTaiKhoan->updateTaiKhoan($quan_tri_id, $ho_ten, $email, $so_dien_thoai, $trang_thai);
-                // var_dump($satus);die;
-                header('location:index.php?act=list-tai-khoan-quan-tri');
-=======
 
             $_SESSION['errors'] = $errors;
 
@@ -134,7 +116,6 @@ class AdminTaiKhoanController
                 //  var_dump($a); die();
                 //  var_dump($san_pham_id);die;
                 header("Location: " . BASE_URL_ADMIN . '?act=list-tai-khoan-quan-tri');
->>>>>>> dbbeeb88a089f23b1feec16c62884da82551de7e
                 exit();
             } else {
                 // trả lỗi

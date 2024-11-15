@@ -91,15 +91,6 @@ include "./views/layout/header.php"
             </section>
             <!-- /.content -->
         </div>
-<<<<<<< HEAD
-    </div>
-
-  </section>
-
- </div>
- <?php include './views/layout/footer.php'; ?>
- 
-=======
         <?php
         include "./views/layout/footer.php"
         ?>
@@ -108,4 +99,3 @@ include "./views/layout/header.php"
 </body>
 
 </html>
->>>>>>> dbbeeb88a089f23b1feec16c62884da82551de7e

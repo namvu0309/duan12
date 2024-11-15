@@ -14,57 +14,6 @@ class AdminTaiKhoan{
             $stmt->execute([
                 'chuc_vu_id' => $chuc_vu_id
             ]);
-<<<<<<< HEAD
-            return true;
-        } catch (Exception $e) {
-            echo "Lỗi: " . $e->getMessage();
-        }
-    }
-
-    public function getDetailTaiKhoan($id)
-     {
-          try {
-               $sql = 'SELECT *FROM tai_khoans WHERE id = :id';
-               $stmt = $this->conn->prepare($sql);
-               $stmt->execute([
-                ':id' => $id
-               ]);
-               return $stmt->fetch();
-          } catch (Exception $e) {
-               echo 'lỗi' . $e->getMessage();
-          }
-     }
-     
-     public function updateTaiKhoan($id, $ho_ten, $email, $so_dien_thoai, $trang_thai){
-        try{
-            $sql = 'UPDATE tai_khoans SET
-            ho_ten = :ho_ten,
-            email = :email,
-            so_dien_thoai = :so_dien_thoai,
-            trang_thai = :trang_thai
-            WHERE id = :id';
-
-            $stmt = $this->conn->prepare($sql);
-    // var_dump($sql);die;
-
-            $stmt->execute([
-                ':ho_ten' => $ho_ten,
-                ':email' => $email,
-                ':so_dien_thoai' => $so_dien_thoai,
-                ':trang_thai' => $trang_thai,
-                ':id' => $id          ]);
-            return true;
-        } catch(Exception $e){
-            echo "lỗi" . $e->getMessage();
-        }
-     }
-
-     public function resetPassword($id, $mat_khau){
-        try{
-            $sql = 'UPDATE tai_khoans SET
-            mat_khau = :mat_khau
-=======
->>>>>>> dbbeeb88a089f23b1feec16c62884da82551de7e
             
             return $stmt->fetchAll();
         }catch(Exception $e){
@@ -251,7 +200,7 @@ class AdminTaiKhoan{
                     return "Tài khoản không có quyền đăng nhập admin";
                 }
             }else{
-                return 'Vui lòng kiểm tra lại thông tin đăng nhập';
+                return 'Vui lòng ki ểm tra lại thông tin đăng nhập';
             }
     
         }catch(Exception $e){
