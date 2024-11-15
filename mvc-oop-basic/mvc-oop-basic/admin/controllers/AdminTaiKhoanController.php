@@ -82,12 +82,13 @@ class AdminTaiKhoanController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-            $quan_tri_id = $_POST['quan_tri_id'] ?? '';
+            $quan_tri_id = 1;
             $email = $_POST['email'] ?? '';
             $ho_ten = $_POST['ho_ten'] ?? '';
             $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? '';
     
+            // var_dump($trang_thai);die;
             $errors = [];
     
             if (empty($ho_ten)) {
@@ -100,9 +101,9 @@ class AdminTaiKhoanController
                 $errors['trang_thai'] = 'Vui lòng chọn trạng thái';
             }
             $_SESSION['error'] = $errors;
-    
             if (empty($errors)) {
-                $this->AdminTaiKhoan->updateTaiKhoan($quan_tri_id, $ho_ten, $email, $so_dien_thoai, $trang_thai);
+                $satus=$this->AdminTaiKhoan->updateTaiKhoan($quan_tri_id, $ho_ten, $email, $so_dien_thoai, $trang_thai);
+                // var_dump($satus);die;
                 header('location:index.php?act=list-tai-khoan-quan-tri');
                 exit();
             } else {

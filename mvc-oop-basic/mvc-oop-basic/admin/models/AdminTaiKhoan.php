@@ -66,15 +66,14 @@ class AdminTaiKhoan
             WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
-    
+    // var_dump($sql);die;
 
             $stmt->execute([
                 ':ho_ten' => $ho_ten,
                 ':email' => $email,
                 ':so_dien_thoai' => $so_dien_thoai,
                 ':trang_thai' => $trang_thai,
-                ':id' => $id,
-            ]);
+                ':id' => $id          ]);
             return true;
         } catch(Exception $e){
             echo "lỗi" . $e->getMessage();
