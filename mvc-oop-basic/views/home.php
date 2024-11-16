@@ -10,7 +10,7 @@
             <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
                 <!-- single slider item start -->
                 <div class="hero-single-slide hero-overlay">
-                    <div class="hero-slider-item bg-img" data-bg="assets/img/slider/home1-slide2.jpg">
+                    <div class="hero-slider-item bg-img" data-bg="./views/assets/img/slider/home1-slide2.jpg">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
@@ -28,7 +28,7 @@
 
                 <!-- single slider item start -->
                 <div class="hero-single-slide hero-overlay">
-                    <div class="hero-slider-item bg-img" data-bg="assets/img/slider/home1-slide3.jpg">
+                    <div class="hero-slider-item bg-img" data-bg="./views/assets/img/slider/home1-slide3.jpg">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
@@ -46,7 +46,7 @@
 
                 <!-- single slider item start -->
                 <div class="hero-single-slide hero-overlay">
-                    <div class="hero-slider-item bg-img" data-bg="assets/img/slider/home1-slide1.jpg">
+                    <div class="hero-slider-item bg-img" data-bg="./views/assets/img/slider/home1-slide1.jpg">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
@@ -139,7 +139,7 @@
                     <div class="col-sm-6">
                         <figure class="banner-statistics mt-20">
                             <a href="#">
-                                <img src="assets/img/banner/img1-top.jpg" alt="product banner">
+                                <img src="./views/assets/img/banner/img1-top.jpg" alt="product banner">
                             </a>
                             <div class="banner-content text-right">
                                 <h5 class="banner-text1">BEAUTIFUL</h5>
@@ -151,7 +151,7 @@
                     <div class="col-sm-6">
                         <figure class="banner-statistics mt-20">
                             <a href="#">
-                                <img src="assets/img/banner/img2-top.jpg" alt="product banner">
+                                <img src="./views/assets/img/banner/img2-top.jpg" alt="product banner">
                             </a>
                             <div class="banner-content text-center">
                                 <h5 class="banner-text1">EARRINGS</h5>
@@ -163,7 +163,7 @@
                     <div class="col-sm-6">
                         <figure class="banner-statistics mt-20">
                             <a href="#">
-                                <img src="assets/img/banner/img3-top.jpg" alt="product banner">
+                                <img src="./views/assets/img/banner/img3-top.jpg" alt="product banner">
                             </a>
                             <div class="banner-content text-center">
                                 <h5 class="banner-text1">NEW ARRIVALLS</h5>
@@ -175,7 +175,7 @@
                     <div class="col-sm-6">
                         <figure class="banner-statistics mt-20">
                             <a href="#">
-                                <img src="assets/img/banner/img4-top.jpg" alt="product banner">
+                                <img src="./views/assets/img/banner/img4-top.jpg" alt="product banner">
                             </a>
                             <div class="banner-content text-right">
                                 <h5 class="banner-text1">NEW DESIGN</h5>
@@ -224,8 +224,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-1.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-18.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-1.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-18.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -277,8 +277,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-2.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-17.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-2.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-17.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -330,8 +330,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-3.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-16.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-3.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-16.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -380,8 +380,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-4.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-15.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-4.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-15.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -433,8 +433,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-5.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-14.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-5.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-14.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -489,8 +489,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-6.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-13.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-6.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-13.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -542,8 +542,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-7.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-12.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-7.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-12.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -595,8 +595,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-8.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-11.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-8.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-11.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -645,8 +645,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-9.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-10.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-9.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-10.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -698,8 +698,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-10.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-9.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-10.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-9.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -754,8 +754,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-11.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-8.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-11.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-8.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -807,8 +807,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-12.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-7.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-12.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-7.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -860,8 +860,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-13.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-6.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-13.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-6.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -910,8 +910,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-14.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-5.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-14.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-5.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -963,8 +963,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-15.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-4.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-15.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-4.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -1019,8 +1019,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-16.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-3.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-16.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-3.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -1072,8 +1072,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-17.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-2.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-17.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-2.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -1125,8 +1125,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-18.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-1.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-18.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-1.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -1175,8 +1175,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-12.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-9.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-12.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-9.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -1228,8 +1228,8 @@
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="product-details.html">
-                                                    <img class="pri-img" src="assets/img/product/product-7.jpg" alt="product">
-                                                    <img class="sec-img" src="assets/img/product/product-14.jpg" alt="product">
+                                                    <img class="pri-img" src="./views/assets/img/product/product-7.jpg" alt="product">
+                                                    <img class="sec-img" src="./views/assets/img/product/product-14.jpg" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -1297,7 +1297,7 @@
                             <div class="banner-slide-item">
                                 <figure class="banner-statistics">
                                     <a href="#">
-                                        <img src="assets/img/banner/img1-middle.jpg" alt="product banner">
+                                        <img src="./views/assets/img/banner/img1-middle.jpg" alt="product banner">
                                     </a>
                                     <div class="banner-content banner-content_style2">
                                         <h5 class="banner-text3"><a href="#">BRACELATES</a></h5>
@@ -1309,7 +1309,7 @@
                             <div class="banner-slide-item">
                                 <figure class="banner-statistics">
                                     <a href="#">
-                                        <img src="assets/img/banner/img2-middle.jpg" alt="product banner">
+                                        <img src="./views/assets/img/banner/img2-middle.jpg" alt="product banner">
                                     </a>
                                     <div class="banner-content banner-content_style2">
                                         <h5 class="banner-text3"><a href="#">EARRINGS</a></h5>
@@ -1321,7 +1321,7 @@
                             <div class="banner-slide-item">
                                 <figure class="banner-statistics">
                                     <a href="#">
-                                        <img src="assets/img/banner/img3-middle.jpg" alt="product banner">
+                                        <img src="./views/assets/img/banner/img3-middle.jpg" alt="product banner">
                                     </a>
                                     <div class="banner-content banner-content_style2">
                                         <h5 class="banner-text3"><a href="#">NECJLACES</a></h5>
@@ -1333,7 +1333,7 @@
                             <div class="banner-slide-item">
                                 <figure class="banner-statistics">
                                     <a href="#">
-                                        <img src="assets/img/banner/img4-middle.jpg" alt="product banner">
+                                        <img src="./views/assets/img/banner/img4-middle.jpg" alt="product banner">
                                     </a>
                                     <div class="banner-content banner-content_style2">
                                         <h5 class="banner-text3"><a href="#">RINGS</a></h5>
@@ -1345,7 +1345,7 @@
                             <div class="banner-slide-item">
                                 <figure class="banner-statistics">
                                     <a href="#">
-                                        <img src="assets/img/banner/img5-middle.jpg" alt="product banner">
+                                        <img src="./views/assets/img/banner/img5-middle.jpg" alt="product banner">
                                     </a>
                                     <div class="banner-content banner-content_style2">
                                         <h5 class="banner-text3"><a href="#">PEARLS</a></h5>
@@ -1380,8 +1380,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-6.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-13.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-6.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-13.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1433,8 +1433,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-7.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-9.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-7.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-9.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1486,8 +1486,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-8.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-11.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-8.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-11.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1536,8 +1536,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-16.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-10.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-16.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-10.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1589,8 +1589,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-10.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-9.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-10.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-9.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1642,8 +1642,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-1.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-18.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-1.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-18.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1695,8 +1695,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-2.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-17.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-2.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-17.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1748,8 +1748,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-3.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-16.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-3.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-16.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1798,8 +1798,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-4.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-15.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-4.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-15.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1851,8 +1851,8 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="product-details.html">
-                                        <img class="pri-img" src="assets/img/product/product-5.jpg" alt="product">
-                                        <img class="sec-img" src="assets/img/product/product-14.jpg" alt="product">
+                                        <img class="pri-img" src="./views/assets/img/product/product-5.jpg" alt="product">
+                                        <img class="sec-img" src="./views/assets/img/product/product-14.jpg" alt="product">
                                     </a>
                                     <div class="product-badge">
                                         <div class="product-label new">
@@ -1907,7 +1907,7 @@
         <!-- featured product area end -->
 
         <!-- testimonial area start -->
-        <section class="testimonial-area section-padding bg-img" data-bg="assets/img/testimonial/testimonials-bg.jpg">
+        <section class="testimonial-area section-padding bg-img" data-bg="./views/assets/img/testimonial/testimonials-bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -1924,16 +1924,16 @@
                         <div class="testimonial-thumb-wrapper">
                             <div class="testimonial-thumb-carousel">
                                 <div class="testimonial-thumb">
-                                    <img src="assets/img/testimonial/testimonial-1.png" alt="testimonial-thumb">
+                                    <img src="./views/assets/img/testimonial/testimonial-1.png" alt="testimonial-thumb">
                                 </div>
                                 <div class="testimonial-thumb">
-                                    <img src="assets/img/testimonial/testimonial-2.png" alt="testimonial-thumb">
+                                    <img src="./views/assets/img/testimonial/testimonial-2.png" alt="testimonial-thumb">
                                 </div>
                                 <div class="testimonial-thumb">
-                                    <img src="assets/img/testimonial/testimonial-3.png" alt="testimonial-thumb">
+                                    <img src="./views/assets/img/testimonial/testimonial-3.png" alt="testimonial-thumb">
                                 </div>
                                 <div class="testimonial-thumb">
-                                    <img src="assets/img/testimonial/testimonial-2.png" alt="testimonial-thumb">
+                                    <img src="./views/assets/img/testimonial/testimonial-2.png" alt="testimonial-thumb">
                                 </div>
                             </div>
                         </div>
@@ -1999,7 +1999,7 @@
                         <div class="group-product-banner">
                             <figure class="banner-statistics">
                                 <a href="#">
-                                    <img src="assets/img/banner/img-bottom-banner.jpg" alt="product banner">
+                                    <img src="./views/assets/img/banner/img-bottom-banner.jpg" alt="product banner">
                                 </a>
                                 <div class="banner-content banner-content_style3 text-center">
                                     <h6 class="banner-text1">BEAUTIFUL</h6>
@@ -2026,7 +2026,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-1.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2046,7 +2046,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-3.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-3.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2066,7 +2066,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-5.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-5.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2086,7 +2086,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-7.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-7.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2106,7 +2106,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-9.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-9.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2126,7 +2126,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-11.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-11.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2146,7 +2146,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-13.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-13.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2166,7 +2166,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-15.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-15.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2202,7 +2202,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-17.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-17.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2222,7 +2222,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-16.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-16.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2242,7 +2242,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-12.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-12.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2262,7 +2262,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-11.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-11.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2282,7 +2282,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-7.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-7.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2302,7 +2302,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-2.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2322,7 +2322,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-18.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-18.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2342,7 +2342,7 @@
                                         <div class="group-item">
                                             <div class="group-item-thumb">
                                                 <a href="product-details.html">
-                                                    <img src="assets/img/product/product-14.jpg" alt="">
+                                                    <img src="./views/assets/img/product/product-14.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="group-item-desc">
@@ -2386,7 +2386,7 @@
                             <div class="blog-post-item">
                                 <figure class="blog-thumb">
                                     <a href="blog-details.html">
-                                        <img src="assets/img/blog/blog-img1.jpg" alt="blog image">
+                                        <img src="./views/assets/img/blog/blog-img1.jpg" alt="blog image">
                                     </a>
                                 </figure>
                                 <div class="blog-content">
@@ -2404,7 +2404,7 @@
                             <div class="blog-post-item">
                                 <figure class="blog-thumb">
                                     <a href="blog-details.html">
-                                        <img src="assets/img/blog/blog-img2.jpg" alt="blog image">
+                                        <img src="./views/assets/img/blog/blog-img2.jpg" alt="blog image">
                                     </a>
                                 </figure>
                                 <div class="blog-content">
@@ -2422,7 +2422,7 @@
                             <div class="blog-post-item">
                                 <figure class="blog-thumb">
                                     <a href="blog-details.html">
-                                        <img src="assets/img/blog/blog-img3.jpg" alt="blog image">
+                                        <img src="./views/assets/img/blog/blog-img3.jpg" alt="blog image">
                                     </a>
                                 </figure>
                                 <div class="blog-content">
@@ -2440,7 +2440,7 @@
                             <div class="blog-post-item">
                                 <figure class="blog-thumb">
                                     <a href="blog-details.html">
-                                        <img src="assets/img/blog/blog-img4.jpg" alt="blog image">
+                                        <img src="./views/assets/img/blog/blog-img4.jpg" alt="blog image">
                                     </a>
                                 </figure>
                                 <div class="blog-content">
@@ -2458,7 +2458,7 @@
                             <div class="blog-post-item">
                                 <figure class="blog-thumb">
                                     <a href="blog-details.html">
-                                        <img src="assets/img/blog/blog-img5.jpg" alt="blog image">
+                                        <img src="./views/assets/img/blog/blog-img5.jpg" alt="blog image">
                                     </a>
                                 </figure>
                                 <div class="blog-content">
@@ -2487,7 +2487,7 @@
                             <!-- single brand start -->
                             <div class="brand-item">
                                 <a href="#">
-                                    <img src="assets/img/brand/1.png" alt="">
+                                    <img src="./views/assets/img/brand/1.png" alt="">
                                 </a>
                             </div>
                             <!-- single brand end -->
@@ -2495,7 +2495,7 @@
                             <!-- single brand start -->
                             <div class="brand-item">
                                 <a href="#">
-                                    <img src="assets/img/brand/2.png" alt="">
+                                    <img src="./views/assets/img/brand/2.png" alt="">
                                 </a>
                             </div>
                             <!-- single brand end -->
@@ -2503,7 +2503,7 @@
                             <!-- single brand start -->
                             <div class="brand-item">
                                 <a href="#">
-                                    <img src="assets/img/brand/3.png" alt="">
+                                    <img src="./views/assets/img/brand/3.png" alt="">
                                 </a>
                             </div>
                             <!-- single brand end -->
@@ -2511,7 +2511,7 @@
                             <!-- single brand start -->
                             <div class="brand-item">
                                 <a href="#">
-                                    <img src="assets/img/brand/4.png" alt="">
+                                    <img src="./views/assets/img/brand/4.png" alt="">
                                 </a>
                             </div>
                             <!-- single brand end -->
@@ -2519,7 +2519,7 @@
                             <!-- single brand start -->
                             <div class="brand-item">
                                 <a href="#">
-                                    <img src="assets/img/brand/5.png" alt="">
+                                    <img src="./views/assets/img/brand/5.png" alt="">
                                 </a>
                             </div>
                             <!-- single brand end -->
@@ -2527,7 +2527,7 @@
                             <!-- single brand start -->
                             <div class="brand-item">
                                 <a href="#">
-                                    <img src="assets/img/brand/6.png" alt="">
+                                    <img src="./views/assets/img/brand/6.png" alt="">
                                 </a>
                             </div>
                             <!-- single brand end -->
@@ -2557,7 +2557,7 @@
                             <li class="minicart-item">
                                 <div class="minicart-thumb">
                                     <a href="product-details.html">
-                                        <img src="assets/img/cart/cart-1.jpg" alt="product">
+                                        <img src="./views/assets/img/cart/cart-1.jpg" alt="product">
                                     </a>
                                 </div>
                                 <div class="minicart-content">
@@ -2574,7 +2574,7 @@
                             <li class="minicart-item">
                                 <div class="minicart-thumb">
                                     <a href="product-details.html">
-                                        <img src="assets/img/cart/cart-2.jpg" alt="product">
+                                        <img src="./views/assets/img/cart/cart-2.jpg" alt="product">
                                     </a>
                                 </div>
                                 <div class="minicart-content">
