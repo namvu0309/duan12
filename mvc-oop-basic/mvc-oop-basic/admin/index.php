@@ -68,7 +68,7 @@ match ($act) {
   'form-sua-quan-tri' => (new AdminTaiKhoanController())->formEditQuanTri(),
   'sua-quan-tri' => (new AdminTaiKhoanController())->postEditQuanTri(),
 
-  'reset-password' => (new AdminTaiKhoanController())->resetPassword(),
+  'reset-pass' => (new AdminTaiKhoanController())->resetPassword(),
 
   //  router tai khoan khách hang
   'list-tai-khoan-khach-hang' => (new AdminTaiKhoanController())->danhSachKhachHang(),

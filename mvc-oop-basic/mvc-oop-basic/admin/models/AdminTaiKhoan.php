@@ -200,7 +200,7 @@ class AdminTaiKhoan{
                     return "Tài khoản không có quyền đăng nhập admin";
                 }
             }else{
-                return 'Vui lòng kiểm tra lại thông tin đăng nhập';
+                return 'Vui lòng ki ểm tra lại thông tin đăng nhập';
             }
     
         }catch(Exception $e){
