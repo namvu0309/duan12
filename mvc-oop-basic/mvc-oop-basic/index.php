@@ -23,10 +23,10 @@ match ($act) {
 
     '/' => (new HomeController())->home(),
     // Trang chủ
-    'chi_tiet_san_pham '=> (new HomeController())->chitietSanPham(),
+    'chi-tiet-san-pham'=> (new HomeController())->chitietSanPham(),
 
 
     //authe
     'login' => (new HomeController())->formLogin(),
-    'check login' => (new HomeController())->postLogin(),
+    'check-login' => (new HomeController())->postLogin(),
 };
