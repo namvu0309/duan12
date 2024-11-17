@@ -43,12 +43,12 @@ class AdminDanhMucController
                     echo 'Dữ liệu hợp lệ. Tiến hành thêm danh mục...';
                     // Bạn có thể thêm lệnh chèn dữ liệu vào cơ sở dữ liệu ở đây
                     $this->AdminDanhMuc->insertDanhMuc($ten_danh_muc, $mo_ta);
-                    header('location:index.php?act=danh-muc-mi-pham');
+                    header('location: ' . BASE_URL_ADMIN . '?act=danh-muc-mi-pham');
                     exit();
                } else {
                     // Trả về form và hiển thị lỗi
                     $_SESSION['flash'] = true;
-                    header('location:index.php?act=form-them-danh-muc');
+                    header('location: ' . BASE_URL_ADMIN . '?act=form-them-danh-muc');
                     exit();
                }
           }
@@ -61,7 +61,7 @@ class AdminDanhMucController
           if($danhmuc){
                require_once "./views/danhmuc/editDanhMuc.php";
           }else{
-               header('location:index.php?act=danh-muc-mi-pham');
+               header('location: ' . BASE_URL_ADMIN . '?act=danh-muc-mi-pham');
                exit();
           }
      }
@@ -90,7 +90,7 @@ class AdminDanhMucController
                     echo 'Dữ liệu hợp lệ. Tiến hành thêm danh mục...';
                     // Bạn có thể thêm lệnh chèn dữ liệu vào cơ sở dữ liệu ở đây
                     $this->AdminDanhMuc->updateDanhMuc($id,$ten_danh_muc, $mo_ta);
-                    header('location:index.php?act=danh-muc-mi-pham');
+                    header('location: ' . BASE_URL_ADMIN . '?act=danh-muc-mi-pham');
                     exit();
                } else {
                     // Trả về form và hiển thị lỗi
@@ -105,7 +105,7 @@ class AdminDanhMucController
           if($danhmuc){
                $this->AdminDanhMuc->destroyDanhMuc($id);
           }
-          header('location:index.php?act=danh-muc-mi-pham');
+          header('location: ' . BASE_URL_ADMIN . '?act=danh-muc-mi-pham');
           exit();
      }
 }

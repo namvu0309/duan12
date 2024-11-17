@@ -110,13 +110,13 @@ class AdminSanPhamController
                 }
 
                 // Chuyển hướng đến danh sách sản phẩm sau khi thêm thành công
-                header('location:index.php?act=san-pham');
+                header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
                 exit();
             } else {
                 // Trả về form và hiển thị lỗi nếu có lỗi
                 //dat chi thi xoa session sau khi hien thi form
                 $_SESSION['flash'] = true;
-                header('location:index.php?act=form-them-san-pham');
+                header('location: ' . BASE_URL_ADMIN . '?act=form-them-san-pham');
                 exit();
             }
         }
@@ -134,7 +134,7 @@ class AdminSanPhamController
             require_once "./views/sanpham/editSanPham.php";
             deleteSessionError();
         } else {
-            header('location:index.php?act=san-pham');
+            header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
             exit();
         }
     }
@@ -214,12 +214,12 @@ class AdminSanPhamController
                     $new_file
                 );
                 // Chuyển hướng đến danh sách sản phẩm sau khi cập nhật thành công
-                header('location:index.php?act=san-pham');
+                header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
                 exit();
             } else {
                 // Nếu có lỗi, lưu lỗi vào session và chuyển hướng về form
                 $_SESSION['error'] = $errors;
-                header('location:index.php?act=form-sua-san-pham&id_san_pham=' . $san_pham_id);
+                header('location: ' . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $san_pham_id);
                 exit();
             }
         }
@@ -287,7 +287,7 @@ class AdminSanPhamController
             }
 
             // Chuyển hướng sau khi xử lý xong
-            header("Location: index.php?act=form-sua-san-pham&id_san_pham=$san_pham_id");
+            header("Location:  ' . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=$san_pham_id");
             exit();
         }
     }
@@ -300,7 +300,7 @@ class AdminSanPhamController
         if ($sanpham) {
             require_once "./views/sanpham/detailSanPham.php";
         } else {
-            header('location:index.php?act=san-pham');
+            header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
             exit();
         }
     }
@@ -336,7 +336,7 @@ class AdminSanPhamController
         }
 
         // Chuyển hướng về trang sản phẩm sau khi xóa
-        header("Location: index.php?act=san-pham");
+        header("Location:  ' . BASE_URL_ADMIN . '?act=san-pham");
         exit();
     }
 }

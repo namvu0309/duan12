@@ -122,13 +122,13 @@ class AdminDonHangController
     //             }
 
     //             // Chuyển hướng đến danh sách sản phẩm sau khi thêm thành công
-    //             header('location:index.php?act=san-pham');
+    //             header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
     //             exit();
     //         } else {
     //             // Trả về form và hiển thị lỗi nếu có lỗi
     //             //dat chi thi xoa session sau khi hien thi form
     //             $_SESSION['flash'] =true;
-    //             header('location:index.php?act=form-them-san-pham');
+    //             header('location: ' . BASE_URL_ADMIN . '?act=form-them-san-pham');
     //             exit();
     //     }
     // }}
@@ -259,7 +259,7 @@ class AdminDonHangController
     //         }
 
     //         // Chuyển hướng sau khi xử lý xong
-    //         header("Location: index.php?act=form-sua-san-pham&id_san_pham=$san_pham_id");
+    //         header("Location:  ' . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=$san_pham_id");
     //         exit();
 
 
@@ -274,7 +274,7 @@ class AdminDonHangController
     //     if ($DonHang) {
     //         require_once "./views/DonHang/detailDonHang.php";
     //     } else {
-    //         header('location:index.php?act=san-pham');
+    //         header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
     //         exit();
     //     }
     // }
@@ -310,7 +310,7 @@ class AdminDonHangController
     //     }
 
     //     // Chuyển hướng về trang sản phẩm sau khi xóa
-    //     header("Location: index.php?act=san-pham");
+    //     header("Location:  ' . BASE_URL_ADMIN . '?act=san-pham");
     //     exit();
     // }
 

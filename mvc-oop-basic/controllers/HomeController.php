@@ -30,7 +30,7 @@ class HomeController
         if ($sanpham) {
             require_once "./views/detailSanPham.php";
         } else {
-            header("location: index.php?act=chi-tiet-san-pham&id-san-pham= $id");
+            header("location:". BASE_URL.'?act=chi-tiet-san-pham&id-san-pham= $id');
             exit();
         }
     }
