@@ -183,7 +183,6 @@ class AdminSanPhamController
             if (empty($trang_thai)) {
                 $errors['trang_thai'] = 'Trạng thái sản phẩm không được để trống';
             }
-
             // Kiểm tra và xử lý upload ảnh chính nếu có
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
             if ($hinh_anh && $hinh_anh['error'] === 0) {

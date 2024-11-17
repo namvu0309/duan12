@@ -2,35 +2,35 @@
 
 class HomeController
 {
-    public $modelSanPham;
-    public $modelTaiKhoan;
+    public $AdminSanPham;
+    public $AdminTaiKhoan;
 
     public function __construct()
     {
-        $this->modelSanPham = new SanPham()  ;
-        $this->modelTaiKhoan = new Taikhoan()  ;
+        $this->AdminSanPham = new SanPham()  ;
+        $this->AdminTaiKhoan = new Taikhoan()  ;
         
     }
     
     public function home(){
-        $listSanPham = $this->modelSanPham->getAllSanPham();
+        $listSanPham = $this->AdminSanPham->getAllSanPham();
         require_once './views/home.php';
     }
     public function chitietSanPham(){
         $id = $_GET['id_san_pham'];
-        $sanpham = $this->modelSanPham->getDetailSanPham($id);
+        $sanpham = $this->AdminSanPham->getDetailSanPham($id);
 
-        $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+        $listAnhSanPham = $this->AdminSanPham->getListAnhSanPham($id);
 
-        $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
+        $listBinhLuan = $this->AdminSanPham->getBinhLuanFromSanPham($id);
 
-        $listSanPhamCungDanhMuc = $this->modelSanPham->getlistSanPhamCungDanhMuc($sanpham['danh_muc_id']);
+        $listSanPhamCungDanhMuc = $this->AdminSanPham->getlistSanPhamCungDanhMuc($sanpham['danh_muc_id']);
 
        
         if ($sanpham) {
             require_once "./views/detailSanPham.php";
         } else {
-            header("location:" . BASE_URL);
+            header("location: index.php?act=chi-tiet-san-pham&id-san-pham= $id");
             exit();
         }
     }
@@ -53,7 +53,7 @@ class HomeController
             $password = $_POST['password'];
 
             // xử lý kiểm tra thông tin đăng nhập
-            $user = $this->modelTaiKhoan->checkLogin($email, $password);
+            $user = $this->AdminTaiKhoan->checkLogin($email, $password);
             //    var_dump($user);die();
 
             if ($user == $email) {
