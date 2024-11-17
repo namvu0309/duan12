@@ -1,5 +1,5 @@
 <?php require_once 'views/layout/header.php'; ?>
-<?php require_once 'layout/menu.php'; ?>
+<?php require_once 'views/layout/menu.php'; ?>
 
 
 <main>
@@ -149,4 +149,4 @@
     </div>
     offcanvas mini cart end
 
-  <?php require_once './views/layout/footer.php'; ?>
+  <?php require_once 'views/layout/footer.php'; ?>
