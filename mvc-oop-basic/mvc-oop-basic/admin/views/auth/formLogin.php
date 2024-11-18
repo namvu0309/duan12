@@ -34,7 +34,6 @@
         }
         ?>
 
-
         <form action="<?= '?act=check-login-admin' ?>" method="post">
           <div class="input-group mb-3">
             <input type="email" class="form-control" placeholder="Email" name="email">
