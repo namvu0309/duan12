@@ -11,7 +11,7 @@
 
                         <!-- start logo area -->
                         <div class="col-lg-2">
-                            <div class="logo">
+                            <div class="logo">`
                                 <a href="<?= BASE_URL?>">
                                     <img class="logo-img" src="./views/assets/img/logo/logo.png" alt="Brand Logo">
                                 </a>
@@ -62,7 +62,7 @@
                                                 <i class="pe-7s-user"></i>
                                             </a>
                                             <ul class="dropdown-list">
-                                                <li><a href="<?= BASE_URL . '?act=login'?>">Đăng nhập</a></li>
+                                                <li><a href="?act=login">Đăng nhập</a></li>
                                                 <li><a href="login-register.html">Đăng kí</a></li>
                                                 <li><a href="my-account.html">Tài khoản</a></li>
                                             </ul>

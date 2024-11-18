@@ -2,30 +2,29 @@
 
 class HomeController
 {
-    public $AdminSanPham;
-    public $AdminTaiKhoan;
+    public $modelSanPham;
+    public $modelTaiKhoan;
 
     public function __construct()
     {
-        $this->AdminSanPham = new SanPham()  ;
-        $this->AdminTaiKhoan = new Taikhoan()  ;
+        $this->modelSanPham = new SanPham()  ;
+        $this->modelTaiKhoan = new Taikhoan()  ;
         
     }
     
     public function home(){
-        $listSanPham = $this->AdminSanPham->getAllSanPham();
+        $listSanPham = $this->modelSanPham->getAllSanPham();
         require_once './views/home.php';
     }
     public function chitietSanPham(){
         $id = $_GET['id_san_pham'];
-        
-        $sanpham = $this->AdminSanPham->getDetailSanPham($id);
+        $sanpham = $this->modelSanPham->getDetailSanPham($id);
 
-        $listAnhSanPham = $this->AdminSanPham->getListAnhSanPham($id);
+        $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
 
-        $listBinhLuan = $this->AdminSanPham->getBinhLuanFromSanPham($id);
+        $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
 
-        $listSanPhamCungDanhMuc = $this->AdminSanPham->getlistSanPhamCungDanhMuc($sanpham['danh_muc_id']);
+        $listSanPhamCungDanhMuc = $this->modelSanPham->getlistSanPhamCungDanhMuc($sanpham['danh_muc_id']);
 
        
         if ($sanpham) {
@@ -39,7 +38,7 @@ class HomeController
     public function formLogin()
     {
         if(isset($_SESSION['user_admin'])){
-            header('Location:'. BASE_URL . '?act=login');
+            header('Location:'.BASE_URL. '?act=login');
             exit();
         }
         require_once './views/auth/formLogin.php';
@@ -54,7 +53,7 @@ class HomeController
             $password = $_POST['password'];
 
             // xử lý kiểm tra thông tin đăng nhập
-            $user = $this->AdminTaiKhoan->checkLogin($email, $password);
+            $user = $this->modelTaiKhoan->checkLogin($email, $password);
             //    var_dump($user);die();
 
             if ($user == $email) {

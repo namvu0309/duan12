@@ -147,6 +147,6 @@
             </div>
         </div>
     </div>
-    offcanvas mini cart end
+    
 
   <?php require_once 'views/layout/footer.php'; ?>
