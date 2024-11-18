@@ -1,26 +1,26 @@
 <?php
 class AdminDonHangController
 {
-    public $AdminDonHang;
-    public $AdminDanhMuc;
+    public $modelDonHang;
+    public $modelDanhMuc;
     public function __construct()
     {
-        $this->AdminDonHang = new AdminDonHang();
-        $this->AdminDanhMuc = new AdminDanhMuc();
+        $this->modelDonHang = new AdminDonHang();
+        $this->modelDanhMuc = new AdminDanhMuc();
     }
     public function danhSachDonHang()
     {
-        $listDonHang = $this->AdminDonHang->getAllDonHang();
+        $listDonHang = $this->modelDonHang->getAllDonHang();
         require_once "./views/DonHang/listDonHang.php";
     }
     public function detailDonHang()
     {
         $don_hang_id = $_GET['id_don_hang'];
         // Lấy thông tin đơn hàng ở bảng don_hangs
-        $donHang = $this->AdminDonHang->getDetailDonHang($don_hang_id);
+        $donHang = $this->modelDonHang->getDetailDonHang($don_hang_id);
         // Lấy danh sách sản phẩm đã đặt của đơn hàng ở bảng chi_tiet_don_hangs
-        $sanPhamDonHang = $this->AdminDonHang->getListSpDonHang($don_hang_id);
-        $listTrangThaiDonHang = $this->AdminDonHang->getAllTrangThaiDonHang();
+        $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($don_hang_id);
+        $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
         // var_dump($sanPhamDonHang);DIE();
         require_once './views/donhang/detailDonHang.php';
     }
@@ -28,7 +28,7 @@ class AdminDonHangController
     // public function formAddDonHang()
     // {
     //     //ham nay hien thi form nhap
-    //     $listDanhMuc=$this->AdminDanhMuc->getAllDanhMuc();
+    //     $listDanhMuc=$this->modelDanhMuc->getAllDanhMuc();
     //     require_once "./views/DonHang/addDonHang.php";
     //     //xoa session sau khi error
     //     deleteSessionError();
@@ -89,7 +89,7 @@ class AdminDonHangController
     //         // Nếu không có lỗi, tiến hành thêm sản phẩm
     //         if (empty($errors)) {
     //             // Gọi hàm insert để lưu sản phẩm vào cơ sở dữ liệu
-    //             $san_pham_id=$this->AdminDonHang->insertDonHang(
+    //             $san_pham_id=$this->modelDonHang->insertDonHang(
     //                 $ten_san_pham,
     //                 $gia_san_pham,
     //                 $gia_khuyen_mai,
@@ -117,7 +117,7 @@ class AdminDonHangController
     //                     $link_hinh_anh = uploadFile($file, './uploads/');
 
     //                     // Insert file link into the product's album
-    //                     $this->AdminDonHang->insertAlbumAnhDonHang($san_pham_id, $link_hinh_anh);
+    //                     $this->modelDonHang->insertAlbumAnhDonHang($san_pham_id, $link_hinh_anh);
     //                 }
     //             }
 
@@ -138,8 +138,8 @@ class AdminDonHangController
     {
         //lấy thông tin của danh mục cần sửa
         $id = $_GET['id_don_hang'];
-        $donHang = $this->AdminDonHang->getDetailDonHang($id);
-        $listTrangThaiDonHang = $this->AdminDonHang->getAllTrangThaiDonHang();
+        $donHang = $this->modelDonHang->getDetailDonHang($id);
+        $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
         if ($donHang) {
             require_once './views/donHang/editDonHang.php';
         } else {
@@ -185,7 +185,7 @@ class AdminDonHangController
 
             //nếu không có lỗi -> tiến hành sửa danh mục
             if (empty($error)) {
-                $this->AdminDonHang->updateDonHang($don_hang_id, $ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id);
+                $this->modelDonHang->updateDonHang($don_hang_id, $ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id);
                 header("Location: " . BASE_URL_ADMIN . '?act=don-hang');
                 exit();
             } else {
@@ -204,7 +204,7 @@ class AdminDonHangController
     //         $san_pham_id = $_POST['san_pham_id'] ?? '';
 
     //         // Lấy danh sách ảnh hiện tại của sản phẩm
-    //         $listAnhDonHangCurrent = $this->AdminDonHang->getListAnhDonHang($san_pham_id);
+    //         $listAnhDonHangCurrent = $this->modelDonHang->getListAnhDonHang($san_pham_id);
 
     //         // Xử lý các ảnh được gửi từ form
     //         $img_array = $_FILES['img_array'];
@@ -231,16 +231,16 @@ class AdminDonHangController
     //         foreach ($upload_file as $file_info) {
     //             if ($file_info['id']) {
     //                 // Lấy đường dẫn của ảnh cũ
-    //                 $old_file = $this->AdminDonHang->getDetailAnhDonHang($file_info['id'])['link_hinh_anh'];
+    //                 $old_file = $this->modelDonHang->getDetailAnhDonHang($file_info['id'])['link_hinh_anh'];
 
     //                 // Cập nhật ảnh cũ
-    //                 $this->AdminDonHang->updateAnhDonHang($file_info['id'], $file_info['file']);
+    //                 $this->modelDonHang->updateAnhDonHang($file_info['id'], $file_info['file']);
 
     //                 // Xóa ảnh cũ khỏi thư mục nếu cần
     //                 deleteFile($old_file);
     //             } else {
     //                 // Thêm ảnh mới
-    //                 $this->AdminDonHang->insertAlbumAnhDonHang($san_pham_id, $file_info['file']);
+    //                 $this->modelDonHang->insertAlbumAnhDonHang($san_pham_id, $file_info['file']);
     //             }
     //         }
 
@@ -250,7 +250,7 @@ class AdminDonHangController
     //             // Kiểm tra nếu ảnh ID nằm trong danh sách cần xóa
     //             if (in_array($anh_id, $img_delete)) {
     //                 // Xóa ảnh trong cơ sở dữ liệu
-    //                 $this->AdminDonHang->destroyAnhDonHang($anh_id);
+    //                 $this->modelDonHang->destroyAnhDonHang($anh_id);
 
     //                 // Xóa file khỏi hệ thống tệp
 
@@ -269,8 +269,8 @@ class AdminDonHangController
     // {
     //     //ham nay hien thi form nhap
     //     $id = $_GET['id_san_pham'];
-    //     $DonHang = $this->AdminDonHang->getDetailDonHang($id);
-    //     $listAnhDonHang = $this->AdminDonHang->getListAnhDonHang($id);
+    //     $DonHang = $this->modelDonHang->getDetailDonHang($id);
+    //     $listAnhDonHang = $this->modelDonHang->getListAnhDonHang($id);
     //     if ($DonHang) {
     //         require_once "./views/DonHang/detailDonHang.php";
     //     } else {
@@ -286,8 +286,8 @@ class AdminDonHangController
     //     $id = $_GET['id_san_pham'];
 
     //     // Lấy thông tin chi tiết sản phẩm và danh sách ảnh của sản phẩm
-    //     $DonHang = $this->AdminDonHang->getDetailDonHang($id);
-    //     $listAnhDonHang = $this->AdminDonHang->getListAnhDonHang($id);
+    //     $DonHang = $this->modelDonHang->getDetailDonHang($id);
+    //     $listAnhDonHang = $this->modelDonHang->getListAnhDonHang($id);
 
     //     // Nếu sản phẩm tồn tại
     //     if ($DonHang) {
@@ -295,7 +295,7 @@ class AdminDonHangController
     //         deleteFile($DonHang['hinh_anh']);
 
     //         // Xóa sản phẩm khỏi cơ sở dữ liệu
-    //         $this->AdminDonHang->destroyDonHang($id);
+    //         $this->modelDonHang->destroyDonHang($id);
     //     }
 
     //     // Nếu có danh sách ảnh bổ sung của sản phẩm
@@ -305,7 +305,7 @@ class AdminDonHangController
     //             deleteFile($anhSP['link_hinh_anh']);
 
     //             // Xóa từng ảnh khỏi cơ sở dữ liệu
-    //             $this->AdminDonHang->destroyAnhDonHang($anhSP['id']);
+    //             $this->modelDonHang->destroyAnhDonHang($anhSP['id']);
     //         }
     //     }
 

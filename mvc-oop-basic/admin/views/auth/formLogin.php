@@ -24,15 +24,11 @@
         <a href="./assets/index2.html" class="h1"><b>Bán Trang Sức</a>
       </div>
       <div class="card-body">
-        <?php
-        if (isset($_SESSION['error'])) {
-          $errorMessages = is_array($_SESSION['error']) ? implode(', ', $_SESSION['error']) : $_SESSION['error'];
-          echo '<p class="text-danger login-box-msg">' . $errorMessages . '</p>';
-          unset($_SESSION['error']); // Xóa thông báo lỗi sau khi hiển thị
-        } else {
-          echo '<p class="login-box-msg">Vui lòng đăng nhập</p>';
-        }
-        ?>
+        <?php if (isset($_SESSION['errors'])) { ?>
+          <p class="text-danger text-center"><?= $_SESSION['errors'] ?></p>
+        <?php } else { ?>
+          <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
+        <?php } ?>
 
 
         <form action="<?= '?act=check-login-admin' ?>" method="post">

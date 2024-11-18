@@ -135,7 +135,7 @@
                                         <!-- product item start -->
                                         <div class="product-item">
                                             <figure class="product-thumb">
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id-san-pham=' . $sanPham['id']; ?>">
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
                                                     <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
                                                     <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
                                                 </a>
@@ -169,44 +169,45 @@
 
 
                                                 </div>
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                    <div class="cart-hover"><button class="btn btn-cart">Xem chi tiết</button>
+                                                </a>
+                                        </div>
+                                        </figure>
+                                        <div class="product-caption text-center">
 
-                                                <div class="cart-hover"><button class="btn btn-cart">Xem chi tiết</button>
-                                                </div>
-                                            </figure>
-                                            <div class="product-caption text-center">
+                                            <h6 class="product-name">
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id-san-pham=' . $sanPham['id']; ?>"><?= $sanPham['ten_san_pham'] ?></a>
+                                            </h6>
+                                            <div class="price-box">
+                                                <?php if ($sanPham['gia_khuyen_mai']) { ?>
 
-                                                <h6 class="product-name">
-                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id-san-pham=' . $sanPham['id']; ?>"><?= $sanPham['ten_san_pham'] ?></a>
-                                                </h6>
-                                                <div class="price-box">
-                                                    <?php if ($sanPham['gia_khuyen_mai']) { ?>
+                                                    <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
+                                                    <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                                <?php } else {  ?>
+                                                    <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                                <?php } ?>
 
-                                                        <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
-                                                        <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
-                                                    <?php } else {  ?>
-                                                        <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
-                                                    <?php } ?>
-
-                                                </div>
                                             </div>
                                         </div>
-
-                                        <!-- product item end -->
-
-                                    <?php endforeach  ?>
-
-
-
-
-
                                 </div>
-                            </div>
 
+                                <!-- product item end -->
+
+                            <?php endforeach  ?>
+
+
+
+
+
+                            </div>
                         </div>
-                        <!-- product tab content end -->
+
                     </div>
+                    <!-- product tab content end -->
                 </div>
             </div>
+        </div>
         </div>
     </section>
     <!-- product area end -->

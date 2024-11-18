@@ -1,11 +1,7 @@
 <?php
-
 // Kết nối CSDL qua PDO
-
-
-
-
-function connectDB() {
+function connectDB()
+{
     // Kết nối CSDL
     $host = DB_HOST;
     $port = DB_PORT;
@@ -19,16 +15,19 @@ function connectDB() {
 
         // cài đặt chế độ trả dữ liệu
         $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    
+
         return $conn;
     } catch (PDOException $e) {
         echo ("Connection failed: " . $e->getMessage());
     }
 }
+
+
+
 // Thêm file
 function uploadFile($file, $folderUpload)
 {
-    $pathStorage = $folderUpload . time() . $file['name'];
+    $pathStorage = $folderUpload .  time() . $file['name'];
 
     $from = $file['tmp_name'];
     $to = PATH_ROOT . $pathStorage;
@@ -38,8 +37,7 @@ function uploadFile($file, $folderUpload)
     }
     return null;
 }
-
-// Xóa file
+// Xóa file 
 function deleteFile($file)
 {
     $pathDelete = PATH_ROOT . $file;
@@ -47,22 +45,8 @@ function deleteFile($file)
         unlink($pathDelete);
     }
 }
- function checkLoginAdmin(){
-    if(!isset($_SESSION['user_admin'])){
-        header("Location: index.php?act=login-admin");
-        //var_dump('abc');die;
-        exit();
-    }
- }
-// xoa section sau khi load trang
-function deleteSessionError(){
-    if(isset($_SESSION['flash'])){
-        // huy session sau khi da tai trang
-        unset($_SESSION['flash']);
-        session_unset();
-        //session_destroy();
-    }
-}
+
+// Xóa session sau khi load trang
 function deleteSessionErrors()
 {
     if (isset($_SESSION['flash'])) {
@@ -90,28 +74,36 @@ function deleteSessionErrors()
     }
 }
 
+//upload - update album anh
 function uploadFileAlbum($file, $folderUpload, $key)
 {
-    // Define the file path with the folder and filename, including the timestamp for uniqueness
-    $pathStorage = $folderUpload . time() . $file['name'][$key];
+    $pathStorage = $folderUpload .  time() . $file['name'][$key];
 
-    // Define source and destination paths
     $from = $file['tmp_name'][$key];
-    $to = PATH_ROOT . $pathStorage;  // Assuming PATH_ROOT is defined elsewhere in your code
+    $to = PATH_ROOT . $pathStorage;
 
-    // Move the uploaded file to the desired location
     if (move_uploaded_file($from, $to)) {
         return $pathStorage;
     }
-
-    // Return null if the file upload fails
     return null;
 }
+
+// format date
 function formatDate($date)
 {
-    return date("d-m-Y", strtotime($date));
+    echo $newDate = date("d-m-Y", strtotime($date));
 }
 
-function formatPrice($price){
+
+function checkLoginAdmin()
+{
+    if (!isset($_SESSION['user_admin'])) {
+        require_once './views/auth/formLogin.php';
+        exit();
+    }
+}
+
+function formatPrice($price)
+{
     return number_format($price, 0, ',', '.');
 }

@@ -1,14 +1,14 @@
 <?php
 class AdminDanhMucController
 {
-     public $AdminDanhMuc;
+     public $modelDanhMuc;
      public function __construct()
      {
-          $this->AdminDanhMuc = new AdminDanhMuc();
+          $this->modelDanhMuc = new AdminDanhMuc();
      }
      public function danhSachDanhMuc()
      {
-          $listDanhMuc = $this->AdminDanhMuc->getAllDanhMuc();
+          $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
           require_once "./views/danhmuc/listDanhMuc.php";
      }
      public function formAddDanhMuc()
@@ -42,13 +42,13 @@ class AdminDanhMucController
                     // Code xử lý khi không có lỗi, ví dụ thêm vào cơ sở dữ liệu
                     echo 'Dữ liệu hợp lệ. Tiến hành thêm danh mục...';
                     // Bạn có thể thêm lệnh chèn dữ liệu vào cơ sở dữ liệu ở đây
-                    $this->AdminDanhMuc->insertDanhMuc($ten_danh_muc, $mo_ta);
-                    header('location: ' . BASE_URL_ADMIN . '?act=danh-muc-mi-pham');
+                    $this->modelDanhMuc->insertDanhMuc($ten_danh_muc, $mo_ta);
+                    header('location: ' . BASE_URL_ADMIN. '?act=danh-muc-mi-pham');
                     exit();
                } else {
                     // Trả về form và hiển thị lỗi
                     $_SESSION['flash'] = true;
-                    header('location: ' . BASE_URL_ADMIN . '?act=form-them-danh-muc');
+                    header('location: ' . BASE_URL_ADMIN. '?act=form-them-danh-muc');
                     exit();
                }
           }
@@ -57,11 +57,11 @@ class AdminDanhMucController
      {
           //ham nay hien thi form nhap
           $id=$_GET['id_danh_muc'];
-          $danhmuc=$this->AdminDanhMuc->getDetailDanhMuc($id);
-          if($danhmuc){
+          $danhmuc=$this->modelDanhMuc->getDetailDanhMuc($id);
+          if(isset($danhmuc)){
                require_once "./views/danhmuc/editDanhMuc.php";
           }else{
-               header('location: ' . BASE_URL_ADMIN . '?act=danh-muc-mi-pham');
+               header('location: ' . BASE_URL_ADMIN. '?act=danh-muc-mi-pham');
                exit();
           }
      }
@@ -89,8 +89,8 @@ class AdminDanhMucController
                     // Code xử lý khi không có lỗi, ví dụ sửa vào cơ sở dữ liệu
                     echo 'Dữ liệu hợp lệ. Tiến hành thêm danh mục...';
                     // Bạn có thể thêm lệnh chèn dữ liệu vào cơ sở dữ liệu ở đây
-                    $this->AdminDanhMuc->updateDanhMuc($id,$ten_danh_muc, $mo_ta);
-                    header('location: ' . BASE_URL_ADMIN . '?act=danh-muc-mi-pham');
+                    $this->modelDanhMuc->updateDanhMuc($id,$ten_danh_muc, $mo_ta);
+                    header('location: ' . BASE_URL_ADMIN. '?act=danh-muc-mi-pham');
                     exit();
                } else {
                     // Trả về form và hiển thị lỗi
@@ -101,11 +101,11 @@ class AdminDanhMucController
      }
      public function deleteDanhMuc(){
           $id = $_GET['id_danh_muc'];
-          $danhmuc = $this->AdminDanhMuc->getDetailDanhMuc($id);
+          $danhmuc = $this->modelDanhMuc->getDetailDanhMuc($id);
           if($danhmuc){
-               $this->AdminDanhMuc->destroyDanhMuc($id);
+               $this->modelDanhMuc->destroyDanhMuc($id);
           }
-          header('location: ' . BASE_URL_ADMIN . '?act=danh-muc-mi-pham');
+          header('location: ' . BASE_URL_ADMIN. '?act=danh-muc-mi-pham');
           exit();
      }
 }

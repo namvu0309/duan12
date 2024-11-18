@@ -143,7 +143,7 @@ include "./views/layout/header.php"
                                                     <tbody>
                                                         <input type="hidden" name="san_pham_id" value="<?= $sanpham['id'] ?>">
                                                         <input type="hidden" name="img_delete" id='img_delete'>
-                                                        <?php foreach ($listSanPham as $key => $value): ?>
+                                                        <?php foreach ($listAnhSanPham as $key => $value): ?>
                                                             <tr id="faqs-row<?= $key ?>">
                                                                 <input type="hidden" name="current_img_ids[]" value="<?= $value['id'] ?>">
                                                                 <td> <img src="<?= '.' . $value['link_hinh_anh'] ?>" style="width:50px; height:50px;" alt="">
@@ -215,7 +215,7 @@ include "./views/layout/header.php"
         <!-- end footer -->
 </body>
 <script>
-    let faqs_row = <?= count($listSanPham) ?>;
+    let faqs_row = <?= count($listAnhSanPham) ?>;
 
     function addfaqs() {
         let html = `
