@@ -41,4 +41,7 @@ match ($act) {
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postlogin(),
     'logout' => (new HomeController())->logout(),
+    'form-dang-ky' => (new HomeController())->formDangKy(),
+    'dang-ky' => (new HomeController())->dangKy(),
+
 };
