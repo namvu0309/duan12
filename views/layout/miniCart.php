@@ -10,13 +10,13 @@
             <ul>
                             <li class="minicart-item">
                                 <div class="minicart-thumb">
-                                    <a href="<?= BASE_URL .'?atc=gio-hang ' ?>">
+                                    <a href="<?= BASE_URL .'?act=gio-hang ' ?>">
                                         <img src="" alt="product">
                                     </a>
                                 </div>
                                 <div class="minicart-content">
                                     <h3 class="product-name">
-                                        <a href="<?= BASE_URL .'?atc=gio-hang ' ?>">Dozen White Botanical Linen Dinner Napkins</a>
+                                        <a href="<?= BASE_URL .'?act=gio-hang ' ?>">Dozen White Botanical Linen Dinner Napkins</a>
                                     </h3>
                                     <p>
                                         <span class="cart-quantity">1 <strong>×</strong></span>
@@ -27,13 +27,13 @@
                             </li>
                             <li class="minicart-item">
                                 <div class="minicart-thumb">
-                                    <a href="<?= BASE_URL .'?atc=gio-hang ' ?>">
+                                    <a href="<?= BASE_URL .'?act=gio-hang ' ?>">
                                         <img src="assets/img/cart/cart-2.jpg" alt="product">
                                     </a>
                                 </div>
                                 <div class="minicart-content">
                                     <h3 class="product-name">
-                                        <a href="<?= BASE_URL .'?atc=gio-hang ' ?>">Dozen White Botanical Linen Dinner Napkins</a>
+                                        <a href="<?= BASE_URL .'?act=gio-hang ' ?>">Dozen White Botanical Linen Dinner Napkins</a>
                                     </h3>
                                     <p>
                                         <span class="cart-quantity">1 <strong>×</strong></span>
