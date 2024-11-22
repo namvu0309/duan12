@@ -14,7 +14,7 @@
                             <div class="widget-title">
                                 <div class="widget-logo">
                                     <a href="index.html">
-                                        <img src="./views/assets/img/logo/logo.png" alt="brand logo">
+                                        <img class="logo-img" src="./views/assets/img/logo/logo.png" alt="brand logo">
                                     </a>
                                 </div>
                             </div>

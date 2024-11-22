@@ -30,9 +30,11 @@
 
                                           </li>
 
-                                          <li><a href="blog-left-sidebar.html">Sản phẩm <i class="fa fa-angle-down"></i></a>
-                                              <ul class="dropdown">
-
+                                          <li><a href="<?=BASE_URL.'?act=san-pham-theo-danh-muc' ?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                          <ul class="dropdown">
+                                              <?php foreach($listDanhMuc as $danhMuc){ ?>
+                                                  <li><a href="<?=BASE_URL.'?act=san-pham-theo-danh-muc&danh_muc_id='.$danhMuc['id'] ?>"><?= $danhMuc['ten_danh_muc']?></a></li>
+                                                <?php  }?>
                                               </ul>
                                           </li>
                                           <li><a href="#">Giới thiệu</a></li>
