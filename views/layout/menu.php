@@ -30,9 +30,11 @@
 
                                           </li>
 
-                                          <li><a href="blog-left-sidebar.html">Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                          <li><a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc' ?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
                                               <ul class="dropdown">
-
+                                                  <?php foreach ($listDanhMuc as $danhMuc) { ?>
+                                                      <li><a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . $danhMuc['id'] ?>"><?= $danhMuc['ten_danh_muc'] ?></a></li>
+                                                  <?php  } ?>
                                               </ul>
                                           </li>
                                           <li><a href="#">Giới thiệu</a></li>
@@ -58,17 +60,19 @@
                               <div class="header-configure-area">
 
                                   <ul class="nav justify-content-end">
-                                      <label for=""><?php if (isset($_SESSION['user_client'])) {
-                                                        echo $_SESSION['user_client'];
-                                                    } ?></label>
+
                                       <li class="user-hover">
                                           <a href="#">
-
                                               <i class="pe-7s-user"></i>
                                           </a>
-                                          <ul class="dropdown-list">
+                                          <ul class="dropdown-list ">
                                               <?php if (isset($_SESSION['user_client'])) { ?>
-                                                  <li><a href="my-account.html">Tài khoản</a></li>
+                                                  <li class="user-name">
+                                                      <label for=""><?php if (isset($_SESSION['user_client'])) {
+                                                                        echo $_SESSION['user_client'];
+                                                                    } ?></label>
+                                                  </li>
+
                                                   <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
                                               <?php } else { ?>
                                                   <li><a href="<?= BASE_URL ?>?act=login">Đăng nhập</a></li>

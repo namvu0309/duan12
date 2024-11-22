@@ -16,6 +16,7 @@ require_once './models/GioHang.php';
 require_once './models/DonHang.php';
 
 
+
 // Require toàn bộ file Views
 
 // Route
@@ -41,7 +42,14 @@ match ($act) {
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postlogin(),
     'logout' => (new HomeController())->logout(),
+
     'form-dang-ky' => (new HomeController())->formDangKy(),
     'dang-ky' => (new HomeController())->dangKy(),
+
+
+
+    //sanpham
+    "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
+    'san-pham-theo-danh-muc' =>(new HomeController())->sanPhamDanhMuc(),
 
 };
