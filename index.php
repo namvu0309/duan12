@@ -49,7 +49,7 @@ match ($act) {
 
 
     //sanpham
-    "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
+    // "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
     'san-pham-theo-danh-muc' =>(new HomeController())->sanPhamDanhMuc(),
 
 };

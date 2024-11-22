@@ -224,86 +224,85 @@
                             </div>
                         </div>
                         <!-- shop product top wrap start -->
+                        <div class="shop-product-wrap grid-view row mb-4">
+                            <!-- product item list wrapper start -->
+                            <?php foreach ($spdm as $sanPham): ?>
+                                <div class="col-md-4 col-sm-6 mb-4">
+                                    <!-- product grid start -->
+                                    <div class="product-item shadow-sm p-3 mb-5 bg-white rounded">
+                                        <figure class="product-thumb">
+                                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh']  ?>         " alt="product">
+                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
+                                            </a>
+                                            <div class="product-badge">
+                                                <?php
+                                                // Hiển thị nhãn "Mới" nếu sản phẩm mới trong vòng 7 ngày
+                                                $ngayNhap = new DateTime($sanPham['ngay_nhap']);
+                                                $ngayHienTai = new DateTime();
+                                                $tinhNgay = $ngayHienTai->diff($ngayNhap);
 
-                        <!-- product item list wrapper start -->
-                        <div class="col-md-4 col-sm-6">
-                            <!-- product grid start -->
-                                <?php foreach ($listSanPham as $key => $sanPham): ?>
-                            <div class="product-item">
-                                <figure class="product-thumb">
-                                    <a href="<?= BASE_URL . '?act=san-phams&hinh_anh' ?>">
-                                        <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
-                                        <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
-                                    </a>
-                                    <div class="product-badge">
-                                        <div class="product-label new">
-                                            <span>new</span>
+                                                if ($tinhNgay->days <= 7): ?>
+                                                    <div class="product-label new">
+                                                        <span>Mới</span>
+                                                    </div>
+                                                <?php endif; ?>
+
+                                                <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
+                                                    <div class="product-label discount">
+                                                        <span>Giảm giá</span>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="button-group">
+                                                <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Thêm vào yêu thích"><i class="pe-7s-like"></i></a>
+                                                <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="So sánh"><i class="pe-7s-refresh-2"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Xem nhanh"><i class="pe-7s-search"></i></span></a>
+                                            </div>
+                                        </figure>
+                                        <div class="product-caption text-center">
+                                            <h6 class="product-name">
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                    <?= htmlspecialchars($sanPham['ten_san_pham']) ?>
+                                                </a>
+                                            </h6>
+                                            <div class="price-box">
+                                                <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
+                                                    <span class="price-regular text-success">$<?= number_format($sanPham['gia_khuyen_mai'], 2) ?></span>
+                                                    <span class="price-old text-muted"><del>$<?= number_format($sanPham['gia_san_pham'], 2) ?></del></span>
+                                                <?php else: ?>
+                                                    <span class="price-regular">$<?= number_format($sanPham['gia_san_pham'], 2) ?></span>
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
-                                        <div class="product-label discount">
-                                            <span>10%</span>
-                                        </div>
                                     </div>
-                                    <div class="button-group">
-                                        <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                        <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to Compare" aria-label="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Quick View" aria-label="Quick View"><i class="pe-7s-search"></i></span></a>
-                                    </div>
-                                    <div class="cart-hover">
-                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                            <div class="cart-hover"><button class="btn btn-cart">Add to cart</button>
-                                        </a>
-                                    </div>
-                                </figure>
-                                <div class="product-caption text-center">
-                                    <div class="product-identity">
-                                        <p class="manufacturer-name"><a href="product-details.html">Platinum</a></p>
-                                    </div>
-                                    <ul class="color-categories">
-                                        <li>
-                                            <a class="c-lightblue" href="#" title="LightSteelblue"></a>
+                                    <!-- product grid end -->
+                                </div>
+                            <?php endforeach; ?>
+                            <!-- product item list wrapper end -->
+
+                            <!-- start pagination area -->
+                            <div class="col-12">
+                                <div class="pagination-area text-center">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="pe-7s-angle-left"></i></a>
                                         </li>
-                                        <li>
-                                            <a class="c-darktan" href="#" title="Darktan"></a>
-                                        </li>
-                                        <li>
-                                            <a class="c-grey" href="#" title="Grey"></a>
-                                        </li>
-                                        <li>
-                                            <a class="c-brown" href="#" title="Brown"></a>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="pe-7s-angle-right"></i></a>
                                         </li>
                                     </ul>
-                                    
-                                    <h6 class="product-name">
-                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">Perfect Diamond Jewelry</a>
-                                    </h6>
-                                    <div class="price-box">
-                                        <span class="price-regular">$60.00</span>
-                                        <span class="price-old"><del>$70.00</del></span>
-                                    </div>
                                 </div>
                             </div>
-                            <!-- product grid end -->
-
-                            <!-- product list item end -->
-                          
-                            <!-- product list item end -->
+                            <!-- end pagination area -->
                         </div>
-                        <!-- product item list wrapper end -->
 
-                        <!-- start pagination area -->
-                        <div class="paginatoin-area text-center">
-                            <ul class="pagination-box">
-                                <li><a class="previous" href="#"><i class="pe-7s-angle-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a class="next" href="#"><i class="pe-7s-angle-right"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- end pagination area -->
                     </div>
+                    <!-- shop main wrapper end -->
                 </div>
-                <!-- shop main wrapper end -->
             </div>
         </div>
     </div>

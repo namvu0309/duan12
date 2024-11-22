@@ -65,9 +65,10 @@
                                           <a href="#">
                                               <i class="pe-7s-user"></i>
                                           </a>
-                                          <ul class="dropdown-list ">
+                                          <ul class="dropdown-list list-group" style="width: 250px; height: 84px;">
+
                                               <?php if (isset($_SESSION['user_client'])) { ?>
-                                                  <li class="user-name">
+                                                  <li class="">
                                                       <label for=""><?php if (isset($_SESSION['user_client'])) {
                                                                         echo $_SESSION['user_client'];
                                                                     } ?></label>
