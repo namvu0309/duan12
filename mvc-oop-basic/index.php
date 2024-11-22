@@ -35,9 +35,10 @@ match ($act) {
     'thanh-toan' => (new GioHangDonHangController())->thanhToan(),
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController())->xoaSp(),
+    'da-dat-hang' => (new HomeController())->daDatHang(),
+
     //authe
     'login' => (new HomeController())->formLogin(),
-    'check-login' => (new HomeController())->login(),
-
-
+    'check-login' => (new HomeController())->postlogin(),
+    'logout' => (new HomeController())->logout(),
 };

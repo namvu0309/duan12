@@ -12,8 +12,8 @@ class HomeController
     {
         $this->modelSanPham = new SanPham();
         $this->modelTaiKhoan = new TaiKhoan();
-        // $this->modelGioHang = new GioHang();
-        // $this->modelDonHang = new DonHang();
+        $this->modelGioHang = new GioHang();
+        $this->modelDonHang = new DonHang();
     }
 
 
@@ -56,7 +56,7 @@ class HomeController
 
         if (isset($_SESSION['user_client'])) {
 
-            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
             //    var_dump($mail['id']);die();
 
             // lẤy dl giỏ hàng
@@ -73,7 +73,7 @@ class HomeController
                 $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
             }
         } else {
-            header('Location:' . BASE_URL . '?act=form-login');
+            header('Location:' . BASE_URL . '?act=login');
         }
         require_once './views/daDatHang.php';
         deleteSessionErrors();
@@ -102,69 +102,17 @@ class HomeController
     }
 
 
-    // public function timKiem()
-    // {
-    //     $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
-    //     $listtop10 = $this->modelSanPham->top10();
-
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    //         $keyword = $_POST['keyword'] ?? '';
-
-    //         $listSanPhamTimKiem = $this->modelSanPham->search($keyword);
-    //         require_once './views/timKiemSp.php';
-
-
-    //         // var_dump($timsp);die();
-    //     }
-    // }
-
-    // public function guiBinhLuan()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['binh_luan']) && isset($_SESSION['user_client'])) {
-    //         // Lấy ra dl
-    //         // var_dump($_SESSION['user_client']);die();
-    //         // var_dump($_POST);die();
-
-    //         $tai_khoan_id = $_POST['tai_khoan_id'] ?? '';
-    //         $binh_luan = $_POST['binh_luan'] ?? '';
-    //         $san_pham_id = $_POST['san_pham_id'] ?? '';
-    //         // var_dump($san_pham_id);die();
-    //         $ngay_dang = date('Y-m-d H:i:s');
-    //         $status = $this->modelTaiKhoan->binhLuan($tai_khoan_id, $san_pham_id, $binh_luan, $ngay_dang);
-    //         // var_dump($status);die();
-    //         // var_dump($status);die();
-    //         header('Location:' . BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $san_pham_id);
-    //         exit();
-    //     }
-    // }
-
-
-    // public function lienHe()
-    // {
-    //     $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-
-
-    //     require_once './views/lienHe.php';
-    // }
-    // public function gioiThieu()
-    // {
-    //     $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-
-
-    //     require_once './views/gioiThieu.php';
-    // }
     public function formLogin()
     {
-        if (isset($_SESSION['user_admin'])) {
+        if (isset($_SESSION['user_client'])) {
             header('Location:' . BASE_URL);
             exit();
         }
         require_once './views/auth/formLogin.php';
         deleteSessionErrors();
     }
-    public function login()
+    public function postlogin()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // lay dl
@@ -178,7 +126,7 @@ class HomeController
             if ($user == $email) {
                 // dn thanh cong
                 // Luu thong tin vao session
-                $_SESSION['user_admin'] = $user;
+                $_SESSION['user_client'] = $user;
                 header("Location:" . BASE_URL);
                 exit();
             } else {
@@ -199,10 +147,10 @@ class HomeController
 
     public function logout()
     {
-        if (isset($_SESSION['user_admin'])) {
-            unset($_SESSION['user_admin']);
-            header('Location:' . BASE_URL_ADMIN . '?act=login-admin');
+        if (isset($_SESSION['user_client'])) {
+            unset($_SESSION['user_client']);
+            header('Location:' . BASE_URL. '?act=login');
         }
     }
-
+   
 }

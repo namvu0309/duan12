@@ -19,7 +19,7 @@ class GioHangDonHangController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_SESSION['user_client'])) {
-                $mail = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+                $mail = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
                 //    var_dump($mail['id']);die();
 
                 // lẤy dl giỏ hàng
@@ -49,7 +49,7 @@ class GioHangDonHangController
                 }
                 header('Location:' . BASE_URL . '?act=gio-hang');
             } else {
-                header('Location:' . BASE_URL . '?act=form-login');
+                header('Location:' . BASE_URL . '?act=login');
             }
         }
     }
@@ -59,7 +59,7 @@ class GioHangDonHangController
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
         if (isset($_SESSION['user_client'])) {
-            $mail = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+            $mail = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
             //    var_dump($mail);die();
 
             // lẤy dl giỏ hàng
@@ -80,7 +80,7 @@ class GioHangDonHangController
 
             require_once './views/gioHang.php';
         } else {
-            header('Location:' . BASE_URL . '?act=form-login');
+            header('Location:' . BASE_URL . '?act=login');
         }
     }
 
@@ -90,7 +90,7 @@ class GioHangDonHangController
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
         if (isset($_SESSION['user_client'])) {
-            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
             //    var_dump($mail['id']);die();
 
             // lẤy dl giỏ hàng
@@ -105,13 +105,14 @@ class GioHangDonHangController
 
             require_once './views/thanhToan.php';
         } else {
-            header('Location:' . BASE_URL . '?act=form-login');
+            header('Location:' . BASE_URL . '?act=login');
         }
     }
 
     public function postThanhToan()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // var_dump($_POST);die();
             $ten_nguoi_nhan = $_POST['ten_nguoi_nhan'];
             $email_nguoi_nhan = $_POST['email_nguoi_nhan'];
             $sdt_nguoi_nhan = $_POST['sdt_nguoi_nhan'];
@@ -123,9 +124,9 @@ class GioHangDonHangController
             $ngay_dat = date('Y-m-d');
             $trang_thai_id = 1;
 
-            $ma_don_hang = 'DH' . rand(1000, 9999);
+            $ma_don_hang = 'DH-' . rand(1000, 9999);
 
-            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']['email']);
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
             $tai_khoan_id = $user['id'];
 
             $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
@@ -133,7 +134,7 @@ class GioHangDonHangController
             // var_dump($chiTietGioHang);die();
 
 
-            $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang);
+            $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang,$trang_thai_id);
             $donHang = ['id' => $donHangId];
             $tong_tien = 0;
 

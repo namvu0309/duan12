@@ -120,4 +120,6 @@ class GioHang
             echo "Lỗi: " . $e->getMessage();
         }
     }
+    
+
 }

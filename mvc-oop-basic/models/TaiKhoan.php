@@ -40,5 +40,19 @@ class TaiKhoan{
             return false;
         }
     }
-
+    public function getTaiKhoanFromEmail($email)
+    {
+        try {
+            $sql = "SELECT * FROM tai_khoans WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(
+                [
+                    ':email' => $email
+                ]
+            );
+            return $stmt->fetch();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
 }
