@@ -26,21 +26,19 @@
                                   <!-- main menu navbar start -->
                                   <nav class="desktop-menu">
                                       <ul>
-                                          <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
-                                          <li>
-                                              <a href="<?= BASE_URL . '?act=san-pham' ?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
-                                              <ul class="dropdown">
-                                                  <?php foreach ($listDanhMuc as $danhMuc): ?>
-                                                      <li>
-                                                          <a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . htmlspecialchars($danhMuc['id']) ?>">
-                                                              <?= htmlspecialchars($danhMuc['ten_danh_muc']) ?>
-                                                          </a>
-                                                      </li>
-                                                  <?php endforeach; ?>
+                                          <li><a href="<?= BASE_URL ?>">Trang chủ <i></i></a>
+
+                                          </li>
+
+                                          <li><a href="<?=BASE_URL.'?act=san-pham-theo-danh-muc' ?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                          <ul class="dropdown">
+                                              <?php foreach($listDanhMuc as $danhMuc){ ?>
+                                                  <li><a href="<?=BASE_URL.'?act=san-pham-theo-danh-muc&danh_muc_id='.$danhMuc['id'] ?>"><?= $danhMuc['ten_danh_muc']?></a></li>
+                                                <?php  }?>
                                               </ul>
                                           </li>
-                                          <li><a href="<?= BASE_URL . '?act=gioi-thieu' ?>">Giới thiệu</a></li>
-                                          <li><a href="<?= BASE_URL . '?act=lien-he' ?>">Liên hệ</a></li>
+                                          <li><a href="<?=BASE_URL.'?act=gioi-thieu'?>">Giới thiệu</a></li>
+                                          <li><a href="<?=BASE_URL.'?act=lien-he'?>">Liên hệ</a></li>
                                       </ul>
                                   </nav>
 
@@ -63,14 +61,14 @@
                               <div class="header-configure-area">
 
                                   <ul class="nav justify-content-end">
-
+                                     
                                       <li class="user-hover">
                                           <a href="#">
 
                                               <i class="pe-7s-user"></i>
                                           </a>
                                           <ul class="dropdown-list " style="width: 230px;">
-
+                                            
                                               <?php if (isset($_SESSION['user_client'])) { ?>
                                                   <li>
                                                       <label for="">
@@ -113,4 +111,3 @@
 
 
   </header>
-  <!-- end Header Area -->

@@ -55,7 +55,7 @@
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
                                                                 <label for="first-name" class="required">Ngày Sinh</label>
-                                                                <input type="text" id="first-name" name="ngay_sinh" placeholder="Nhập ngày sinh" value="<?= explode(' ', $thongTin['ngay_sinh'])[0] ?>">
+                                                                <input type="date" id="first-name" name="ngay_sinh" placeholder="Nhập ngày sinh" value="<?= explode(' ', $thongTin['ngay_sinh'])[0] ?>">
                                                                 <?php if (isset($_SESSION['errors']['ngay_sinh'])) { ?>
                                                                     <p class="text-danger"><?= $_SESSION['errors']['ngay_sinh'] ?></p>
                                                                 <?php } ?>
@@ -63,12 +63,16 @@
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="" class="required">Giới Tính</label>
-                                                                <input class="form-control" type="text" value="<?= $thongTin['gioi_tinh'] == 1 ? 'Nam' : 'Nữ' ?>" name="gioi_tinh">
-                                                                <?php if (isset($_SESSION['errors']['ten'])) { ?>
+                                                                <label for="gioi_tinh" class="required">Giới Tính</label>
+                                                                <select class="form-control" name="gioi_tinh" id="gioi_tinh">
+                                                                    <option value="1" <?= $thongTin['gioi_tinh'] == 1 ? 'selected' : '' ?>>Nam</option>
+                                                                    <option value="0" <?= $thongTin['gioi_tinh'] == 0 ? 'selected' : '' ?>>Nữ</option>
+                                                                </select>
+                                                                <?php if (isset($_SESSION['errors']['gioi_tinh'])) { ?>
                                                                     <p class="text-danger"><?= $_SESSION['errors']['gioi_tinh'] ?></p>
                                                                 <?php } ?>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                     <div class="single-input-item">

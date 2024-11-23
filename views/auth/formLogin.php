@@ -32,20 +32,10 @@
                         <div class="login-reg-form-wrap">
                             <h5 class="text-center">Đăng nhập</h5>
                             <?php if (isset($_SESSION['errors'])) { ?>
-                                <p class="text-danger text-center">
-                                    <?php
-                                    // Nếu là mảng, nối các phần tử thành chuỗi để hiển thị
-                                    if (is_array($_SESSION['errors'])) {
-                                        echo implode('<br>', $_SESSION['errors']); // Hiển thị mỗi lỗi trên một dòng
-                                    } else {
-                                        echo $_SESSION['errors']; // Hiển thị lỗi dạng chuỗi
-                                    }
-                                    ?>
-                                </p>
+                                <p class="text-danger text-center"><?= $_SESSION['errors'] ?></p>
                             <?php } else { ?>
                                 <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
                             <?php } ?>
-
 
                             <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
                                 <div class="single-input-item">

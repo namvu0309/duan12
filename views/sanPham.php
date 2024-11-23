@@ -232,9 +232,10 @@
                                     <div class="product-item shadow-sm p-3 mb-5 bg-white rounded">
                                         <figure class="product-thumb">
                                             <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh']  ?>         " alt="product">
-                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
+                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="500" height="300" alt="product-main">
+                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="500" height="300" alt="product-secondary">
                                             </a>
+
                                             <div class="product-badge">
                                                 <?php
                                                 // Hiển thị nhãn "Mới" nếu sản phẩm mới trong vòng 7 ngày

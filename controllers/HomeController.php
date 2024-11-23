@@ -272,6 +272,20 @@ class HomeController
         }
     }
 
+    public function lienHe()
+    {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+
+        require_once './views/lienHe.php';
+    }
+    public function gioiThieu()
+    {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+
+        require_once './views/gioiThieu.php';
+    }
    
 
     public function quenMatKhau()

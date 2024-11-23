@@ -272,7 +272,7 @@ class AdminTaiKhoanController
             } else {
                 // Lỗi thì lưu lỗi vào session
                 $_SESSION['errors'] = $user;
-                //    var_dump($_SESSION['errors']);die();
+                 //var_dump($_SESSION['errors']);die();
 
                 $_SESSION['flash'] = true;
 

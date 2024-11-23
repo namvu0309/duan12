@@ -18,6 +18,8 @@ require_once './models/AdminSanPham.php';
 require_once './models/AdminDanhMuc.php';
 require_once './models/AdminTaiKhoan.php';
 require_once './models/AdminDonHang.php';
+require_once './models/AdminThongKe.php';
+
 
 // Require toàn bộ file Views
 
@@ -89,4 +91,6 @@ match ($act) {
   // 'sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->postEditCaNhanQuanTri(),
 
   'sua-mat-khau-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->postEditMatKhauCaNhan(),
+  // bieu do thong ke
+  'bieu-do' =>(new AdminBaoCaoThongKeController)->bieuDo(),
 };

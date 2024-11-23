@@ -29,6 +29,8 @@ match ($act) {
     '/' => (new HomeController())->home(),
     // Trang chủ
     'chi-tiet-san-pham'=> (new HomeController())->chitietSanPham(),
+    'lien-he' =>(new HomeController())->lienHe(),
+   'gioi-thieu' =>(new HomeController())->gioiThieu(),
 
     // Giỏ hàng ,đơn hàng
     'them-gio-hang' => (new GioHangDonHangController())->addGioHang(),
@@ -54,5 +56,4 @@ match ($act) {
     //sanpham
     "san-pham" => (new HomeController())->danhSachSanPham(),
     'san-pham-theo-danh-muc' =>(new HomeController())->sanPhamDanhMuc(),
-    
 };
