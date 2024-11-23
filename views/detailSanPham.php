@@ -1,5 +1,27 @@
 <?php require_once 'layout/header.php'; ?>
 <?php require_once 'layout/menu.php'; ?>
+<style>
+    .pro-large-img {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 400px;
+        /* Điều chỉnh chiều cao theo thiết kế */
+    }
+
+    .pro-large-img img {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.3s ease-in-out;
+        /* Hiệu ứng thu phóng */
+    }
+
+    .pro-large-img:hover img {
+        transform: scale(1.5);
+        /* Phóng to ảnh khi hover */
+        cursor: zoom-in;
+    }
+</style>
 
 <main>
     <!-- breadcrumb area start -->
@@ -11,7 +33,7 @@
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="shop.html">Sản Phẩm</a></li>
+                                <li class="breadcrumb-item"><a href="<?= BASE_URL . '?act=' ?>">Sản Phẩm</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm </li>
                             </ul>
                         </nav>
@@ -34,10 +56,17 @@
                             <div class="col-lg-5">
                                 <div class="product-large-slider">
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham) { ?>
-                                        <div class="pro-large-img">
-                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
+                                        <div class="pro-large-img ">
+                                            <img
+                                                id="zoom<?= $key ?>"
+                                                class="zoomImg"
+                                                src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
+                                                data-zoom-image="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
+                                                alt="product-details" />
                                         </div>
                                     <?php } ?>
+
+
 
                                 </div>
                                 <div class="pro-nav slick-row-10 slick-arrow-style">
@@ -179,7 +208,7 @@
                             <!-- product item start -->
                             <div class="product-item">
                                 <figure class="product-thumb">
-                                    <a href="<?= BASE_URL . '?act=chi_tiet_san_pham&id_san_pham=' . $sanPham['id']; ?>">
+                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
                                         <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
                                         <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
                                     </a>
@@ -223,7 +252,7 @@
                                 <div class="product-caption text-center">
 
                                     <h6 class="product-name">
-                                        <a href="<?= BASE_URL . '?act=chi_tiet_san_pham&id_san_pham=' . $sanPham['id']; ?>"><?= $sanPham['ten_san_pham'] ?></a>
+                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
                                     </h6>
                                     <div class="price-box">
                                         <?php if ($sanPham['gia_khuyen_mai']) { ?>
@@ -254,6 +283,41 @@
 
 
 
+
+
+<!-- Thêm jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Thêm ElevateZoom -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.zoomImg').elevateZoom({
+            zoomType: "inner", // Zoom bên trong ảnh
+            cursor: "crosshair", // Dùng con trỏ hình chữ thập
+            zoomWindowFadeIn: 500, // Hiệu ứng mờ dần khi mở zoom
+            zoomWindowFadeOut: 500 // Hiệu ứng mờ dần khi đóng zoom
+        });
+    });
+</script>
+<script>
+    document.querySelectorAll('.pro-large-img').forEach(function(imgContainer) {
+        imgContainer.addEventListener('mousemove', function(e) {
+            const img = imgContainer.querySelector('img');
+            const rect = imgContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Vị trí X chuột
+            const y = e.clientY - rect.top; // Vị trí Y chuột
+            img.style.transformOrigin = `${x}px ${y}px`; // Tùy chỉnh điểm zoom
+            img.style.transform = 'scale(1.5)';
+        });
+
+        imgContainer.addEventListener('mouseleave', function() {
+            const img = imgContainer.querySelector('img');
+            img.style.transformOrigin = 'center center';
+            img.style.transform = 'scale(1)';
+        });
+    });
+</script>
 
 <!-- offcanvas mini cart start -->
 <?php require_once 'layout/miniCart.php'; ?>

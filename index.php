@@ -42,14 +42,17 @@ match ($act) {
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postlogin(),
     'logout' => (new HomeController())->logout(),
+    'quen-mat-khau' => (new HomeController())->quenMatKhau(),
+    'lay-mat-khau' => (new HomeController())->layMatKhau(),
+
 
     'form-dang-ky' => (new HomeController())->formDangKy(),
     'dang-ky' => (new HomeController())->dangKy(),
-
-
+    'tai-khoan' => (new HomeController())->taiKhoan(),
+    'sua-mat-khau-ca-nhan' => (new HomeController())->postEditMatKhauCaNhan(),
 
     //sanpham
-    // "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
+    "san-pham" => (new HomeController())->danhSachSanPham(),
     'san-pham-theo-danh-muc' =>(new HomeController())->sanPhamDanhMuc(),
-
+    
 };

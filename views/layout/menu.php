@@ -26,21 +26,24 @@
                                   <!-- main menu navbar start -->
                                   <nav class="desktop-menu">
                                       <ul>
-                                          <li><a href="<?= BASE_URL ?>">Trang chủ <i></i></a>
-
-                                          </li>
-
-                                          <li><a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc' ?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                          <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
+                                          <li>
+                                              <a href="<?= BASE_URL . '?act=san-pham' ?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
                                               <ul class="dropdown">
-                                                  <?php foreach ($listDanhMuc as $danhMuc) { ?>
-                                                      <li><a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . $danhMuc['id'] ?>"><?= $danhMuc['ten_danh_muc'] ?></a></li>
-                                                  <?php  } ?>
+                                                  <?php foreach ($listDanhMuc as $danhMuc): ?>
+                                                      <li>
+                                                          <a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . htmlspecialchars($danhMuc['id']) ?>">
+                                                              <?= htmlspecialchars($danhMuc['ten_danh_muc']) ?>
+                                                          </a>
+                                                      </li>
+                                                  <?php endforeach; ?>
                                               </ul>
                                           </li>
-                                          <li><a href="#">Giới thiệu</a></li>
-                                          <li><a href="#">Liên hệ</a></li>
+                                          <li><a href="<?= BASE_URL . '?act=gioi-thieu' ?>">Giới thiệu</a></li>
+                                          <li><a href="<?= BASE_URL . '?act=lien-he' ?>">Liên hệ</a></li>
                                       </ul>
                                   </nav>
+
                                   <!-- main menu navbar end -->
                               </div>
                           </div>
@@ -63,18 +66,24 @@
 
                                       <li class="user-hover">
                                           <a href="#">
+
                                               <i class="pe-7s-user"></i>
                                           </a>
-                                          <ul class="dropdown-list list-group" style="width: 250px; height: 84px;">
+                                          <ul class="dropdown-list " style="width: 230px;">
 
                                               <?php if (isset($_SESSION['user_client'])) { ?>
-                                                  <li class="">
-                                                      <label for=""><?php if (isset($_SESSION['user_client'])) {
-                                                                        echo $_SESSION['user_client'];
-                                                                    } ?></label>
+                                                  <li>
+                                                      <label for="">
+                                                          <?php if (isset($_SESSION['user_client'])): ?>
+                                                              <a href="<?= BASE_URL . '?act=tai-khoan'?>">
+                                                                  <?= $_SESSION['user_client']; ?>
+                                                              </a>
+                                                          <?php endif; ?>
+                                                      </label>
                                                   </li>
 
                                                   <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
+                                                  <li><a href="<?= BASE_URL_ADMIN?>">Đăng Nhập Admin</a></li>
                                               <?php } else { ?>
                                                   <li><a href="<?= BASE_URL ?>?act=login">Đăng nhập</a></li>
                                                   <li><a href="<?= BASE_URL . '?act=form-dang-ky' ?>">Đăng ký</a></li>
