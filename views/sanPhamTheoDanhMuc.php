@@ -220,6 +220,7 @@
                                     <div class="product-item">
                                         <figure class="product-thumb">
                                             <a href="<?= BASE_URL .'?act=san-phams&hinh_anh' ?>">
+                                                
                                                <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
                                                     <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
                                             </a>

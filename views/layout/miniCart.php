@@ -10,7 +10,7 @@
             <ul>
                             <li class="minicart-item">
                                 <div class="minicart-thumb">
-                                    <a href="<?= BASE_URL .'?act=gio-hang ' ?>">
+                                    <a href="<?= BASE_URL .'?act=san-pham ' ?>">
                                         <img src="" alt="product">
                                     </a>
                                 </div>
@@ -27,7 +27,7 @@
                             </li>
                             <li class="minicart-item">
                                 <div class="minicart-thumb">
-                                    <a href="<?= BASE_URL .'?act=gio-hang ' ?>">
+                                    <a href="<?= BASE_URL .'?act=san-pham ' ?>">
                                         <img src="assets/img/cart/cart-2.jpg" alt="product">
                                     </a>
                                 </div>
