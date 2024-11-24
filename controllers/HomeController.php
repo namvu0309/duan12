@@ -28,16 +28,8 @@ class HomeController
 
         require_once('./views/home.php');
     }
-    public function danhSachSanPham()
-    {
-        $listSanPham = $this->modelSanPham->getAllSanPham();
-       
-            require_once './views/sanPham.php';
-    }
     public function sanPhamDanhMuc()
     {
-        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-
         $listtop10 = $this->modelSanPham->top10();
 
         if (isset($_GET['danh_muc_id']) && $_GET['danh_muc_id'] > 0) {
@@ -50,20 +42,13 @@ class HomeController
             //    var_dump($listDanhMuc);die();
             require_once './views/sanPhamTheoDanhMuc.php';
         } else {
-            header("Location: " . BASE_URL .'?act=san-pham');
+            $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+            $listSanPham = $this->modelSanPham->getAllSanPham();
+
+            require_once './views/sanPham.php';
         }
     }
-    public function sanPhamTheoDanhMuc()
-    {
-        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-
-        $listtop10 = $this->modelSanPham->top10();
-
-        $listSanPham = $this->modelSanPham->getAllSanPham();
-
-
-        require_once('./views/sanPhamTheoDanhMuc.php');
-    }
+    
 
     public function  chiTietSanPham()
     {
