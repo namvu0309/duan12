@@ -43,7 +43,13 @@ match ($act) {
     'check-login' => (new HomeController())->postlogin(),
     'logout' => (new HomeController())->logout(),
 
+    'form-dang-ky' => (new HomeController())->formDangKy(),
+    'dang-ky' => (new HomeController())->dangKy(),
+
+
+
     //sanpham
-    "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
+    // "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
     'san-pham-theo-danh-muc' =>(new HomeController())->sanPhamDanhMuc(),
+
 };

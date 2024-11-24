@@ -28,6 +28,36 @@ class HomeController
 
         require_once('./views/home.php');
     }
+    public function sanPhamDanhMuc()
+    {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+        $listtop10 = $this->modelSanPham->top10();
+
+        if (isset($_GET['danh_muc_id']) && $_GET['danh_muc_id'] > 0) {
+            $iddm = $_GET['danh_muc_id'];
+            $spdm = $this->modelSanPham->sanPhamTheoDanhMuc($iddm);
+            //var_dump($spdm);die();
+
+
+            $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+            //    var_dump($listDanhMuc);die();
+            require_once './views/sanPhamTheoDanhMuc.php';
+        } else {
+            header("Location: " . BASE_URL);
+        }
+    }
+    public function sanPhamTheoDanhMuc()
+    {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+        $listtop10 = $this->modelSanPham->top10();
+
+        $listSanPham = $this->modelSanPham->getAllSanPham();
+
+
+        require_once('./views/sanPhamTheoDanhMuc.php');
+    }
 
     public function  chiTietSanPham()
     {
@@ -81,25 +111,7 @@ class HomeController
 
 
     // danh muc san pham
-    public function sanPhamDanhMuc()
-    {
-        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-
-        $listtop10 = $this->modelSanPham->top10();
-
-        if (isset($_GET['danh_muc_id']) && $_GET['danh_muc_id'] > 0) {
-            $iddm = $_GET['danh_muc_id'];
-            $spdm = $this->modelSanPham->sanPhamTheoDanhMuc($iddm);
-            //var_dump($spdm);die();
-
-
-            $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-            //    var_dump($listDanhMuc);die();
-            require_once './views/sanPhamTheoDanhMuc.php';
-        } else {
-            header("Location: " . BASE_URL);
-        }
-    }
+    
 
 
 
@@ -142,6 +154,99 @@ class HomeController
         }
     }
 
+
+
+    public function formDangKy()
+    {
+
+        if (isset($_SESSION['user_client'])) {
+            header('Location:' . BASE_URL);
+            exit();
+        }
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+        require_once('./views/auth/formDangKy.php');
+        deleteSessionErrors();
+    }
+
+    public function dangKy()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Lấy dữ liệu từ form
+            $ho_ten = $_POST['ho_ten'] ?? '';
+            $ngay_sinh = $_POST['ngay_sinh'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
+            $gioi_tinh = $_POST['gioi_tinh'] ?? '';
+            $dia_chi = $_POST['dia_chi'] ?? '';
+            $mat_khau = $_POST['mat_khau'] ?? '';
+            $anh_dai_dien = $_FILES['anh_dai_dien'] ?? null;
+            $file_thumb = uploadFile($anh_dai_dien, './uploads/');
+            $chuc_vu = 2;
+
+            $_SESSION['old_data'] = array(
+                'ho_ten' => $_POST['ho_ten'],
+                'ngay_sinh' => $_POST['ngay_sinh'],
+                'email' => $_POST['email'],
+                'so_dien_thoai' => $_POST['so_dien_thoai'],
+                'gioi_tinh' => $_POST['gioi_tinh'],
+                'dia_chi' => $_POST['dia_chi'],
+                'mat_khau' => $_POST['mat_khau'],
+            );
+
+            // Tạo mảng để lưu lỗi
+            $errors = [];
+            if (empty($ho_ten)) {
+                $errors['ho_ten'] = 'Họ tên không được để trống';
+            }
+            if (empty($ngay_sinh)) {
+                $errors['ngay_sinh'] = 'Ngày sinh không được để trống';
+            }
+            if (empty($email)) {
+                $errors['email'] = 'Email không được để trống';
+            }
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = 'Số điện thoại không được để trống';
+            }
+            if (empty($mat_khau)) {
+                $errors['mat_khau'] = 'Mật khẩu không được để trống';
+            }
+            if (empty($dia_chi)) {
+                $errors['dia_chi'] = 'Địa chỉ không được để trống';
+            }
+
+            $_SESSION['errors'] = $errors;
+
+            // Nếu không có lỗi, thêm tài khoản
+            if (empty($errors)) {
+                // Mã hóa mật khẩu trước khi lưu
+                $mat_khau_hashed = password_hash($mat_khau, PASSWORD_BCRYPT);
+
+                // Gọi model để lưu dữ liệu
+                $tai_khoan = $this->modelTaiKhoan->insertTaiKhoan(
+                    $ho_ten,
+                    $ngay_sinh,
+                    $email,
+                    $so_dien_thoai,
+                    $gioi_tinh,
+                    $dia_chi,
+                    $mat_khau_hashed, // Lưu mật khẩu mã hóa
+                    $chuc_vu,
+                    $file_thumb
+                );
+
+                $_SESSION['thongBao'] = 'Đăng kí thành công. Vui lòng đăng nhập để mua hàng và bình luận';
+                header("Location: " . BASE_URL . '?act=form-dang-ky');
+                exit();
+            } else {
+                // Trả về lỗi
+                $_SESSION['flash'] = true;
+                $_SESSION['thongBao'] = 'Đăng ký thất bại';
+                header("Location: " . BASE_URL . '?act=form-dang-ky');
+                exit();
+            }
+        }
+    }
 
 
 

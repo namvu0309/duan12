@@ -6146,5 +6146,20 @@ blockquote {
 .copyright-text p a {
   color: #c29958;
 }
+.user-name {
+    display: inline-block; /* Đảm bảo bao bọc toàn bộ nội dung bên trong */
+    padding: 10px; /* Thêm khoảng cách bên trong */
+    background-color: #f8f9fa; /* Màu nền để dễ nhận diện */
+    border: 1px solid #ddd; /* Đường viền bao quanh */
+    border-radius: 5px; /* Bo góc để mềm mại hơn */
+    width: auto; /* Tự động điều chỉnh theo nội dung */
+    text-align: center; /* Canh giữa nội dung */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng nhẹ */
+    margin-bottom: 5px; /* Thêm khoảng cách phía dưới nếu cần */
+    white-space: nowrap; /* Đảm bảo không xuống dòng nội dung dài */
+}
+.dropdown-list{
+  
+}
 
 /*----- footer area end -----*/
