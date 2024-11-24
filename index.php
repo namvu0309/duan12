@@ -31,6 +31,8 @@ match ($act) {
     'chi-tiet-san-pham'=> (new HomeController())->chitietSanPham(),
     'lien-he' =>(new HomeController())->lienHe(),
    'gioi-thieu' =>(new HomeController())->gioiThieu(),
+    'search' => (new HomeController())->timKiem(),
+
 
     // Giỏ hàng ,đơn hàng
     'them-gio-hang' => (new GioHangDonHangController())->addGioHang(),
