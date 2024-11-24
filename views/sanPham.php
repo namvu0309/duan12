@@ -226,37 +226,16 @@
                         <!-- shop product top wrap start -->
                         <div class="shop-product-wrap grid-view row mb-4">
                             <!-- product item list wrapper start -->
-                            <?php foreach ($spdm as $sanPham): ?>
+                            <?php foreach ($listSanPham as $sanPham): ?>
                                 <div class="col-md-4 col-sm-6 mb-4">
                                     <!-- product grid start -->
                                     <div class="product-item shadow-sm p-3 mb-5 bg-white rounded">
                                         <figure class="product-thumb">
-<<<<<<< HEAD
-                                            <a href="<?= BASE_URL .'?act=san-phams&hinh_anh' ?>">
-                                                
-                                               <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
-                                                    <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
-                                            </a>
-                                            <div class="product-badge">
-                                                <div class="product-label new">
-                                                    <span>new</span>
-                                                </div>
-                                                <div class="product-label discount">
-                                                    <span>10%</span>
-                                                </div>
-                                            </div>
-                                            <div class="button-group">
-                                                <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                                <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to Compare" aria-label="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Quick View" aria-label="Quick View"><i class="pe-7s-search"></i></span></a>
-                                            </div>
-                                            <div class="cart-hover">
-=======
->>>>>>> 112ba4000a8c90eb126504d9d27a69678a36998f
                                             <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh']  ?>         " alt="product">
-                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
+                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="500" height="300" alt="product-main">
+                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="500" height="300" alt="product-secondary">
                                             </a>
+
                                             <div class="product-badge">
                                                 <?php
                                                 // Hiển thị nhãn "Mới" nếu sản phẩm mới trong vòng 7 ngày
@@ -327,6 +306,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
 </main>

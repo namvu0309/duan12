@@ -32,20 +32,10 @@
                         <div class="login-reg-form-wrap">
                             <h5 class="text-center">Đăng nhập</h5>
                             <?php if (isset($_SESSION['errors'])) { ?>
-                                <p class="text-danger text-center">
-                                    <?php
-                                    // Nếu là mảng, nối các phần tử thành chuỗi để hiển thị
-                                    if (is_array($_SESSION['errors'])) {
-                                        echo implode('<br>', $_SESSION['errors']); // Hiển thị mỗi lỗi trên một dòng
-                                    } else {
-                                        echo $_SESSION['errors']; // Hiển thị lỗi dạng chuỗi
-                                    }
-                                    ?>
-                                </p>
+                                <p class="text-danger text-center"><?= $_SESSION['errors'] ?></p>
                             <?php } else { ?>
                                 <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
                             <?php } ?>
-
 
                             <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
                                 <div class="single-input-item">
@@ -57,12 +47,15 @@
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
 
-                                        <a href="#" class="forget-pwd">Quên mật khẩu ?</a>
+                                        <a href="<?= BASE_URL .'?act=quen-mat-khau'?>" class="forget-pwd">Quên mật khẩu ?</a>
                                     </div>
                                 </div>
-                                <div class="single-input-item">
+                                <div class="single-input-item d-flex justify-content-between">
                                     <button class="btn btn-sqr">Đăng nhập</button>
+                                    <a href="<?= BASE_URL . '?act=form-dang-ky' ?>" class="btn btn-sqr">Đăng ký</a>
+
                                 </div>
+
                             </form>
                         </div>
                     </div>

@@ -20,6 +20,8 @@ class AdminSanPham
             echo "Lỗi: " . $e->getMessage();
         }
     }
+    
+
 
     public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $hinh_anh)
     {
@@ -82,6 +84,7 @@ class AdminSanPham
                     ':id' => $id
                 ]
             );
+            
             return $stmt->fetch();
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
@@ -310,4 +313,5 @@ class AdminSanPham
             echo "Lỗi: " . $e->getMessage();
         }
     }
+    
 }

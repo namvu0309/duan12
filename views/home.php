@@ -134,7 +134,7 @@
                                     <?php foreach ($listSanPham as $key => $sanPham): ?>
                                         <!-- product item start -->
                                         <div class="product-item">
-                                            <figure class="product-thumb">a
+                                            <figure class="product-thumb">
                                                 <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
                                                     <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
                                                     <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">

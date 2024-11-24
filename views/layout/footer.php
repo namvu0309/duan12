@@ -19,19 +19,19 @@
                                 </div>
                             </div>
                             <div class="widget-body">
-                                <p>We are a team of designers and developers that create high quality wordpress, shopify, Opencart </p>
+                                <p>Chúng tôi cam kết mang đến những sản phẩm an toàn, hiệu quả từ các thương hiệu uy tín, phù hợp với mọi nhu cầu làm đẹp của bạn </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="widget-item">
-                            <h6 class="widget-title">Contact Us</h6>
+                            <h6 class="widget-title">Liên Hệ<iframe src="" frameborder="0"></iframe></h6>
                             <div class="widget-body">
                                 <address class="contact-block">
                                     <ul>
-                                        <li><i class="pe-7s-home"></i> 4710-4890 Breckinridge USA</li>
-                                        <li><i class="pe-7s-mail"></i> <a href="mailto:demo@plazathemes.com">demo@yourdomain.com </a></li>
-                                        <li><i class="pe-7s-call"></i> <a href="tel:(012)800456789987">(012) 800 456 789-987</a></li>
+                                        <li><i class="pe-7s-home"></i> Trịnh Văn Bô,Hà Nội</li>
+                                        <li><i class="pe-7s-mail"></i> <a href="mailto:demo@plazathemes.com">miphamnbh@gmail.com </a></li>
+                                        <li><i class="pe-7s-call"></i> <a href="tel:+855831662">+855831662</a></li>
                                     </ul>
                                 </address>
                             </div>
@@ -42,12 +42,11 @@
                             <h6 class="widget-title">Information</h6>
                             <div class="widget-body">
                                 <ul class="info-list">
-                                    <li><a href="#">about us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">privet policy</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">contact us</a></li>
-                                    <li><a href="#">site map</a></li>
+                                    <li><a href="#">Liên hệ với chúng tôi</a></li>
+                                    <li><a href="#">Thông tin giao hàng</a></li>
+                                    <li><a href="#">Chính sách & Quyền riêng tư</a></li>
+                                    <li><a href="#">Điều khoản & Điều kiện </a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -94,7 +93,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright-text text-center">
-                            <p>&copy; 2022 <b>Corano</b> Made with <i class="fa fa-heart text-danger"></i> by <a href="https://hasthemes.com/"><b>HasThemes</b></a></p>
+                            <p>&copy; 2024<b>NBH</b> Made in <i class="fa fa-heart text-danger"></i> VietNam</p>
                         </div>
                     </div>
                 </div>

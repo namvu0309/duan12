@@ -37,10 +37,11 @@
                                                   <?php  } ?>
                                               </ul>
                                           </li>
-                                          <li><a href="#">Giới thiệu</a></li>
-                                          <li><a href="#">Liên hệ</a></li>
+                                          <li><a href="<?= BASE_URL . '?act=gioi-thieu' ?>">Giới thiệu</a></li>
+                                          <li><a href="<?= BASE_URL . '?act=lien-he' ?>">Liên hệ</a></li>
                                       </ul>
                                   </nav>
+
                                   <!-- main menu navbar end -->
                               </div>
                           </div>
@@ -52,9 +53,9 @@
                           <div class="header-right d-flex align-items-center justify-content-xl-between justify-content-lg-end">
                               <div class="header-search-container">
                                   <button class="search-trigger d-xl-none d-lg-block"><i class="pe-7s-search"></i></button>
-                                  <form class="header-search-box d-lg-none d-xl-block">
-                                      <input type="text" placeholder="Nhập tên sản phẩm" class="header-search-field">
-                                      <button class="header-search-btn"><i class="pe-7s-search"></i></button>
+                                  <form class="header-search-box d-lg-none d-xl-block" action="<?= BASE_URL . '?act=search' ?>" method="POST">
+                                      <input type="text" name="keyword" placeholder="Nhập tên sản phẩm" class="header-search-field">
+                                      <button class="header-search-btn" type="submit"><i class="pe-7s-search"></i></button>
                                   </form>
                               </div>
                               <div class="header-configure-area">
@@ -63,18 +64,24 @@
 
                                       <li class="user-hover">
                                           <a href="#">
+
                                               <i class="pe-7s-user"></i>
                                           </a>
-                                          <ul class="dropdown-list list-group" style="width: 250px; height: 84px;">
+                                          <ul class="dropdown-list " style="width: 230px;">
 
                                               <?php if (isset($_SESSION['user_client'])) { ?>
-                                                  <li class="">
-                                                      <label for=""><?php if (isset($_SESSION['user_client'])) {
-                                                                        echo $_SESSION['user_client'];
-                                                                    } ?></label>
+                                                  <li>
+                                                      <label for="">
+                                                          <?php if (isset($_SESSION['user_client'])): ?>
+                                                              <a href="<?= BASE_URL . '?act=tai-khoan' ?>">
+                                                                  <?= $_SESSION['user_client']; ?>
+                                                              </a>
+                                                          <?php endif; ?>
+                                                      </label>
                                                   </li>
 
                                                   <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
+                                                  <li><a href="<?= BASE_URL_ADMIN ?>">Đăng Nhập Admin</a></li>
                                               <?php } else { ?>
                                                   <li><a href="<?= BASE_URL ?>?act=login">Đăng nhập</a></li>
                                                   <li><a href="<?= BASE_URL . '?act=form-dang-ky' ?>">Đăng ký</a></li>
@@ -104,4 +111,3 @@
 
 
   </header>
-  <!-- end Header Area -->
