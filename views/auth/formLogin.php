@@ -47,12 +47,15 @@
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
 
-                                        <a href="#" class="forget-pwd">Quên mật khẩu ?</a>
+                                        <a href="<?= BASE_URL .'?act=quen-mat-khau'?>" class="forget-pwd">Quên mật khẩu ?</a>
                                     </div>
                                 </div>
-                                <div class="single-input-item">
+                                <div class="single-input-item d-flex justify-content-between">
                                     <button class="btn btn-sqr">Đăng nhập</button>
+                                    <a href="<?= BASE_URL . '?act=form-dang-ky' ?>" class="btn btn-sqr">Đăng ký</a>
+
                                 </div>
+
                             </form>
                         </div>
                     </div>
