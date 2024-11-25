@@ -81,6 +81,12 @@ match ($act) {
   'sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController)->postEditCaNhanQuanTri(),
   'sua-mat-khau-ca-nhan-quan-tri' => (new AdminTaiKhoanController)->postEditMatKhauCaNhan(),
 
+
+  // route bình luận
+  'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
+  'xoa-binh-luan' => (new AdminSanPhamController())->xoaBinhLuan(),
+  'xoa-binh-luan-khach-hang' => (new AdminSanPhamController())->xoaBinhLuanKhachHang(),
+
   // router auth9
   'login-admin' => (new AdminTaiKhoanController())->formLogin(),
   'check-login-admin' => (new AdminTaiKhoanController())->login(),

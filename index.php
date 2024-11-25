@@ -1,5 +1,5 @@
 <?php
- session_start();
+session_start();
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
@@ -13,7 +13,6 @@ require_once './controllers/DanhMuc.php';
 
 
 // Require toàn bộ file Models
-require_once './models/Student.php';
 require_once './models/SanPham.php';
 require_once './models/TaiKhoan.php';
 require_once './models/GioHang.php';
@@ -32,10 +31,15 @@ match ($act) {
 
     '/' => (new HomeController())->home(),
     // Trang chủ
-    'chi-tiet-san-pham'=> (new SanPhamController())->chitietSanPham(),
-    'lien-he' =>(new HomeController())->lienHe(),
-   'gioi-thieu' =>(new HomeController())->gioiThieu(),
+    'chi-tiet-san-pham' => (new SanPhamController())->chitietSanPham(),
+    'gui-binh-luan' => (new SanPhamController())->guiBinhLuan(),
+    
+    
+    'lien-he' => (new HomeController())->lienHe(),
+    'gioi-thieu' => (new HomeController())->gioiThieu(),
     'search' => (new HomeController())->timKiem(),
+    //sanpham
+    'san-pham-theo-danh-muc' => (new DanhMucController())->sanPhamDanhMuc(),
 
 
     // Giỏ hàng ,đơn hàng
@@ -58,7 +62,4 @@ match ($act) {
 
     'tai-khoan' => (new TaiKhoanController())->taiKhoan(),
     'sua-mat-khau-ca-nhan' => (new TaiKhoanController())->postEditMatKhauCaNhan(),
-
-    //sanpham
-    'san-pham-theo-danh-muc' =>(new DanhMucController())->sanPhamDanhMuc(),
 };
