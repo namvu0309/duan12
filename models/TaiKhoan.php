@@ -130,8 +130,8 @@ class TaiKhoan{
         }
     }
 
-
-    public function updateKhachHang($id, $ho_ten, $email, $so_dien_thoai, $ngay_sinh, $gioi_tinh, $dia_chi, $trang_thai)
+   
+    public function updateTaiKhoan($id, $ho_ten, $email, $so_dien_thoai, $ngay_sinh, $gioi_tinh, $dia_chi, $trang_thai)
     {
 
         try {
@@ -162,6 +162,8 @@ class TaiKhoan{
                 ]
             );
 
+            // Kiểm tra lại giá trị truyền vào
+           
 
             // Lấy id sản phẩm vừa thêm
             return true;

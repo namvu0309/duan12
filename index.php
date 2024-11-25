@@ -59,7 +59,8 @@ match ($act) {
     'form-dang-ky' => (new TaiKhoanController())->formDangKy(),
     'dang-ky' => (new TaiKhoanController())->dangKy(),
 
-
+    // 'quan-ly-tai-khoan' => (new TaiKhoanController())->suaTaiKhoan(),
+    'sua-thong-tin-ca-nhan' => (new TaiKhoanController())->suaThongTinCaNhan(),
+    'doi-mat-khau' => (new TaiKhoanController())->doiMatKhau(),
     'tai-khoan' => (new TaiKhoanController())->taiKhoan(),
-    'sua-mat-khau-ca-nhan' => (new TaiKhoanController())->postEditMatKhauCaNhan(),
 };
