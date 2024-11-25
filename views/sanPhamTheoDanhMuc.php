@@ -232,8 +232,9 @@
                                     <div class="product-item shadow-sm p-3 mb-5 bg-white rounded">
                                         <figure class="product-thumb">
                                             <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh']  ?>         " alt="product">
-                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
+                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="height: 200px; width: 200px; object-fit: cover;" alt="product">
+
+                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="height: 200px; width: 200px; object-fit: cover;"  alt="product">
                                             </a>
                                             <div class="product-badge">
                                                 <?php
