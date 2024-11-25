@@ -73,7 +73,7 @@ class HomeController
         } else {
             $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
             $listSanPham = $this->modelSanPham->getAllSanPham();
-
+            $listtop10 = $this->modelSanPham->top10();
             require_once './views/sanPham.php';
         }
     }
