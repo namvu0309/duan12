@@ -26,6 +26,8 @@ class TaiKhoanController
     }
     public function formLogin()
     {
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
         if (isset($_SESSION['user_client'])) {
             header('Location:' . BASE_URL);
             exit();
