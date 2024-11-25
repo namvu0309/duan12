@@ -240,7 +240,7 @@ class HomeController
             // Nếu không có lỗi, thêm tài khoản
             if (empty($errors)) {
                 // Mã hóa mật khẩu trước khi lưu
-                $mat_khau_hashed = password_hash($mat_khau, PASSWORD_BCRYPT);
+                $mat_khau_hashed = $mat_khau;
 
                 // Gọi model để lưu dữ liệu
                 $tai_khoan = $this->modelTaiKhoan->insertTaiKhoan(
@@ -327,9 +327,9 @@ class HomeController
 
             // var_dump($checkEmail['mat_khau']);die();
 
-            if (is_array($checkEmail)) {
+            if (is_array($checkEmail)&& $checkEmail ['chuc_vu_id'==2]) {
                 //     $_SESSION['user_id'] = $checkUser[0]['id'];
-                $_SESSION['layMk'] = 'Mật khẩu của bạn là: ' . $checkEmail[0]['mat_khau'];
+                $_SESSION['layMk'] = 'Mật khẩu của bạn là: ' . $checkEmail['mat_khau'];
 
                 header('Location:' . BASE_URL . '?act=quen-mat-khau');
             } else {
