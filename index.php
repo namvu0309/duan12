@@ -7,6 +7,10 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
 require_once './controllers/GioHang.php';
+require_once './controllers/TaiKhoan.php';
+require_once './controllers/SanPham.php';
+require_once './controllers/DanhMuc.php';
+
 
 // Require toàn bộ file Models
 require_once './models/Student.php';
@@ -28,7 +32,7 @@ match ($act) {
 
     '/' => (new HomeController())->home(),
     // Trang chủ
-    'chi-tiet-san-pham'=> (new HomeController())->chitietSanPham(),
+    'chi-tiet-san-pham'=> (new SanPhamController())->chitietSanPham(),
     'lien-he' =>(new HomeController())->lienHe(),
    'gioi-thieu' =>(new HomeController())->gioiThieu(),
     'search' => (new HomeController())->timKiem(),
@@ -40,22 +44,21 @@ match ($act) {
     'thanh-toan' => (new GioHangDonHangController())->thanhToan(),
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController())->xoaSp(),
-    'da-dat-hang' => (new HomeController())->daDatHang(),
+    'da-dat-hang' => (new GioHangDonHangController())->daDatHang(),
 
     //authe
-    'login' => (new HomeController())->formLogin(),
-    'check-login' => (new HomeController())->postlogin(),
-    'logout' => (new HomeController())->logout(),
-    'quen-mat-khau' => (new HomeController())->quenMatKhau(),
-    'lay-mat-khau' => (new HomeController())->layMatKhau(),
+    'login' => (new TaiKhoanController())->formLogin(),
+    'check-login' => (new TaiKhoanController())->postlogin(),
+    'logout' => (new TaiKhoanController())->logout(),
+    'quen-mat-khau' => (new TaiKhoanController())->quenMatKhau(),
+    'lay-mat-khau' => (new TaiKhoanController())->layMatKhau(),
+    'form-dang-ky' => (new TaiKhoanController())->formDangKy(),
+    'dang-ky' => (new TaiKhoanController())->dangKy(),
 
 
-    'form-dang-ky' => (new HomeController())->formDangKy(),
-    'dang-ky' => (new HomeController())->dangKy(),
-    'tai-khoan' => (new HomeController())->taiKhoan(),
-    'sua-mat-khau-ca-nhan' => (new HomeController())->postEditMatKhauCaNhan(),
+    'tai-khoan' => (new TaiKhoanController())->taiKhoan(),
+    'sua-mat-khau-ca-nhan' => (new TaiKhoanController())->postEditMatKhauCaNhan(),
 
     //sanpham
-    "san-pham" => (new HomeController())->danhSachSanPham(),
-    'san-pham-theo-danh-muc' =>(new HomeController())->sanPhamDanhMuc(),
+    'san-pham-theo-danh-muc' =>(new DanhMucController())->sanPhamDanhMuc(),
 };

@@ -89,6 +89,11 @@
                                                             <p class="text-danger"><?= $_SESSION['errors']['email'] ?></p>
                                                         <?php } ?>
                                                     </div>
+                                                    <div class="single-input-item">
+                                                        <button class="btn btn-sqr" type="submit">Lưu thay đổi</button>
+                                                    </div>
+                                                </form>
+                                                <form action="<?= BASE_URL . '?act=tai-khoan' ?>" method="POST">
                                                     <fieldset>
                                                         <legend>Đổi mật khẩu</legend>
                                                         <div class="single-input-item">
@@ -120,7 +125,7 @@
                                                         </div>
                                                     </fieldset>
                                                     <div class="single-input-item">
-                                                        <button class="btn btn-sqr" type="submit">Lưu thay đổi</button>
+                                                        <button class="btn btn-sqr" type="submit">Đổi Mật Khẩu</button>
                                                     </div>
                                                 </form>
                                             </div>
