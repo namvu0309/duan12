@@ -79,7 +79,8 @@ class HomeController
    
 
    
-    
+    // lấy thông tin giỏ hàng của người dung
+// $giohang = $this ->modelGioHang -> getDetaiGioHang()    
 
 
 
