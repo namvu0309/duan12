@@ -38,6 +38,12 @@ match ($act) {
     'lien-he' => (new HomeController())->lienHe(),
     'gioi-thieu' => (new HomeController())->gioiThieu(),
     'search' => (new HomeController())->timKiem(),
+    'lich-su-mua-hang' => (new HomeController())->lichSuMuaHang(),
+    'chi-tiet-mua-hang' => (new HomeController())->chiTietMuaHang(),
+    // 'chi-tiet-don-hang' => (new HomeController())->chiTietDonhang(),
+    'huy-don-hang' => (new HomeController())->huyDonHang(),
+
+
     //sanpham
     'san-pham-theo-danh-muc' => (new DanhMucController())->sanPhamDanhMuc(),
 
@@ -49,6 +55,7 @@ match ($act) {
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController())->xoaSp(),
     'da-dat-hang' => (new GioHangDonHangController())->daDatHang(),
+    
 
     //authe
     'login' => (new TaiKhoanController())->formLogin(),

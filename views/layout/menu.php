@@ -82,8 +82,10 @@
 
                                                   <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
                                                   <li><a href="<?= BASE_URL_ADMIN ?>">Đăng Nhập Admin</a></li>
+                                                  <li><a href="<?= BASE_URL . '?act=lich-su-mua-hang' ?>">Đơn Hàng Cá Nhân</a></li>
                                               <?php } else { ?>
                                                   <li><a href="<?= BASE_URL ?>?act=login">Đăng nhập</a></li>
+                                                 
                                                   <li><a href="<?= BASE_URL . '?act=form-dang-ky' ?>">Đăng ký</a></li>
                                               <?php } ?>
 
