@@ -1,6 +1,7 @@
 <?php
 class AdminSanPhamController
 {
+    public $modelDonHang;
     public $modelSanPham;
     public $modelDanhMuc;
     public function __construct()

@@ -15,7 +15,7 @@ class SanPham
     {
         try {
             $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM san_phams
-            INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id";
+            INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id  ORDER BY id DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
 
@@ -78,7 +78,7 @@ class SanPham
 
     private function getDanhMucId($id)
     {
-        $sql = "SELECT danh_muc_id FROM san_phams WHERE id = :id";
+        $sql = "SELECT danh_muc_id FROM san_phams WHERE id = :id  ORDER BY id DESC";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':id' => $id]);
         $result = $stmt->fetch();
@@ -87,9 +87,12 @@ class SanPham
     public function getListSanPhamdDanhMuc($id, $danh_muc_id)
     {
         try {
-            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM san_phams
-            INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id
-            WHERE san_phams.danh_muc_id = " . $danh_muc_id . " AND san_phams.id <> " . $id;
+            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc 
+        FROM san_phams 
+        INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id
+        WHERE san_phams.danh_muc_id = " . $danh_muc_id . " 
+        AND san_phams.id <> " . $id . "
+        ORDER BY san_phams.id DESC";  // Sắp xếp theo id giảm dần
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
 
@@ -151,7 +154,7 @@ class SanPham
         try {
             $sql = "SELECT san_phams.* FROM san_phams
             INNER JOIN danh_mucs ON danh_mucs.id  = san_phams.danh_muc_id
-            WHERE san_phams.danh_muc_id = :id";
+            WHERE san_phams.danh_muc_id = :id  ORDER BY id DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':id' => $id]);
 

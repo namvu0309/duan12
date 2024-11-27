@@ -15,6 +15,7 @@ class GioHangDonHangController
     }
 
 
+
     public function addGioHang()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -83,7 +84,43 @@ class GioHangDonHangController
             header('Location:' . BASE_URL . '?act=login');
         }
     }
+    public function daDatHang()
+    {
+        // Kiểm tra nếu có thông tin đơn hàng trong session
+        if (isset($_SESSION['thong_tin_don_hang']['id'])) {
+            $thongTinDonHang = $this->modelDonHang->getAllDonHang($_SESSION['thong_tin_don_hang']['id']);
+        } else {
+            $_SESSION['flash'] = true;
+            $_SESSION['dat_hang_error'] = 'Thông tin đơn hàng không hợp lệ!';
+            header('Location:' . BASE_URL);
+            exit;
+        }
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
+        if (isset($_SESSION['user_client'])) {
+
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+            //    var_dump($mail['id']);die();
+
+            // lẤy dl giỏ hàng
+            $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
+            if (!$gioHang) {
+                $_SESSION['flash'] = true;
+                $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
+                $gioHangId = $this->modelGioHang->addGioHang($user['id']);
+                $gioHang = ['id' => $gioHangId];
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            } else {
+                $_SESSION['flash'] = true;
+                $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            }
+        } else {
+            header('Location:' . BASE_URL . '?act=login');
+        }
+        require_once './views/daDatHang.php';
+        deleteSessionErrors();
+    }
     public function thanhToan()
     {
         deleteSessionErrors();
@@ -134,7 +171,7 @@ class GioHangDonHangController
             // var_dump($chiTietGioHang);die();
 
 
-            $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang,$trang_thai_id);
+            $donHangId = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id);
             $donHang = ['id' => $donHangId];
             $tong_tien = 0;
 
@@ -188,34 +225,4 @@ class GioHangDonHangController
             header('Location:' . BASE_URL . '?act=gio-hang');
         }
     }
-    public function daDatHang()
-    {
-        $thongTinDonHang = $this->modelDonHang->getAllDonHang($_SESSION['thong_tin_don_hang']['id']);
-        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
-
-        if (isset($_SESSION['user_client'])) {
-
-            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
-            //    var_dump($mail['id']);die();
-
-            // lẤy dl giỏ hàng
-            $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
-            if (!$gioHang) {
-                $_SESSION['flash'] = true;
-                $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
-                $gioHangId = $this->modelGioHang->addGioHang($user['id']);
-                $gioHang = ['id' => $gioHangId];
-                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
-            } else {
-                $_SESSION['flash'] = true;
-                $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
-                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
-            }
-        } else {
-            header('Location:' . BASE_URL . '?act=login');
-        }
-        require_once './views/daDatHang.php';
-        deleteSessionErrors();
-    }
-
 }

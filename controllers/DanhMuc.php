@@ -36,6 +36,4 @@ class DanhMucController
             require_once './views/sanPham.php';
         }
     }
-
-
 }

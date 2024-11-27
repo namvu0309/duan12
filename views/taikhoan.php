@@ -1,5 +1,4 @@
 <?php require_once 'layout/header.php' ?>
-
 <?php require_once 'layout/menu.php' ?>
 <div class="my-account-wrapper section-padding">
     <div class="container">

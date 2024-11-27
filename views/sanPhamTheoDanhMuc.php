@@ -15,7 +15,7 @@
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
                             <h5 class="sidebar-title">
-                                <a href="<?= BASE_URL . '?act=san-pham' ?>">Danh Mục Sản Phẩm</a>
+                                <a class="sidebar-single text-danger" href="<?= BASE_URL . '?act=san-pham' ?>">Danh Mục Sản Phẩm</a>
                             </h5>
 
                             <div class="sidebar-body">
@@ -30,12 +30,47 @@
                                 </ul>
                             </div>
                         </div>
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">
+                                <a class="sidebar-single text-danger" href="<?= BASE_URL . '?act=san-pham' ?>">Top 10 Sản Phẩm</a>
+                            </h5>
+
+                            <div class="sidebar-body">
+                                <ul class="shop-categories">
+                                    <?php foreach ($listtop10 as $top10sp) { ?>
+                                        <li class="d-flex align-items-center mb-3">
+                                            <!-- Hình ảnh sản phẩm -->
+                                            <div class="me-3">
+                                                <img src="<?= htmlspecialchars($top10sp['hinh_anh']) ?>" alt="<?= htmlspecialchars($top10sp['ten_san_pham']) ?>"
+                                                    class="img-fluid" style="width: 50px; height: 50px; object-fit: cover;">
+                                            </div>
+                                            <!-- Thông tin sản phẩm -->
+                                            <div>
+                                                <p class="mb-1 text-truncate" style="max-width: 150px;">
+                                                    <?= htmlspecialchars($top10sp['ten_san_pham']) ?>
+                                                </p>
+                                                <?php if (!empty($top10sp['gia_khuyen_mai']) && $top10sp['gia_khuyen_mai'] < $top10sp['gia_san_pham']): ?>
+                                                    <!-- Giá khuyến mại -->
+                                                    <span class="text-danger fw-bold"><?= number_format($top10sp['gia_khuyen_mai'], 0, ',', '.') ?>₫</span>
+                                                    <!-- Giá gốc -->
+                                                    <span class="text-muted text-decoration-line-through ms-2"><?= number_format($top10sp['gia_san_pham'], 0, ',', '.') ?>₫</span>
+
+                                                <?php else: ?>
+                                                    <!-- Giá bình thường -->
+                                                    <span class="text-danger fw-bold"><?= number_format($top10sp['gia_san_pham'], 0, ',', '.') ?>₫</span>
+                                                <?php endif; ?>
+                                            </div>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
 
                         <!-- single sidebar end -->
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">price</h5>
+                            <h5 class="sidebar-title text-danger">price</h5>
                             <div class="sidebar-body">
                                 <div class="price-range-wrap">
                                     <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="1" data-max="1000">
@@ -57,7 +92,7 @@
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">Brand</h5>
+                            <h5 class="sidebar-title text-danger">Brand</h5>
                             <div class="sidebar-body">
                                 <ul class="checkbox-container categories-list">
                                     <li>
@@ -97,7 +132,7 @@
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">color</h5>
+                            <h5 class="sidebar-title text-danger">color</h5>
                             <div class="sidebar-body">
                                 <ul class="checkbox-container categories-list">
                                     <li>
@@ -137,7 +172,7 @@
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">size</h5>
+                            <h5 class="sidebar-title text-danger">size</h5>
                             <div class="sidebar-body">
                                 <ul class="checkbox-container categories-list">
                                     <li>

@@ -32,7 +32,8 @@
                     <div class="breadcrumb-wrap">
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a>
+                                </li>
                                 <li class="breadcrumb-item"><a href="<?= BASE_URL . '?act=' ?>">Sản Phẩm</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm </li>
                             </ul>
@@ -57,7 +58,8 @@
                                 <div class="product-large-slider">
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham) { ?>
                                         <div class="pro-large-img">
-                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
+                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>"
+                                                alt="product-details" />
                                         </div>
                                     <?php } ?>
 
@@ -67,7 +69,8 @@
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham) { ?>
 
                                         <div class="pro-nav-thumb">
-                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
+                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>"
+                                                alt="product-details" />
                                         </div>
                                     <?php } ?>
 
@@ -87,10 +90,13 @@
                                     </div>
                                     <div class="price-box">
                                         <?php if ($sanPham['gia_khuyen_mai'] > 0) { ?>
-                                            <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
-                                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                            <span
+                                                class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
+                                            <span
+                                                class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                         <?php } else { ?>
-                                            <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) . 'đ' ?></span>
+                                            <span
+                                                class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) . 'đ' ?></span>
                                         <?php }    ?>
 
                                     </div>
@@ -128,7 +134,8 @@
                                     <ul class="nav review-tab">
 
                                         <li>
-                                            <a class="active" data-bs-toggle="tab" href="#tab_three">Bình luận (<?= $countComment ?>)</a>
+                                            <a class="active" data-bs-toggle="tab" href="#tab_three">Bình luận
+                                                (<?= $countComment ?>)</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content reviews-tab">
@@ -142,11 +149,13 @@
                                                     <?php foreach ($listBinhLuan as $binhLuan): ?>
                                                         <div class="total-reviews">
                                                             <div class="rev-avatar">
-                                                                <img src="<?= htmlspecialchars($binhLuan['anh_dai_dien']) ?>" alt="Avatar">
+                                                                <img src="<?= htmlspecialchars($binhLuan['anh_dai_dien']) ?>"
+                                                                    alt="Avatar">
                                                             </div>
                                                             <div class="review-box">
                                                                 <div class="post-author">
-                                                                    <p><span><?= htmlspecialchars($binhLuan['ho_ten']) ?></span> <?= htmlspecialchars($binhLuan['ngay_dang']) ?></p>
+                                                                    <p><span><?= htmlspecialchars($binhLuan['ho_ten']) ?></span>
+                                                                        <?= htmlspecialchars($binhLuan['ngay_dang']) ?></p>
                                                                 </div>
                                                                 <p><?= htmlspecialchars($binhLuan['noi_dung']) ?></p>
                                                             </div>
@@ -154,28 +163,36 @@
                                                     <?php endforeach; ?>
 
                                                     <!-- Form gửi bình luận -->
-                                                    <form action="<?= BASE_URL . '?act=gui-binh-luan' ?>" method="POST" class="review-form">
+                                                    <form action="<?= BASE_URL . '?act=gui-binh-luan' ?>" method="POST"
+                                                        class="review-form">
                                                         <!-- Gửi ID sản phẩm qua form -->
-                                                        <input type="hidden" name="san_pham_id" value="<?= $sanPham['id'] ?>">
+                                                        <input type="hidden" name="san_pham_id"
+                                                            value="<?= $sanPham['id'] ?>">
 
                                                         <!-- Kiểm tra nếu người dùng chưa đăng nhập -->
                                                         <?php if (!isset($_SESSION['user_client'])): ?>
-                                                            <p class="text-danger">Vui lòng <a href="<?= BASE_URL . '?act=dang-nhap' ?>">đăng nhập</a> để gửi bình luận.</p>
+                                                            <p class="text-danger">Vui lòng <a
+                                                                    href="<?= BASE_URL . '?act=login' ?>">đăng nhập</a> để
+                                                                gửi bình luận.</p>
                                                         <?php else: ?>
                                                             <!-- Gửi ID tài khoản người dùng qua form -->
-                                                            <input type="hidden" name="tai_khoan_id" value="<?= $_SESSION['user_client']?>">
+                                                            <input type="hidden" name="tai_khoan_id"
+                                                                value="<?= $_SESSION['user_client'] ?>">
 
                                                             <div class="form-group row">
                                                                 <div class="col">
                                                                     <label for="binh_luan" class="col-form-label">
-                                                                        <span class="text-danger">*</span> Nội Dung Bình Luận
+                                                                        <span class="text-danger">*</span> Nội Dung Bình
+                                                                        Luận
                                                                     </label>
-                                                                    <textarea name="binh_luan" class="form-control" required></textarea>
+                                                                    <textarea name="binh_luan" class="form-control"
+                                                                        required></textarea>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <button type="submit" class="btn btn-sqr">Gửi Bình Luận</button>
+                                                                <button type="submit" class="btn btn-sqr">Gửi Bình
+                                                                    Luận</button>
                                                             </div>
                                                         <?php endif; ?>
                                                     </form>
@@ -261,15 +278,19 @@
                                 <div class="product-caption text-center">
 
                                     <h6 class="product-name">
-                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
+                                        <a
+                                            href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
                                     </h6>
                                     <div class="price-box">
                                         <?php if ($sanPham['gia_khuyen_mai']) { ?>
 
-                                            <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
-                                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                            <span
+                                                class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
+                                            <span
+                                                class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                         <?php } else {  ?>
-                                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                            <span
+                                                class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                         <?php } ?>
 
                                     </div>

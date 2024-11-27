@@ -8,6 +8,8 @@ class HomeController
     public $modelGioHang;
     public $modelDonHang;
 
+
+
     public function __construct()
     {
         $this->modelSanPham = new SanPham();
@@ -19,16 +21,16 @@ class HomeController
 
     public function home()
     {
+        $chiTietGioHang = $this->modelSanPham->getAllDanhMuc();
+
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
         $listtop10 = $this->modelSanPham->top10();
 
         $listSanPham = $this->modelSanPham->getAllSanPham();
-
-
         require_once('./views/home.php');
     }
-     public function timKiem()
+    public function timKiem()
     {
         // Lấy danh sách danh mục và top 10 sản phẩm để hiển thị lên giao diện
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
@@ -53,14 +55,14 @@ class HomeController
             require_once './views/timKiemSp.php';
         } else {
             // Chuyển hướng về trang chủ nếu không phải phương thức POST
-            header("Location: " . BASE_URL );
+            header("Location: " . BASE_URL);
             exit;
         }
     }
-   
-    
 
-   
+
+
+
 
     public function lienHe()
     {
@@ -76,17 +78,4 @@ class HomeController
 
         require_once './views/gioiThieu.php';
     }
-   
-
-   
-    
-
-
-
-
-   
-   
-
-
-    
 }

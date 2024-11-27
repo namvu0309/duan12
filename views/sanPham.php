@@ -15,30 +15,82 @@
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
                             <h5 class="sidebar-title">
-                                <a href="<?= BASE_URL . '?act=san-pham' ?>">Danh Mục Sản Phẩm</a>
+                                <a class="sidebar-single text-danger" href="<?= BASE_URL . '?act=san-pham' ?>">Danh Mục
+                                    Sản Phẩm</a>
                             </h5>
 
                             <div class="sidebar-body">
                                 <ul class="shop-categories">
                                     <?php foreach ($listDanhMuc as $danhMuc) { ?>
-                                        <li>
-                                            <a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . $danhMuc['id'] ?>">
+                                    <li>
+                                        <a
+                                            href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . $danhMuc['id'] ?>">
+                                            <div class="text-truncate" style="max-width: 200px;">
                                                 <?= htmlspecialchars($danhMuc['ten_danh_muc']) ?>
-                                            </a>
-                                        </li>
+                                            </div>
+                                        </a>
+                                    </li>
                                     <?php } ?>
                                 </ul>
                             </div>
                         </div>
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">
+                                <a class="sidebar-single text-danger" href="<?= BASE_URL . '?act=san-pham' ?>">Top 10
+                                    Sản Phẩm</a>
+                            </h5>
+
+                            <div class="sidebar-body">
+                                <ul class="shop-categories">
+                                    <?php foreach ($listtop10 as $top10sp) { ?>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <!-- Hình ảnh sản phẩm -->
+                                        <div class="me-3">
+                                            <img src="<?= htmlspecialchars($top10sp['hinh_anh']) ?>"
+                                                alt="<?= htmlspecialchars($top10sp['ten_san_pham']) ?>"
+                                                class="img-fluid" style="width: 50px; height: 50px; object-fit: cover;">
+                                        </div>
+                                        <!-- Thông tin sản phẩm -->
+                                        <div>
+                                            <p class="mb-1 text-truncate" style="max-width: 150px;">
+                                                <?= htmlspecialchars($top10sp['ten_san_pham']) ?>
+                                            </p>
+                                            <?php if (!empty($top10sp['gia_khuyen_mai']) && $top10sp['gia_khuyen_mai'] < $top10sp['gia_san_pham']): ?>
+                                            <!-- Giá khuyến mại -->
+                                            <span
+                                                class="text-danger fw-bold"><?= number_format($top10sp['gia_khuyen_mai'], 0, ',', '.') ?>₫</span>
+                                            <!-- Giá gốc -->
+                                            <span
+                                                class="text-muted text-decoration-line-through ms-2"><?= number_format($top10sp['gia_san_pham'], 0, ',', '.') ?>₫</span>
+
+                                            <?php else: ?>
+                                            <!-- Giá bình thường -->
+                                            <span
+                                                class="text-danger fw-bold"><?= number_format($top10sp['gia_san_pham'], 0, ',', '.') ?>₫</span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
+
                         <!-- single sidebar end -->
 
                         <!-- single sidebar start -->
+                        <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">price</h5>
+                            <h5 class="sidebar-title text-danger">price</h5>
                             <div class="sidebar-body">
                                 <div class="price-range-wrap">
-                                    <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="1" data-max="1000">
-                                        <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
+                                    <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                        data-min="1" data-max="1000">
+                                        <div class="ui-slider-range ui-corner-all ui-widget-header"
+                                            style="left: 0%; width: 100%;"></div><span tabindex="0"
+                                            class="ui-slider-handle ui-corner-all ui-state-default"
+                                            style="left: 0%;"></span><span tabindex="0"
+                                            class="ui-slider-handle ui-corner-all ui-state-default"
+                                            style="left: 100%;"></span>
                                     </div>
                                     <div class="range-slider">
                                         <form action="#" class="d-flex align-items-center justify-content-between">
@@ -56,7 +108,7 @@
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">Brand</h5>
+                            <h5 class="sidebar-title text-danger">Brand</h5>
                             <div class="sidebar-body">
                                 <ul class="checkbox-container categories-list">
                                     <li>
@@ -80,7 +132,8 @@
                                     <li>
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label" for="customCheck1">Graphic corner (10)</label>
+                                            <label class="custom-control-label" for="customCheck1">Graphic corner
+                                                (10)</label>
                                         </div>
                                     </li>
                                     <li>
@@ -96,7 +149,7 @@
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">color</h5>
+                            <h5 class="sidebar-title text-danger">color</h5>
                             <div class="sidebar-body">
                                 <ul class="checkbox-container categories-list">
                                     <li>
@@ -136,7 +189,7 @@
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">size</h5>
+                            <h5 class="sidebar-title text-danger">size</h5>
                             <div class="sidebar-body">
                                 <ul class="checkbox-container categories-list">
                                     <li>
@@ -190,8 +243,12 @@
                                 <div class="col-lg-7 col-md-6 order-2 order-md-1">
                                     <div class="top-bar-left">
                                         <div class="product-view-mode">
-                                            <a class="active" href="#" data-target="grid-view" data-bs-toggle="tooltip" title="" data-bs-original-title="Grid View" aria-label="Grid View"><i class="fa fa-th"></i></a>
-                                            <a href="#" data-target="list-view" data-bs-toggle="tooltip" title="" data-bs-original-title="List View" aria-label="List View"><i class="fa fa-list"></i></a>
+                                            <a class="active" href="#" data-target="grid-view" data-bs-toggle="tooltip"
+                                                title="" data-bs-original-title="Grid View" aria-label="Grid View"><i
+                                                    class="fa fa-th"></i></a>
+                                            <a href="#" data-target="list-view" data-bs-toggle="tooltip" title=""
+                                                data-bs-original-title="List View" aria-label="List View"><i
+                                                    class="fa fa-list"></i></a>
                                         </div>
                                         <div class="product-amount">
                                             <p>Showing 1–16 of 21 results</p>
@@ -231,58 +288,69 @@
                         <div class="shop-product-wrap grid-view row mb-4">
                             <!-- product item list wrapper start -->
                             <?php foreach ($listSanPham as $sanPham): ?>
-                                <div class="col-md-4 col-sm-6 mb-4">
-                                    <!-- product grid start -->
-                                    <div class="product-item shadow-sm p-3 mb-5 bg-white rounded">
-                                        <figure class="product-thumb">
-                                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="500" height="300" alt="product-main">
-                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="500" height="300" alt="product-secondary">
-                                            </a>
+                            <div class="col-md-4 col-sm-6 mb-4">
+                                <!-- product grid start -->
+                                <div class="product-item shadow-sm p-3 mb-5 bg-white rounded">
+                                    <figure class="product-thumb">
+                                        <a
+                                            href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                            <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
+                                                width="500" height="300" alt="product-main">
+                                            <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
+                                                width="500" height="300" alt="product-secondary">
+                                        </a>
 
-                                            <div class="product-badge">
-                                                <?php
+                                        <div class="product-badge">
+                                            <?php
                                                 // Hiển thị nhãn "Mới" nếu sản phẩm mới trong vòng 7 ngày
                                                 $ngayNhap = new DateTime($sanPham['ngay_nhap']);
                                                 $ngayHienTai = new DateTime();
                                                 $tinhNgay = $ngayHienTai->diff($ngayNhap);
 
                                                 if ($tinhNgay->days <= 7): ?>
-                                                    <div class="product-label new">
-                                                        <span>Mới</span>
-                                                    </div>
-                                                <?php endif; ?>
+                                            <div class="product-label new">
+                                                <span>Mới</span>
+                                            </div>
+                                            <?php endif; ?>
 
-                                                <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
-                                                    <div class="product-label discount">
-                                                        <span>Giảm giá</span>
-                                                    </div>
-                                                <?php endif; ?>
+                                            <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
+                                            <div class="product-label discount">
+                                                <span>Giảm giá</span>
                                             </div>
-                                            <div class="button-group">
-                                                <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Thêm vào yêu thích"><i class="pe-7s-like"></i></a>
-                                                <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="So sánh"><i class="pe-7s-refresh-2"></i></a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Xem nhanh"><i class="pe-7s-search"></i></span></a>
-                                            </div>
-                                        </figure>
-                                        <div class="product-caption text-center">
-                                            <h6 class="product-name">
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                                    <?= htmlspecialchars($sanPham['ten_san_pham']) ?>
-                                                </a>
-                                            </h6>
-                                            <div class="price-box">
-                                                <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
-                                                    <span class="price-regular text-success">$<?= number_format($sanPham['gia_khuyen_mai'], 2) ?></span>
-                                                    <span class="price-old text-muted"><del>$<?= number_format($sanPham['gia_san_pham'], 2) ?></del></span>
-                                                <?php else: ?>
-                                                    <span class="price-regular">$<?= number_format($sanPham['gia_san_pham'], 2) ?></span>
-                                                <?php endif; ?>
-                                            </div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="button-group">
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                                title="Thêm vào yêu thích"><i class="pe-7s-like"></i></a>
+                                            <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                                title="So sánh"><i class="pe-7s-refresh-2"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Xem nhanh"><i class="pe-7s-search"></i></span></a>
+                                        </div>
+                                    </figure>
+                                    <div class="product-caption text-center">
+                                        <h6 class="product-name">
+                                            <a
+                                                href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                <?= htmlspecialchars($sanPham['ten_san_pham']) ?>
+                                            </a>
+                                        </h6>
+                                        <div class="price-box">
+                                            <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
+                                            <span
+                                                class="price-regular text-success">$<?= number_format($sanPham['gia_khuyen_mai'], 2) ?></span>
+                                            <span
+                                                class="price-old text-muted"><del>$<?= number_format($sanPham['gia_san_pham'], 2) ?></del></span>
+                                            <?php else: ?>
+                                            <span
+                                                class="price-regular">$<?= number_format($sanPham['gia_san_pham'], 2) ?></span>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
-                                    <!-- product grid end -->
                                 </div>
+                                <!-- product grid end -->
+                            </div>
                             <?php endforeach; ?>
                             <!-- product item list wrapper end -->
 
