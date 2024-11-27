@@ -5,318 +5,314 @@
 
 
 <main>
-    <!-- hero slider area start -->
-    <section class="slider-area">
-        <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
-            <!-- single slider item start -->
-            <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/img/slider/banner3.png">
-                    <div class="container">
-                        <div class="row">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- single slider item start -->
-            <!-- single slider item start -->
-            <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/img/slider/banner2.avif">
-                    <div class="container">
-                        <div class="row">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- single slider item start -->
-
-            <!-- single slider item start -->
-            <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/img/slider/banner1.jpg">
-                    <div class="container">
-                        <div class="row">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- single slider item start -->
-        </div>
-    </section>
-    <!-- hero slider area end -->
-
-
-
-    <!-- service policy area start -->
-    <div class="service-policy section-padding">
-        <div class="container">
-            <div class="row mtn-30">
-                <div class="col-sm-6 col-lg-3">
-                    <div class="policy-item">
-                        <div class="policy-icon">
-                            <i class="pe-7s-plane"></i>
-                        </div>
-                        <div class="policy-content">
-                            <h6>Giao hàng</h6>
-                            <p>Giao hàng nhanh chóng</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="policy-item">
-                        <div class="policy-icon">
-                            <i class="pe-7s-help2"></i>
-                        </div>
-                        <div class="policy-content">
-                            <h6>Hỗ trợ</h6>
-                            <p>Hỗ trợ 24/7</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="policy-item">
-                        <div class="policy-icon">
-                            <i class="pe-7s-back"></i>
-                        </div>
-                        <div class="policy-content">
-                            <h6>Hoàn tiền</h6>
-                            <p>Hoàn tiền trong 30 ngày</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="policy-item">
-                        <div class="policy-icon">
-                            <i class="pe-7s-credit"></i>
-                        </div>
-                        <div class="policy-content">
-                            <h6>Thanh toán</h6>
-                            <p>Bảo mật thanh toán</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- service policy area end -->
-
-
-    <!-- banner statistics area end -->
-
-    <!-- product area start -->
-    <section class="product-area section-padding">
+    <div class="shop-main-wrapper section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <!-- section title start -->
-                    <div class="section-title text-center">
-                        <h2 class="title">Sản phẩm của chúng tôi</h2>
-                        <p class="sub-title">Sản phẩm được cập nhật hàng tuần</p>
-                    </div>
-                    <!-- section title start -->
+                <!-- sidebar area start -->
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <aside class="sidebar-wrapper">
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">
+                                <a href="<?= BASE_URL . '?act=san-pham' ?>">Danh Mục Sản Phẩm</a>
+                            </h5>
+
+                            <div class="sidebar-body">
+                                <ul class="shop-categories">
+                                    <?php foreach ($listDanhMuc as $danhMuc) { ?>
+                                        <li>
+                                            <a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . $danhMuc['id'] ?>">
+                                                <?= htmlspecialchars($danhMuc['ten_danh_muc']) ?>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">price</h5>
+                            <div class="sidebar-body">
+                                <div class="price-range-wrap">
+                                    <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="1" data-max="1000">
+                                        <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
+                                    </div>
+                                    <div class="range-slider">
+                                        <form action="#" class="d-flex align-items-center justify-content-between">
+                                            <div class="price-input">
+                                                <label for="amount">Price: </label>
+                                                <input type="text" id="amount">
+                                            </div>
+                                            <button class="filter-btn">filter</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">Brand</h5>
+                            <div class="sidebar-body">
+                                <ul class="checkbox-container categories-list">
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                            <label class="custom-control-label" for="customCheck2">Studio (3)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                            <label class="custom-control-label" for="customCheck3">Hastech (4)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                            <label class="custom-control-label" for="customCheck4">Quickiin (15)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Graphic corner (10)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                            <label class="custom-control-label" for="customCheck5">devItems (12)</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">color</h5>
+                            <div class="sidebar-body">
+                                <ul class="checkbox-container categories-list">
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck12">
+                                            <label class="custom-control-label" for="customCheck12">black (20)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck13">
+                                            <label class="custom-control-label" for="customCheck13">red (6)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck14">
+                                            <label class="custom-control-label" for="customCheck14">blue (8)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck11">
+                                            <label class="custom-control-label" for="customCheck11">green (5)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck15">
+                                            <label class="custom-control-label" for="customCheck15">pink (4)</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">size</h5>
+                            <div class="sidebar-body">
+                                <ul class="checkbox-container categories-list">
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck111">
+                                            <label class="custom-control-label" for="customCheck111">S (4)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck222">
+                                            <label class="custom-control-label" for="customCheck222">M (5)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck333">
+                                            <label class="custom-control-label" for="customCheck333">L (7)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck444">
+                                            <label class="custom-control-label" for="customCheck444">XL (3)</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-banner">
+                            <div class="img-container">
+                                <a href="#">
+                                    <img src="assets/img/banner/sidebar-banner.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+                    </aside>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="product-container">
+                <!-- sidebar area end -->
 
+                <!-- shop main wrapper start -->
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="shop-product-wrapper">
+                        <!-- shop product top wrap start -->
+                        <div class="shop-top-bar">
+                            <div class="row align-items-center">
+                                <div class="col-lg-7 col-md-6 order-2 order-md-1">
+                                    <div class="top-bar-left">
+                                        <div class="product-view-mode">
+                                            <a class="active" href="#" data-target="grid-view" data-bs-toggle="tooltip" title="" data-bs-original-title="Grid View" aria-label="Grid View"><i class="fa fa-th"></i></a>
+                                            <a href="#" data-target="list-view" data-bs-toggle="tooltip" title="" data-bs-original-title="List View" aria-label="List View"><i class="fa fa-list"></i></a>
+                                        </div>
+                                        <div class="product-amount">
+                                            <p>Showing 1–16 of 21 results</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-6 order-1 order-md-2">
+                                    <div class="top-bar-right">
+                                        <div class="product-short">
+                                            <p>Sort By : </p>
+                                            <select class="nice-select" name="sortby" style="display: none;">
+                                                <option value="trending">Relevance</option>
+                                                <option value="sales">Name (A - Z)</option>
+                                                <option value="sales">Name (Z - A)</option>
+                                                <option value="rating">Price (Low &gt; High)</option>
+                                                <option value="date">Rating (Lowest)</option>
+                                                <option value="price-asc">Model (A - Z)</option>
+                                                <option value="price-asc">Model (Z - A)</option>
+                                            </select>
+                                            <div class="nice-select" tabindex="0"><span class="current">Relevance</span>
+                                                <ul class="list">
+                                                    <li data-value="trending" class="option selected">Relevance</li>
+                                                    <li data-value="sales" class="option">Name (A - Z)</li>
+                                                    <li data-value="sales" class="option">Name (Z - A)</li>
+                                                    <li data-value="rating" class="option">Price (Low &gt; High)</li>
+                                                    <li data-value="date" class="option">Rating (Lowest)</li>
+                                                    <li data-value="price-asc" class="option">Model (A - Z)</li>
+                                                    <li data-value="price-asc" class="option">Model (Z - A)</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- shop product top wrap start -->
+                        <div class="shop-product-wrap grid-view row mb-4">
+                            <!-- product item list wrapper start -->
+                            <?php foreach ($listSanPhamTimKiem as $sanPham): ?>
+                                <div class="col-md-4 col-sm-6 mb-4">
+                                    <!-- product grid start -->
+                                    <div class="product-item shadow-sm p-3 mb-5 bg-white rounded">
+                                        <figure class="product-thumb">
+                                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="500" height="300" alt="product-main">
+                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="500" height="300" alt="product-secondary">
+                                            </a>
 
-                        <!-- product tab content start -->
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="tab1">
-                                <div class="product-carousel-4 slick-row-10 slick-arrow-style">
-                                    <!-- product item start -->
-                                    <?php foreach ($listSanPhamTimKiem as $key => $sanPham) { ?>
-                                        <div class="product-item">
-                                            <figure class="product-thumb">
-                                                <a href="<?=BASE_URL.'?act=chi-tiet-san-pham&id_san_pham='  .$sanPham['id']?>">
-                                                    <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
-                                                    <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
-                                                </a>
-                                                <div class="product-badge">
-                                                    <?php
-                                                    $ngayNhap = new DateTime($sanPham['ngay_nhap']);
-                                                    $ngayHienTai = new DateTime();
-                                                    $tinhNgay = $ngayHienTai->diff($ngayNhap);
-                                                    if ($tinhNgay->days <= 7) {    ?>
+                                            <div class="product-badge">
+                                                <?php
+                                                // Hiển thị nhãn "Mới" nếu sản phẩm mới trong vòng 7 ngày
+                                                $ngayNhap = new DateTime($sanPham['ngay_nhap']);
+                                                $ngayHienTai = new DateTime();
+                                                $tinhNgay = $ngayHienTai->diff($ngayNhap);
 
-                                                        <div class="product-label new">
-                                                            <span>Mới</span>
-                                                        </div>
-                                                    <?php } ?>
-                                                    <?php if($sanPham['gia_khuyen_mai'] >0) { ?>
+                                                if ($tinhNgay->days <= 7): ?>
+                                                    <div class="product-label new">
+                                                        <span>Mới</span>
+                                                    </div>
+                                                <?php endif; ?>
+
+                                                <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
                                                     <div class="product-label discount">
                                                         <span>Giảm giá</span>
                                                     </div>
-                                                    <?php }?>
-                                                </div>
-                                            
-                                                <div class="cart-hover">
-                                                    
-                                                    <a href="<?=BASE_URL.'?act=chi-tiet-san-pham&id_san_pham=' .$sanPham['id']?>">
-                                                    <button class="btn btn-cart">Xem chi tiết</button>
-                                                    </a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-caption text-center">
-                                                
-                                                <h6 class="product-name">
-                                                    <a href="<?=BASE_URL.'?act=chi-tiet-san-pham&id_san_pham=' .$sanPham['id']?>"><?= $sanPham['ten_san_pham']?></a>
-                                                </h6>
-                                                <div class="price-box">
-                                                    <?php if($sanPham['gia_khuyen_mai'] >0){ ?>
-                                                            <span class="price-regular"><?=  formatPrice($sanPham['gia_khuyen_mai']).'đ';?></span>
-                                                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']). 'đ';?></del></span>
-                                                    <?php }else{ ?>
-                                                        <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']).'đ'?></span>
-                                                        
-                                                        
-                                                    <?php }    ?>
-                                                
-                                                </div>
+                                                <?php endif; ?>
                                             </div>
-                                        </div>
-                                    <?php } ?>
-                                    <!-- product item end -->
-
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- product tab content end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- product area end -->
-
-
-
-
-    <!-- group product start -->
-    <section class="group-product-area section-padding">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-5">
-                    <div class="categories-group-wrapper">
-                        <!-- section title start -->
-                        <div class="section-title-append">
-                            <h4>Top sản phẩm nổi bật</h4>
-                            <div class="slick-append"></div>
-                        </div>
-                        <!-- section title start -->
-
-                        <!-- group list carousel start -->
-                        <?php foreach ($listtop10 as $topSp) { ?>
-                            <div class="group-list-item-wrapper">
-                                <div class="group-list-carousel">
-                                    <!-- group list item start -->
-
-                                    <div class="group-slide-item">
-                                        <div class="group-item">
-
-                                            <div class="group-item-thumb">
-                                                <a href="product-details.html">
-                                                    <img src="<?= BASE_URL . $topSp['hinh_anh'] ?>" alt="">
+                                            <div class="button-group">
+                                                <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Thêm vào yêu thích"><i class="pe-7s-like"></i></a>
+                                                <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="So sánh"><i class="pe-7s-refresh-2"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Xem nhanh"><i class="pe-7s-search"></i></span></a>
+                                            </div>
+                                        </figure>
+                                        <div class="product-caption text-center">
+                                            <h6 class="product-name">
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                    <?= htmlspecialchars($sanPham['ten_san_pham']) ?>
                                                 </a>
+                                            </h6>
+                                            <div class="price-box">
+                                                <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
+                                                    <span class="price-regular text-success">$<?= number_format($sanPham['gia_khuyen_mai'], 2) ?></span>
+                                                    <span class="price-old text-muted"><del>$<?= number_format($sanPham['gia_san_pham'], 2) ?></del></span>
+                                                <?php else: ?>
+                                                    <span class="price-regular">$<?= number_format($sanPham['gia_san_pham'], 2) ?></span>
+                                                <?php endif; ?>
                                             </div>
-                                            <div class="group-item-desc">
-                                                <h5 class="group-product-name"><a href="<?= BASE_URL . "?act=chi-tiet-san-pham&id_san_pham=" . $topSp['id'] ?>">
-                                                        <?= $topSp['ten_san_pham'] ?></a></h5>
-                                                <div class="price-box">
-                                                    <?php if ($topSp['gia_khuyen_mai'] > 0) { ?>
-                                                        <span class="price-regular"><?= formatPrice($topSp['gia_khuyen_mai'] ). 'đ'; ?></span>
-                                                        <span class="price-old"><del><?= formatPrice($topSp['gia_san_pham'] ). 'đ'; ?></del></span>
-                                                    <?php } else { ?>
-                                                        <span class="price-regular"><?= formatPrice($topSp['gia_san_pham'] ). 'đ' ?></span>
-                                                        
-                                            <?php } ?>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
+                                    <!-- product grid end -->
+                                </div>
+                            <?php endforeach; ?>
+                            <!-- product item list wrapper end -->
 
-                                    <!-- group list item end -->
-
-
+                            <!-- start pagination area -->
+                            <div class="col-12">
+                                <div class="pagination-area text-center">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="pe-7s-angle-left"></i></a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="pe-7s-angle-right"></i></a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        <?php } ?>
-                        <!-- group list carousel start -->
+                            <!-- end pagination area -->
+                        </div>
+
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- group product end -->
-
-
-
-    <!-- brand logo area start -->
-    <div class="brand-logo section-padding pt-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="brand-logo-carousel slick-row-10 slick-arrow-style">
-                        <!-- single brand start -->
-                        <div class="brand-item">
-                            <a href="#">
-                                <img src="assets/img/brand/1.png" alt="">
-                            </a>
-                        </div>
-                        <!-- single brand end -->
-
-                        <!-- single brand start -->
-                        <div class="brand-item">
-                            <a href="#">
-                                <img src="assets/img/brand/2.png" alt="">
-                            </a>
-                        </div>
-                        <!-- single brand end -->
-
-                        <!-- single brand start -->
-                        <div class="brand-item">
-                            <a href="#">
-                                <img src="assets/img/brand/3.png" alt="">
-                            </a>
-                        </div>
-                        <!-- single brand end -->
-
-                        <!-- single brand start -->
-                        <div class="brand-item">
-                            <a href="#">
-                                <img src="assets/img/brand/4.png" alt="">
-                            </a>
-                        </div>
-                        <!-- single brand end -->
-
-                        <!-- single brand start -->
-                        <div class="brand-item">
-                            <a href="#">
-                                <img src="assets/img/brand/5.png" alt="">
-                            </a>
-                        </div>
-                        <!-- single brand end -->
-
-                        <!-- single brand start -->
-                        <div class="brand-item">
-                            <a href="#">
-                                <img src="assets/img/brand/6.png" alt="">
-                            </a>
-                        </div>
-                        <!-- single brand end -->
-                    </div>
+                    <!-- shop main wrapper end -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- brand logo area end -->
+
+
 </main>
 
 

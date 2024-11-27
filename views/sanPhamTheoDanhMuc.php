@@ -14,18 +14,23 @@
                     <aside class="sidebar-wrapper">
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
-                            <h5 class="sidebar-title">categories</h5>
+                            <h5 class="sidebar-title">
+                                <a href="<?= BASE_URL . '?act=san-pham' ?>">Danh Mục Sản Phẩm</a>
+                            </h5>
+
                             <div class="sidebar-body">
                                 <ul class="shop-categories">
-                                    <li><a href="#">fashionware <span>(10)</span></a></li>
-                                    <li><a href="#">kitchenware <span>(5)</span></a></li>
-                                    <li><a href="#">electronics <span>(8)</span></a></li>
-                                    <li><a href="#">accessories <span>(4)</span></a></li>
-                                    <li><a href="#">shoe <span>(5)</span></a></li>
-                                    <li><a href="#">toys <span>(2)</span></a></li>
+                                    <?php foreach ($listDanhMuc as $danhMuc) { ?>
+                                        <li>
+                                            <a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc&danh_muc_id=' . $danhMuc['id'] ?>">
+                                                <?= htmlspecialchars($danhMuc['ten_danh_muc']) ?>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
+
                         <!-- single sidebar end -->
 
                         <!-- single sidebar start -->
@@ -1928,34 +1933,54 @@
                                     <!-- product grid start -->
                                     <div class="product-item shadow-sm p-3 mb-5 bg-white rounded">
                                         <figure class="product-thumb">
-                                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                                <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh']  ?>         " alt="product">
-                                                <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
+                                            <a href="<?= BASE_URL . '?act=san-phams&hinh_anh' ?>">
+
+                                                <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
+                                                <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
                                             </a>
                                             <div class="product-badge">
-                                                <?php
-                                                // Hiển thị nhãn "Mới" nếu sản phẩm mới trong vòng 7 ngày
-                                                $ngayNhap = new DateTime($sanPham['ngay_nhap']);
-                                                $ngayHienTai = new DateTime();
-                                                $tinhNgay = $ngayHienTai->diff($ngayNhap);
-
-                                                if ($tinhNgay->days <= 7): ?>
-                                                    <div class="product-label new">
-                                                        <span>Mới</span>
-                                                    </div>
-                                                <?php endif; ?>
-
-                                                <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
-                                                    <div class="product-label discount">
-                                                        <span>Giảm giá</span>
-                                                    </div>
-                                                <?php endif; ?>
+                                                <div class="product-label new">
+                                                    <span>new</span>
+                                                </div>
+                                                <div class="product-label discount">
+                                                    <span>10%</span>
+                                                </div>
                                             </div>
                                             <div class="button-group">
-                                                <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Thêm vào yêu thích"><i class="pe-7s-like"></i></a>
-                                                <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="So sánh"><i class="pe-7s-refresh-2"></i></a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Xem nhanh"><i class="pe-7s-search"></i></span></a>
+                                                <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                                <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to Compare" aria-label="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Quick View" aria-label="Quick View"><i class="pe-7s-search"></i></span></a>
                                             </div>
+                                            <div class="cart-hover">
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                    <img class="pri-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="height: 200px; width: 200px; object-fit: cover;" alt="product">
+
+                                                    <img class="sec-img img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="height: 200px; width: 200px; object-fit: cover;" alt="product">
+                                                </a>
+                                                <div class="product-badge">
+                                                    <?php
+                                                    // Hiển thị nhãn "Mới" nếu sản phẩm mới trong vòng 7 ngày
+                                                    $ngayNhap = new DateTime($sanPham['ngay_nhap']);
+                                                    $ngayHienTai = new DateTime();
+                                                    $tinhNgay = $ngayHienTai->diff($ngayNhap);
+
+                                                    if ($tinhNgay->days <= 7): ?>
+                                                        <div class="product-label new">
+                                                            <span>Mới</span>
+                                                        </div>
+                                                    <?php endif; ?>
+
+                                                    <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
+                                                        <div class="product-label discount">
+                                                            <span>Giảm giá</span>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Thêm vào yêu thích"><i class="pe-7s-like"></i></a>
+                                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="So sánh"><i class="pe-7s-refresh-2"></i></a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Xem nhanh"><i class="pe-7s-search"></i></span></a>
+                                                </div>
                                         </figure>
                                         <div class="product-caption text-center">
                                             <h6 class="product-name">

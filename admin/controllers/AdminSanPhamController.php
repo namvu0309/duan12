@@ -185,7 +185,7 @@ class AdminSanPhamController
             $_SESSION['errors'] = $errors;
 
             // Logic sửa ảnh
-            if (isset($hinh_anh) && $hinh_anh['errors'] == UPLOAD_ERR_OK) {
+            if (isset($hinh_anh) && $hinh_anh['error'] == UPLOAD_ERR_OK) {
                 // upload file ảnh mới lên
                 $new_file = uploadFile($hinh_anh, './uploads/');
                 if (!empty($old_file)) { // Nếu có ảnh cũ thì xóa đi
