@@ -188,4 +188,34 @@ class GioHangDonHangController
             header('Location:' . BASE_URL . '?act=gio-hang');
         }
     }
+    public function daDatHang()
+    {
+        $thongTinDonHang = $this->modelDonHang->getAllDonHang($_SESSION['thong_tin_don_hang']['id']);
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+        if (isset($_SESSION['user_client'])) {
+
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+            //    var_dump($mail['id']);die();
+
+            // lẤy dl giỏ hàng
+            $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
+            if (!$gioHang) {
+                $_SESSION['flash'] = true;
+                $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
+                $gioHangId = $this->modelGioHang->addGioHang($user['id']);
+                $gioHang = ['id' => $gioHangId];
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            } else {
+                $_SESSION['flash'] = true;
+                $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            }
+        } else {
+            header('Location:' . BASE_URL . '?act=login');
+        }
+        require_once './views/daDatHang.php';
+        deleteSessionErrors();
+    }
+
 }

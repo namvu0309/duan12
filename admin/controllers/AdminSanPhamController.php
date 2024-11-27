@@ -159,7 +159,7 @@ class AdminSanPhamController
             $mo_ta = $_POST['mo_ta'];
 
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
-
+// var_dump($hinh_anh); die();
 
             // Tạo 1 mảng trống để chứa dl
             $errors = [];

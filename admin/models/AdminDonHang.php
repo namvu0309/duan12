@@ -7,6 +7,10 @@ class AdminDonHang
     {
         $this->conn = connectDB();
     }
+    public function convertToVND($amount)
+{
+    return number_format($amount, 0, ',', '.') . ' ₫';  // Định dạng số và thêm "₫" sau tiền
+}
     public function getAllDonHang()
     {
         try {
@@ -15,7 +19,24 @@ class AdminDonHang
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
 
-            return $stmt->fetchAll();
+            $donHangs = $stmt->fetchAll();
+
+            // Chuyển giá trị tiền thành VND nếu có trường 'tong_tien'
+            foreach ($donHangs as &$donHang) {
+                // Kiểm tra và chuyển các trường có giá trị tiền tệ (ví dụ: 'tong_tien')
+                if (isset($donHang['tong_tien'])) {
+                    $donHang['tong_tien'] = $this->convertToVND($donHang['tong_tien']);
+                }
+
+                // Nếu cần chuyển đổi các trường khác như giá sản phẩm, tổng giá trị, v.v.
+                if (isset($donHang['gia_san_pham'])) {
+                    $donHang['gia_san_pham'] = $this->convertToVND($donHang['gia_san_pham']);
+                }
+
+                // Bạn có thể thêm nhiều trường khác cần chuyển đổi tại đây, nếu có
+            }
+
+            return $donHangs;
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
@@ -52,11 +73,25 @@ class AdminDonHang
                     ':id' => $id
                 ]
             );
-            return $stmt->fetch();
+            $donHang = $stmt->fetch();
+
+        // Chuyển đổi các giá trị tiền thành VND nếu có
+        if ($donHang) {
+            if (isset($donHang['tong_tien'])) {
+                $donHang['tong_tien'] = $this->convertToVND($donHang['tong_tien']);
+            }
+
+            if (isset($donHang['gia_san_pham'])) {
+                $donHang['gia_san_pham'] = $this->convertToVND($donHang['gia_san_pham']);
+            }
+        }
+
+        return $donHang;
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
+
     public function getListSpDonHang($id)
     {
         try {

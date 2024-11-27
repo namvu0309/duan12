@@ -65,78 +65,85 @@ include "./views/layout/header.php"
                                 </nav>
                             </div>
 
-                            <div class="tab-content p-3" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
-                                    <!-- Chuyển container-fluid ra ngoài để mở rộng toàn màn hình -->
-                                    <div class="container-fluid">
-                                        <table class="table table-striped table-hover w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Tên người bình luận</th>
-                                                    <th>Nội dung</th>
-                                                    <th>Ngày đăng</th>
-                                                    <th>Thao tác</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Namvu</td>
-                                                    <td>caotodeptrai</td>
-                                                    <td>20/07/2024</td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="#"><button class="btn btn-warning mr-2">An</button></a>
-                                                            <a href="#"><button class="btn btn-danger">Xóa</button></a>
-                                                        </div>
+                            <div>
+                                <table id="example1" class="table table-bordered table-striped ">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Người bình luận</th>
+                                            <th>Nội dung</th>
+                                            <th>Ngày bình luận</th>
 
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($listBinhLuan as $key => $binhLuan) { ?>
+                                            <tr>
+                                                <td><?= $key + 1 ?></td>
+                                                <td><a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $binhLuan['tai_khoan_id'] ?>"><?= $binhLuan['ho_ten'] ?></a></td>
+                                                <td><?= $binhLuan['noi_dung'] ?></td>
+                                                <td><?= $binhLuan['ngay_dang'] ?></td>
+                                                <td>
+                                                    <form action="<?= BASE_URL_ADMIN . '?act=xoa-binh-luan' ?>" method="POST">
+                                                        <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
+
+                                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
+                                                            Xóa
+                                                        </button>
+
+                                                        </a>
+
+
                             </div>
+
+                            </form>
+
+                            </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                        </table>
                         </div>
-
                     </div>
-                    <!-- /.card-body -->
+
                 </div>
-                <!-- /.card -->
-
-            </section>
-            <!-- /.content -->
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-
-                            <!-- /.card -->
-
-
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
+                <!-- /.card-body -->
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.card -->
 
-        <!-- Page specific script -->
+        </section>
+        <!-- /.content -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
 
-        <!-- Code injected by live-server -->
-        <!-- footer -->
-        <?php
-        include "./views/layout/footer.php"
-        ?>
+                        <!-- /.card -->
 
-        <!-- end footer -->
+
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Page specific script -->
+
+    <!-- Code injected by live-server -->
+    <!-- footer -->
+    <?php
+    include "./views/layout/footer.php"
+    ?>
+
+    <!-- end footer -->
 </body>
 
 <script>

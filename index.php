@@ -1,5 +1,5 @@
 <?php
- session_start();
+session_start();
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
@@ -7,9 +7,12 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
 require_once './controllers/GioHang.php';
+require_once './controllers/TaiKhoan.php';
+require_once './controllers/SanPham.php';
+require_once './controllers/DanhMuc.php';
+
 
 // Require toàn bộ file Models
-require_once './models/Student.php';
 require_once './models/SanPham.php';
 require_once './models/TaiKhoan.php';
 require_once './models/GioHang.php';
@@ -28,10 +31,21 @@ match ($act) {
 
     '/' => (new HomeController())->home(),
     // Trang chủ
-    'chi-tiet-san-pham'=> (new HomeController())->chitietSanPham(),
-    'lien-he' =>(new HomeController())->lienHe(),
-   'gioi-thieu' =>(new HomeController())->gioiThieu(),
+    'chi-tiet-san-pham' => (new SanPhamController())->chitietSanPham(),
+    'gui-binh-luan' => (new SanPhamController())->guiBinhLuan(),
+    
+    
+    'lien-he' => (new HomeController())->lienHe(),
+    'gioi-thieu' => (new HomeController())->gioiThieu(),
     'search' => (new HomeController())->timKiem(),
+    'lich-su-mua-hang' => (new HomeController())->lichSuMuaHang(),
+    'chi-tiet-mua-hang' => (new HomeController())->chiTietMuaHang(),
+    // 'chi-tiet-don-hang' => (new HomeController())->chiTietDonhang(),
+    'huy-don-hang' => (new HomeController())->huyDonHang(),
+
+
+    //sanpham
+    'san-pham-theo-danh-muc' => (new DanhMucController())->sanPhamDanhMuc(),
 
 
     // Giỏ hàng ,đơn hàng
@@ -40,22 +54,20 @@ match ($act) {
     'thanh-toan' => (new GioHangDonHangController())->thanhToan(),
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController())->xoaSp(),
-    'da-dat-hang' => (new HomeController())->daDatHang(),
+    'da-dat-hang' => (new GioHangDonHangController())->daDatHang(),
+    
 
     //authe
-    'login' => (new HomeController())->formLogin(),
-    'check-login' => (new HomeController())->postlogin(),
-    'logout' => (new HomeController())->logout(),
-    'quen-mat-khau' => (new HomeController())->quenMatKhau(),
-    'lay-mat-khau' => (new HomeController())->layMatKhau(),
+    'login' => (new TaiKhoanController())->formLogin(),
+    'check-login' => (new TaiKhoanController())->postlogin(),
+    'logout' => (new TaiKhoanController())->logout(),
+    'quen-mat-khau' => (new TaiKhoanController())->quenMatKhau(),
+    'lay-mat-khau' => (new TaiKhoanController())->layMatKhau(),
+    'form-dang-ky' => (new TaiKhoanController())->formDangKy(),
+    'dang-ky' => (new TaiKhoanController())->dangKy(),
 
-
-    'form-dang-ky' => (new HomeController())->formDangKy(),
-    'dang-ky' => (new HomeController())->dangKy(),
-    'tai-khoan' => (new HomeController())->taiKhoan(),
-    'sua-mat-khau-ca-nhan' => (new HomeController())->postEditMatKhauCaNhan(),
-
-    //sanpham
-    "san-pham" => (new HomeController())->danhSachSanPham(),
-    'san-pham-theo-danh-muc' =>(new HomeController())->sanPhamDanhMuc(),
+    // 'quan-ly-tai-khoan' => (new TaiKhoanController())->suaTaiKhoan(),
+    'sua-thong-tin-ca-nhan' => (new TaiKhoanController())->suaThongTinCaNhan(),
+    'doi-mat-khau' => (new TaiKhoanController())->doiMatKhau(),
+    'tai-khoan' => (new TaiKhoanController())->taiKhoan(),
 };

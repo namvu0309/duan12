@@ -135,38 +135,53 @@
 
                                         <div class="tab-pane fade show active" id="tab_three">
 
-                                            <?php foreach ($listBinhLuan as $binhLuan): ?>
-                                                <div class="total-reviews">
-                                                    <div class="rev-avatar">
-                                                        <img src="<?= $binhLuan['anh_dai_dien'] ?>" alt="">
-                                                    </div>
-                                                    <div class="review-box">
+                                            <div class="tab-content reviews-tab">
+                                                <div class="tab-pane fade show active" id="tab_three">
 
-                                                        <div class="post-author">
-                                                            <p><span> <?= $binhLuan['ho_ten'] ?></span> <?= $binhLuan['ngay_dang'] ?></p>
+                                                    <!-- Hiển thị danh sách bình luận -->
+                                                    <?php foreach ($listBinhLuan as $binhLuan): ?>
+                                                        <div class="total-reviews">
+                                                            <div class="rev-avatar">
+                                                                <img src="<?= htmlspecialchars($binhLuan['anh_dai_dien']) ?>" alt="Avatar">
+                                                            </div>
+                                                            <div class="review-box">
+                                                                <div class="post-author">
+                                                                    <p><span><?= htmlspecialchars($binhLuan['ho_ten']) ?></span> <?= htmlspecialchars($binhLuan['ngay_dang']) ?></p>
+                                                                </div>
+                                                                <p><?= htmlspecialchars($binhLuan['noi_dung']) ?></p>
+                                                            </div>
                                                         </div>
-                                                        <p><?= $binhLuan['noi_dung'] ?></p>
-                                                    </div>
-                                                <?php endforeach ?>
-                                                <form action="#" class="review-form">
-                                                </div>
+                                                    <?php endforeach; ?>
 
+                                                    <!-- Form gửi bình luận -->
+                                                    <form action="<?= BASE_URL . '?act=gui-binh-luan' ?>" method="POST" class="review-form">
+                                                        <!-- Gửi ID sản phẩm qua form -->
+                                                        <input type="hidden" name="san_pham_id" value="<?= $sanPham['id'] ?>">
 
-                                                <div class="form-group row">
-                                                    <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Nội Dung Bình Luận</label>
-                                                        <textarea class="form-control" required></textarea>
+                                                        <!-- Kiểm tra nếu người dùng chưa đăng nhập -->
+                                                        <?php if (!isset($_SESSION['user_client'])): ?>
+                                                            <p class="text-danger">Vui lòng <a href="<?= BASE_URL . '?act=dang-nhap' ?>">đăng nhập</a> để gửi bình luận.</p>
+                                                        <?php else: ?>
+                                                            <!-- Gửi ID tài khoản người dùng qua form -->
+                                                            <input type="hidden" name="tai_khoan_id" value="<?= $_SESSION['user_client']?>">
 
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
+                                                            <div class="form-group row">
+                                                                <div class="col">
+                                                                    <label for="binh_luan" class="col-form-label">
+                                                                        <span class="text-danger">*</span> Nội Dung Bình Luận
+                                                                    </label>
+                                                                    <textarea name="binh_luan" class="form-control" required></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <button type="submit" class="btn btn-sqr">Gửi Bình Luận</button>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </form>
 
                                                 </div>
-                                                <div class="buttons">
-                                                    <button class="btn btn-sqr" type="submit"> Bình Luận</button>
-                                                </div>
-                                                </form> <!-- end of review-form -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
