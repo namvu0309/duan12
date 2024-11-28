@@ -87,6 +87,7 @@ class HomeController
             $tai_khoan_id = $user['id'];
 
             // lấy ra danh sách trạng thái đoewn hàng
+            $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
             $arrTrangThaiDonHang = $this->modelDonHang->getTrangThaiDonHang();
             $trangThaiDonHang = array_column($arrTrangThaiDonHang, 'ten_trang_thai', 'id');
@@ -143,8 +144,7 @@ class HomeController
 
             require_once "./views/chiTietMuaHang.php";
         } else {
-            var_dump('Bạn chưa đăng  nhập');
-            die;
+            echo "Bạn chưa đăng nhập";
         }
     }
 

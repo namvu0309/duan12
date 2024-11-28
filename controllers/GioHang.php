@@ -1,4 +1,9 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class GioHangDonHangController
 {
     public $modelSanPham;
@@ -207,12 +212,71 @@ class GioHangDonHangController
 
                     $_SESSION['flash'] = true;
                     $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
+                    $subject = 'Shop NBH ';
+                    $content = "'Xin chào '.$ten_nguoi_nhan.'! <br> Đơn hàng của bạn đã được đặt thành công. Chúng tôi sẽ tiếp nhận đơn hàng và giao hàng cho bạn trong thời gian sớm nhất. <br> Mã đơn hàng của bạn là: '.$ma_don_hang.' <br> ";
+                    $this->guimail($email_nguoi_nhan, $subject, $content);
                     header('Location:' . BASE_URL . '?act=da-dat-hang');
                     exit();
                 }
             }
         }
     }
+    public function guimail($to, $subject, $content)
+    {
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'namvtph51016@gmail.com';                     //SMTP username
+            $mail->Password   = 'uaeo giqt noxb noyp';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            // Set encoding to UTF-8
+            $mail->CharSet = 'UTF-8';
+
+            //Recipients
+            $mail->setFrom('namvtph51016@gmail.com', '=?UTF-8?B?' . base64_encode('Vũ Trọng Nam') . '?=');
+            $mail->addAddress($to);     //Add a recipient
+            //Optional name
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = $subject; //Set email subject
+            $mail->Body    = $content;
+
+            $mail->send();
+            echo 'Bạn Đã gửi thành công';
+        } catch (Exception $e) {
+            echo "Gửi mail thất bại Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+    public function capNhatSoLuong()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $gio_hang_id = $_POST['gio_hang_id']; // ID của giỏ hàng
+            $soLuongMoi = $_POST['so_luong']; // Mảng số lượng từ form
+            var_dump($_POST['so_luong']);
+            die();
+            foreach ($soLuongMoi as $sanPhamId => $soLuong) {
+                // Kiểm tra số lượng có hợp lệ không
+                if ($soLuong > 0) {
+                    // Cập nhật số lượng trong cơ sở dữ liệu
+                    $this->modelGioHang->updateSoLuong($gio_hang_id, $sanPhamId, $soLuong);
+                }
+            }
+            // Sau khi cập nhật, chuyển hướng về trang giỏ hàng
+            header('Location: ' . BASE_URL . '?act=gio-hang');
+            exit;
+        }
+    }
+
+
+
 
 
 
@@ -221,7 +285,8 @@ class GioHangDonHangController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $chi_tiet_gio_hang_id = $_POST['chi_tiet_gio_hang_id'];
             $xoa = $this->modelGioHang->deleteSanPhamGioHang($chi_tiet_gio_hang_id);
-            // var_dump($xoa);die()
+            // var_dump($xoa);
+            // die();
             header('Location:' . BASE_URL . '?act=gio-hang');
         }
     }

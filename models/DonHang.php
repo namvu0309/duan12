@@ -78,7 +78,7 @@ class DonHang
     public function getDonHangFromUser($taiKhanId)
     {
         try {
-            $sql = "SELECT * FROM don_hangs WHERE tai_khoan_id = :tai_khoan_id ";
+            $sql = "SELECT * FROM don_hangs WHERE tai_khoan_id = :tai_khoan_id order by tai_khoan_id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(
                 [

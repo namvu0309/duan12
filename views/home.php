@@ -135,9 +135,12 @@
                                         <!-- product item start -->
                                         <div class="product-item">
                                             <figure class="product-thumb">
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                                    <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
-                                                    <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product" width="200px" height="200px">
+                                                <a
+                                                    href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                    <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
+                                                        alt="product" style="width: 300px; height:250px;">
+                                                    <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
+                                                        alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <?php
@@ -169,23 +172,29 @@
 
 
                                                 </div>
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                                                    <div class="cart-hover"><button class="btn btn-cart">Xem chi tiết</button>
+                                                <a
+                                                    href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                                    <div class="cart-hover"><button class="btn btn-cart">Xem chi
+                                                            tiết</button>
                                                 </a>
                                         </div>
                                         </figure>
                                         <div class="product-caption text-center">
 
                                             <h6 class="product-name">
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id-san-pham=' . $sanPham['id']; ?>"><?= $sanPham['ten_san_pham'] ?></a>
+                                                <a
+                                                    href="<?= BASE_URL . '?act=chi-tiet-san-pham&id-san-pham=' . $sanPham['id']; ?>"><?= $sanPham['ten_san_pham'] ?></a>
                                             </h6>
                                             <div class="price-box">
                                                 <?php if ($sanPham['gia_khuyen_mai']) { ?>
 
-                                                    <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
-                                                    <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                                    <span
+                                                        class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
+                                                    <span
+                                                        class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                                 <?php } else {  ?>
-                                                    <span class="price-old" style="color: #CDAB75;"><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></span>
+                                                    <span class="price-old"
+                                                        style="color: #CDAB75;"><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></span>
 
                                                 <?php } ?>
 
@@ -223,7 +232,9 @@
                         <div class="banner-slide-item">
                             <figure class="banner-statistics">
                                 <a href="#">
-                                    <img src="./views/assets/img/banner/img1-middle.jpg" alt="product banner">
+
+                                    <img src="./views/assets/img/banner/banner.jpg" style="width: 333px; height: 460px;"
+                                        alt="product banner">
                                 </a>
                                 <div class="banner-content banner-content_style2">
                                     <h5 class="banner-text3"><a href="#">BRACELATES</a></h5>
@@ -235,7 +246,8 @@
                         <div class="banner-slide-item">
                             <figure class="banner-statistics">
                                 <a href="#">
-                                    <img src="./views/assets/img/banner/img2-middle.jpg" alt="product banner">
+                                    <img src="./views/assets/img/banner/banner6.jpg"
+                                        style="width: 333px; height: 460px;" alt="product banner">
                                 </a>
                                 <div class="banner-content banner-content_style2">
                                     <h5 class="banner-text3"><a href="#">EARRINGS</a></h5>
@@ -247,7 +259,8 @@
                         <div class="banner-slide-item">
                             <figure class="banner-statistics">
                                 <a href="#">
-                                    <img src="./views/assets/img/banner/img3-middle.jpg" alt="product banner">
+                                    <img src="./views/assets/img/banner/banner3.jpg"
+                                        style="width: 333px; height: 460px;" alt="product banner">
                                 </a>
                                 <div class="banner-content banner-content_style2">
                                     <h5 class="banner-text3"><a href="#">NECJLACES</a></h5>
@@ -259,7 +272,9 @@
                         <div class="banner-slide-item">
                             <figure class="banner-statistics">
                                 <a href="#">
-                                    <img src="./views/assets/img/banner/img4-middle.jpg" alt="product banner">
+                                    <img src="./views/assets/img/banner/banner5.jpg"
+                                        style="width: 333px; height: 460px;" alt="product banner">
+
                                 </a>
                                 <div class="banner-content banner-content_style2">
                                     <h5 class="banner-text3"><a href="#">RINGS</a></h5>
@@ -271,7 +286,8 @@
                         <div class="banner-slide-item">
                             <figure class="banner-statistics">
                                 <a href="#">
-                                    <img src="./views/assets/img/banner/img5-middle.jpg" alt="product banner">
+                                    <img src="./views/assets/img/banner/banner7.jpg"
+                                        style="width: 333px; height: 460px;" alt="product banner">
                                 </a>
                                 <div class="banner-content banner-content_style2">
                                     <h5 class="banner-text3"><a href="#">PEARLS</a></h5>
@@ -318,9 +334,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -371,9 +391,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -421,9 +445,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -474,9 +502,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -527,9 +559,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -580,9 +616,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -633,9 +673,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -683,9 +727,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -736,9 +784,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -789,9 +841,13 @@
                                     </div>
                                 </div>
                                 <div class="button-group">
-                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                    <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                class="pe-7s-search"></i></span></a>
                                 </div>
                                 <div class="cart-hover">
                                     <button class="btn btn-cart">add to cart</button>
@@ -833,7 +889,8 @@
     <!-- featured product area end -->
 
     <!-- testimonial area start -->
-    <section class="testimonial-area section-padding bg-img" data-bg="./views/assets/img/testimonial/testimonials-bg.jpg">
+    <section class="testimonial-area section-padding bg-img"
+        data-bg="./views/assets/img/testimonial/testimonials-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -866,7 +923,9 @@
                     <div class="testimonial-content-wrapper">
                         <div class="testimonial-content-carousel">
                             <div class="testimonial-content">
-                                <p>Vivamus a lobortis ipsum, vel condimentum magna. Etiam id turpis tortor. Nunc scelerisque, nisi a blandit varius, nunc purus venenatis ligula, sed venenatis orci augue nec sapien. Cum sociis natoque</p>
+                                <p>Vivamus a lobortis ipsum, vel condimentum magna. Etiam id turpis tortor. Nunc
+                                    scelerisque, nisi a blandit varius, nunc purus venenatis ligula, sed venenatis orci
+                                    augue nec sapien. Cum sociis natoque</p>
                                 <div class="ratings">
                                     <span><i class="fa fa-star-o"></i></span>
                                     <span><i class="fa fa-star-o"></i></span>
@@ -877,7 +936,9 @@
                                 <h5 class="testimonial-author">lindsy niloms</h5>
                             </div>
                             <div class="testimonial-content">
-                                <p>Vivamus a lobortis ipsum, vel condimentum magna. Etiam id turpis tortor. Nunc scelerisque, nisi a blandit varius, nunc purus venenatis ligula, sed venenatis orci augue nec sapien. Cum sociis natoque</p>
+                                <p>Vivamus a lobortis ipsum, vel condimentum magna. Etiam id turpis tortor. Nunc
+                                    scelerisque, nisi a blandit varius, nunc purus venenatis ligula, sed venenatis orci
+                                    augue nec sapien. Cum sociis natoque</p>
                                 <div class="ratings">
                                     <span><i class="fa fa-star-o"></i></span>
                                     <span><i class="fa fa-star-o"></i></span>
@@ -888,7 +949,9 @@
                                 <h5 class="testimonial-author">Daisy Millan</h5>
                             </div>
                             <div class="testimonial-content">
-                                <p>Vivamus a lobortis ipsum, vel condimentum magna. Etiam id turpis tortor. Nunc scelerisque, nisi a blandit varius, nunc purus venenatis ligula, sed venenatis orci augue nec sapien. Cum sociis natoque</p>
+                                <p>Vivamus a lobortis ipsum, vel condimentum magna. Etiam id turpis tortor. Nunc
+                                    scelerisque, nisi a blandit varius, nunc purus venenatis ligula, sed venenatis orci
+                                    augue nec sapien. Cum sociis natoque</p>
                                 <div class="ratings">
                                     <span><i class="fa fa-star-o"></i></span>
                                     <span><i class="fa fa-star-o"></i></span>
@@ -899,7 +962,9 @@
                                 <h5 class="testimonial-author">Anamika lusy</h5>
                             </div>
                             <div class="testimonial-content">
-                                <p>Vivamus a lobortis ipsum, vel condimentum magna. Etiam id turpis tortor. Nunc scelerisque, nisi a blandit varius, nunc purus venenatis ligula, sed venenatis orci augue nec sapien. Cum sociis natoque</p>
+                                <p>Vivamus a lobortis ipsum, vel condimentum magna. Etiam id turpis tortor. Nunc
+                                    scelerisque, nisi a blandit varius, nunc purus venenatis ligula, sed venenatis orci
+                                    augue nec sapien. Cum sociis natoque</p>
                                 <div class="ratings">
                                     <span><i class="fa fa-star-o"></i></span>
                                     <span><i class="fa fa-star-o"></i></span>
@@ -1320,7 +1385,8 @@
                                     <p>25/03/2019 | <a href="#">Corano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">Celebrity Daughter Opens Up About Having Her Eye Color Changed</a>
+                                    <a href="blog-details.html">Celebrity Daughter Opens Up About Having Her Eye Color
+                                        Changed</a>
                                 </h5>
                             </div>
                         </div>
@@ -1338,7 +1404,8 @@
                                     <p>25/03/2019 | <a href="#">Corano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">Children Left Home Alone For 4 Days In TV series Experiment</a>
+                                    <a href="blog-details.html">Children Left Home Alone For 4 Days In TV series
+                                        Experiment</a>
                                 </h5>
                             </div>
                         </div>
@@ -1356,7 +1423,8 @@
                                     <p>25/03/2019 | <a href="#">Corano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">Lotto Winner Offering Up Money To Any Man That Will Date Her</a>
+                                    <a href="blog-details.html">Lotto Winner Offering Up Money To Any Man That Will Date
+                                        Her</a>
                                 </h5>
                             </div>
                         </div>
@@ -1374,7 +1442,8 @@
                                     <p>25/03/2019 | <a href="#">Corano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">People are Willing Lie When Comes Money, According to Research</a>
+                                    <a href="blog-details.html">People are Willing Lie When Comes Money, According to
+                                        Research</a>
                                 </h5>
                             </div>
                         </div>
@@ -1392,7 +1461,8 @@
                                     <p>25/03/2019 | <a href="#">Corano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">romantic Love Stories Of Hollywoodâ€™s Biggest Celebrities</a>
+                                    <a href="blog-details.html">romantic Love Stories Of Hollywoodâ€™s Biggest
+                                        Celebrities</a>
                                 </h5>
                             </div>
                         </div>

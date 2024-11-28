@@ -72,7 +72,9 @@ include "./views/layout/header.php"
                                                 <tr>
                                                     <td><?= $key + 1 ?></td>
                                                     <td><?= $sanpham['ten_san_pham'] ?></td>
-                                                    <td><img src="<?= '.' . $sanpham['hinh_anh'] ?>" width=200 alt="" onerror="this.onerror=null;this.src='https://www.droppii.com/wp-content/uploads/2023/04/quang-cao-my-pham-3.jpg'"></td>
+                                                    <td><img src="<?= '.' . $sanpham['hinh_anh'] ?>" width=200 alt=""
+                                                            onerror="this.onerror=null;this.src='https://www.droppii.com/wp-content/uploads/2023/04/quang-cao-my-pham-3.jpg'">
+                                                    </td>
 
 
                                                     <td><?= $sanpham['gia_san_pham'] ?></td>
@@ -81,14 +83,17 @@ include "./views/layout/header.php"
                                                     <td><?= $sanpham['trang_thai'] == 1 ? 'Còn Hàng' : 'Hết Hàng' ?></td>
                                                     <td>
                                                         <div class="btn-group">
-                                                            <a href="?act=chi-tiet-san-pham&id_san_pham=<?= $sanpham['id']  ?>">
+                                                            <a
+                                                                href="?act=chi-tiet-san-pham&id_san_pham=<?= $sanpham['id']  ?>">
                                                                 <button class=" btn btn-primary">Chi Tiết </button>
                                                             </a>
-                                                            <a href="?act=form-sua-san-pham&id_san_pham=<?= $sanpham['id']  ?>">
+                                                            <a
+                                                                href="?act=form-sua-san-pham&id_san_pham=<?= $sanpham['id']  ?>">
                                                                 <button class=" btn btn-warning">Sửa </button>
                                                             </a>
 
-                                                            <a href="?act=form-xoa-san-pham&id_san_pham=<?= $sanpham['id']  ?>" onclick="return confirm('ban co dong y muon xoa khong?')">
+                                                            <a href="?act=form-xoa-san-pham&id_san_pham=<?= $sanpham['id']  ?>"
+                                                                onclick="return confirm('ban co dong y muon xoa khong?')">
                                                                 <button class="btn btn-danger">Xóa</button>
                                                             </a>
                                                         </div>

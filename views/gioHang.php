@@ -11,7 +11,8 @@
                         <div class="breadcrumb-wrap">
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a>
+                                    </li>
                                     <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
                                 </ul>
                             </nav>
@@ -50,9 +51,12 @@
                                         foreach ($chiTietGioHang as $key => $sanPham) {
                                         ?>
                                             <form action="<?= BASE_URL . '?act=xoa-san-pham-gio-hang' ?>" method="POST">
-                                                <input type="hidden" name="chi_tiet_gio_hang_id" value="<?= $sanPham['id'] ?>">
+                                                <input type="hidden" name="chi_tiet_gio_hang_id"
+                                                    value="<?= $sanPham['id'] ?>">
                                                 <tr>
-                                                    <td class="pro-thumbnail"><img class="img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="Product" /></a></td>
+                                                    <td class="pro-thumbnail"><img class="img-fluid"
+                                                            src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
+                                                            alt="Product" /></a></td>
                                                     <td class="pro-title"><?= $sanPham['ten_san_pham'] ?></td>
                                                     <td class="pro-price"><span>
                                                             <?php if ($sanPham['gia_khuyen_mai'] > 0) { ?>
@@ -62,8 +66,12 @@
                                                             <?php } ?>
                                                         </span></td>
                                                     <td class="pro-quantity">
-                                                        <div class="pro-qty"><input type="text" value="<?= $sanPham['so_luong'] ?>"></div>
+                                                        <div class="pro-qty">
+                                                            <input type="number" name="so_luong"
+                                                                value="<?= $sanPham['so_luong'] ?>" min="1">
+                                                        </div>
                                                     </td>
+
                                                     <td class="pro-subtotal"><span>
                                                             <?php
                                                             $tongTien = 0;
@@ -76,11 +84,11 @@
                                                             echo formatPrice($tongTien) . 'đ';
                                                             ?>
                                                         </span></td>
-                                                    <td class="pro-remove"><button type="submit"><i class="fa fa-trash-o"></i></button></td>
+                                                    <td class="pro-remove"><button type="submit"><i
+                                                                class="fa fa-trash-o"></i></button></td>
                                                 </tr>
                                             </form>
-                                        <?php
-                                        } ?>
+                                        <?php } ?>
 
 
 
@@ -92,12 +100,10 @@
                                 <div class="apply-coupon-wrapper">
                                     <form action="#" method="post" class=" d-block d-md-flex">
                                         <input type="text" placeholder="Enter Your Coupon Code" required="">
-                                        <button class="btn btn-sqr">Apply Coupon</button>
+                                        <button class="btn btn-sqr">Nhập Mã Giảm Giá</button>
                                     </form>
                                 </div>
-                                <div class="cart-update">
-                                    <a href="#" class="btn btn-sqr">Update Cart</a>
-                                </div>
+                                <button type="submit" class="btn btn-sqr">Cập Nhật Giỏ Hàng</button>
                             </div>
                         </div>
                     </div>
@@ -124,7 +130,8 @@
                                         </table>
                                     </div>
                                 </div>
-                                <a href="<?= BASE_URL . '?act=thanh-toan' ?>" class="btn btn-sqr d-block">Tiến hành đặt hàng</a>
+                                <a href="<?= BASE_URL . '?act=thanh-toan' ?>" class="btn btn-sqr d-block">Tiến hành đặt
+                                    hàng</a>
                             </div>
                         </div>
                     </div>

@@ -200,11 +200,13 @@ class TaiKhoanController
             $checkEmail = $this->modelTaiKhoan->getTaiKhoanFromEmail($email);
             // var_dump($checkEmail);die();
 
-            // var_dump($checkEmail['mat_khau']);die();
 
-            if (is_array($checkEmail) && $checkEmail['chuc_vu_id' == 2]) {
+
+            if (is_array($checkEmail) && $checkEmail['chuc_vu_id'] == 2) {
                 //     $_SESSION['user_id'] = $checkUser[0]['id'];
+
                 $_SESSION['layMk'] = 'Mật khẩu của bạn là: ' . $checkEmail['mat_khau'];
+
 
                 header('Location:' . BASE_URL . '?act=quen-mat-khau');
             } else {
@@ -219,9 +221,9 @@ class TaiKhoanController
 
     public function suaThongTinCaNhan()
     {
-      
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-         
+
             $tai_khoan_id = $_POST['tai_khoan_id'];
             $ho_ten = $_POST['ho_ten'] ?? '';
             $email = $_POST['email'] ?? '';
@@ -231,7 +233,7 @@ class TaiKhoanController
             $gioi_tinh = $_POST['gioi_tinh'] ?? ''; // Lấy giới tính từ form
             $trang_thai = $_POST['trang_thai'] ?? 1; // Lấy trạng thái từ form
             $id = $_POST['tai_khoan_id'] ?? '';
-            
+
             // Kiểm tra lỗi
             $errors = [];
             if (empty($ho_ten)) {
@@ -246,7 +248,7 @@ class TaiKhoanController
             if (empty($email)) {
                 $errors['email'] = 'Email không được để trống';
             }
-            
+
             // var_dump($_POST);
             // die();
             // var_dump($_SESSION);
@@ -278,19 +280,19 @@ class TaiKhoanController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Lấy thông tin từ form
-           
+
             $old_pass = htmlspecialchars(trim($_POST['old_pass']));
             $new_pass = htmlspecialchars(trim($_POST['new_pass']));
             $confirm_pass = htmlspecialchars(trim($_POST['confirm_pass']));
 
             // Lấy thông tin user từ session
             $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
-        
+
             // Kiểm tra mật khẩu cũ
             $errors = [];
             if (empty($old_pass)) {
                 $errors['old_pass'] = 'Mật khẩu cũ không được để trống';
-            } elseif ($old_pass!==$user['mat_khau']) {
+            } elseif ($old_pass !== $user['mat_khau']) {
                 $errors['old_pass'] = 'Mật khẩu cũ không đúng';
             }
 
@@ -305,7 +307,7 @@ class TaiKhoanController
             } elseif ($new_pass !== $confirm_pass) {
                 $errors['confirm_pass'] = 'Mật khẩu nhập lại không đúng';
             }
-            
+
             // Nếu có lỗi, lưu vào session và chuyển hướng
             if (!empty($errors)) {
                 $_SESSION['errors'] = $errors;
@@ -315,7 +317,7 @@ class TaiKhoanController
             }
 
             // Nếu không có lỗi, cập nhật mật khẩu mới
-            $hashPass =$new_pass;
+            $hashPass = $new_pass;
             $status = $this->modelTaiKhoan->resetPassword($user['id'], $hashPass);
             // var_dump($hashPass);
             // die();

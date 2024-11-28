@@ -32,8 +32,6 @@
                         <div class="login-reg-form-wrap">
                             <h5 class="text-center">Đăng nhập</h5>
                             <?php if (isset($_SESSION['errors'])) { ?>
-                                <p class="text-danger text-center"><?= $_SESSION['errors'] ?></p>
-                            <?php } else { ?>
                                 <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
                             <?php } ?>
 
@@ -47,7 +45,8 @@
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
 
-                                        <a href="<?= BASE_URL .'?act=quen-mat-khau'?>" class="forget-pwd">Quên mật khẩu ?</a>
+                                        <a href="<?= BASE_URL . '?act=quen-mat-khau' ?>" class="forget-pwd">Quên mật khẩu
+                                            ?</a>
                                     </div>
                                 </div>
                                 <div class="single-input-item d-flex justify-content-between">

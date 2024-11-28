@@ -46,23 +46,31 @@
                                     <li class="d-flex align-items-center mb-3">
                                         <!-- Hình ảnh sản phẩm -->
                                         <div class="me-3">
-                                            <img src="<?= htmlspecialchars($top10sp['hinh_anh']) ?>"
-                                                alt="<?= htmlspecialchars($top10sp['ten_san_pham']) ?>"
-                                                class="img-fluid" style="width: 50px; height: 50px; object-fit: cover;">
+                                            <a
+                                                href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $top10sp['id'] ?>">
+                                                <!-- Thêm liên kết tới trang chi tiết sản phẩm -->
+                                                <img src="<?= htmlspecialchars($top10sp['hinh_anh']) ?>"
+                                                    alt="<?= htmlspecialchars($top10sp['ten_san_pham']) ?>"
+                                                    class="img-fluid"
+                                                    style="width: 50px; height: 50px; object-fit: cover;">
+                                            </a>
                                         </div>
                                         <!-- Thông tin sản phẩm -->
                                         <div>
-                                            <p class="mb-1 text-truncate" style="max-width: 150px;">
-                                                <?= htmlspecialchars($top10sp['ten_san_pham']) ?>
-                                            </p>
+                                            <a
+                                                href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $top10sp['id'] ?>">
+                                                <!-- Thêm liên kết tới trang chi tiết sản phẩm -->
+                                                <p class="mb-1 text-truncate" style="max-width: 150px;">
+                                                    <?= htmlspecialchars($top10sp['ten_san_pham']) ?>
+                                                </p>
+                                            </a>
                                             <?php if (!empty($top10sp['gia_khuyen_mai']) && $top10sp['gia_khuyen_mai'] < $top10sp['gia_san_pham']): ?>
                                             <!-- Giá khuyến mại -->
                                             <span
-                                                class="text-danger fw-bold"><?= number_format($top10sp['gia_khuyen_mai'], 0, ',', '.') ?>₫</span>
+                                                class="text-danger fw-bold"><?= number_format($top10sp['gia_khuyen_mai']) ?>₫</span>
                                             <!-- Giá gốc -->
                                             <span
-                                                class="text-muted text-decoration-line-through ms-2"><?= number_format($top10sp['gia_san_pham'], 0, ',', '.') ?>₫</span>
-
+                                                class="text-muted text-decoration-line-through ms-2"><?= number_format($top10sp['gia_san_pham']) ?>₫</span>
                                             <?php else: ?>
                                             <!-- Giá bình thường -->
                                             <span

@@ -7,6 +7,11 @@ class AdminSanPham
     {
         $this->conn = connectDB();
     }
+    public function convertToVND($amount)
+{
+    return number_format($amount, 0, ',', '.') . ' ₫';  // Định dạng số và thêm "₫" sau tiền
+}
+
     public function getAllSanPham()
     {
         try {
@@ -16,7 +21,15 @@ class AdminSanPham
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
 
-            return $stmt->fetchAll();
+            $products = $stmt->fetchAll();
+
+            // Chuyển giá thành tiền VND
+            foreach ($products as &$product) {
+                $product['gia_san_pham'] = $this->convertToVND($product['gia_san_pham']);
+                $product['gia_khuyen_mai'] = $this->convertToVND($product['gia_khuyen_mai']);
+            }
+    
+            return $products;
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
