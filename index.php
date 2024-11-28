@@ -39,6 +39,8 @@ match ($act) {
     // Trang chủ
     'chi-tiet-san-pham' => (new SanPhamController())->chitietSanPham(),
     'gui-binh-luan' => (new SanPhamController())->guiBinhLuan(),
+    'xoa-binh-luan' => (new SanPhamController())->xoaBinhLuan(),
+
 
 
     'lien-he' => (new HomeController())->lienHe(),

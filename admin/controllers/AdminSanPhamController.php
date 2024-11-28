@@ -160,7 +160,7 @@ class AdminSanPhamController
             $mo_ta = $_POST['mo_ta'];
 
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
-// var_dump($hinh_anh); die();
+            // var_dump($hinh_anh); die();
 
             // Tạo 1 mảng trống để chứa dl
             $errors = [];
@@ -369,18 +369,20 @@ class AdminSanPhamController
     {
         //  var_dump($_POST);die();
         $id_binh_luan = $_POST['id_binh_luan'];
+        // $san_pham_id = intval($_POST['san_pham_id']);
         // $name_view = $_POST['name_view'];
-        $xoa = $this->modelSanPham->deleteBinhLuan($id_binh_luan);
-        // var_dump($xoa);die();
+
 
 
         $binhLuan = $this->modelSanPham->getDetailBinhLuan($id_binh_luan);
+        $xoa = $this->modelSanPham->deleteBinhLuan($id_binh_luan);
 
+        // var_dump($binhLuan);
+        // die();
         // die();
         // $status = $this->modelSanPham->updateTrangThaiBinhLuan($id_binh_luan, $trang_thai_update);
         header('Location:' . BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $binhLuan['san_pham_id']);
     }
-
 
     public function xoaBinhLuanKhachHang()
     {
@@ -389,10 +391,10 @@ class AdminSanPhamController
         $tai_khoan_id = $_POST['tai_khoan_id'];
         // var_dump($tai_khoan_id);die();
         // $name_view = $_POST['name_view'];
-        $xoa = $this->modelSanPham->deleteBinhLuan($id_binh_luan);
         // var_dump($xoa);die();
 
 
+        $xoa = $this->modelSanPham->deleteBinhLuan($id_binh_luan);
         $binhLuan = $this->modelSanPham->getDetailBinhLuan($id_binh_luan);
 
         // die();
