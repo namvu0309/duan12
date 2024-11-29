@@ -66,14 +66,14 @@
                                             <?php if (!empty($top10sp['gia_khuyen_mai']) && $top10sp['gia_khuyen_mai'] < $top10sp['gia_san_pham']): ?>
                                             <!-- Giá khuyến mại -->
                                             <span
-                                                class="text-danger fw-bold"><?= number_format($top10sp['gia_khuyen_mai'], 0, ',', '.') ?>₫</span>
+                                                class="text-danger fw-bold"><?= formatPrice($top10sp['gia_khuyen_mai']) ?>₫</span>
                                             <!-- Giá gốc -->
                                             <span
-                                                class="text-muted text-decoration-line-through ms-2"><?= number_format($top10sp['gia_san_pham'], 0, ',', '.') ?>₫</span>
+                                                class="text-muted text-decoration-line-through ms-2"><?=  formatPrice($top10sp['gia_san_pham']) ?>₫</span>
                                             <?php else: ?>
                                             <!-- Giá bình thường -->
                                             <span
-                                                class="text-danger fw-bold"><?= number_format($top10sp['gia_san_pham'], 0, ',', '.') ?>₫</span>
+                                                class="text-danger fw-bold"><?=  formatPrice($top10sp['gia_san_pham']) ?>₫</span>
                                             <?php endif; ?>
                                         </div>
                                     </li>
@@ -384,12 +384,12 @@
                                         <div class="price-box">
                                             <?php if (!empty($sanPham['gia_khuyen_mai']) && $sanPham['gia_khuyen_mai'] < $sanPham['gia_san_pham']): ?>
                                             <span
-                                                class="price-regular text-success">$<?= number_format($sanPham['gia_khuyen_mai'], 2) ?></span>
+                                                class="price-regular text-success">$<?=  formatPrice($sanPham['gia_khuyen_mai'], 2 . 'Đ') ?></span>
                                             <span
-                                                class="price-old text-muted"><del>$<?= number_format($sanPham['gia_san_pham'], 2) ?></del></span>
+                                                class="price-old text-muted"><del>$<?=  formatPrice($sanPham['gia_san_pham'], 2 .'Đ') ?></del></span>
                                             <?php else: ?>
                                             <span
-                                                class="price-regular">$<?= number_format($sanPham['gia_san_pham'], 2) ?></span>
+                                                class="price-regular">$<?=  formatPrice($sanPham['gia_san_pham'], 2 .'Đ') ?></span>
                                             <?php endif; ?>
                                         </div>
                                     </div>
