@@ -7,15 +7,29 @@ class AdminSanPham
     {
         $this->conn = connectDB();
     }
+    public function convertToVND($amount)
+{
+    return number_format($amount, 0, ',', '.') . ' ₫';  // Định dạng số và thêm "₫" sau tiền
+}
+
     public function getAllSanPham()
     {
         try {
-            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM san_phams
-            INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id";
+            $sql =
+            "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM san_phams
+            INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id ORDER BY san_phams.id DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
 
-            return $stmt->fetchAll();
+            $products = $stmt->fetchAll();
+
+            // Chuyển giá thành tiền VND
+            foreach ($products as &$product) {
+                $product['gia_san_pham'] = $this->convertToVND($product['gia_san_pham']);
+                $product['gia_khuyen_mai'] = $this->convertToVND($product['gia_khuyen_mai']);
+            }
+    
+            return $products;
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }

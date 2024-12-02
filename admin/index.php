@@ -26,7 +26,7 @@ require_once './models/AdminThongKe.php';
 // Route
 $act = $_GET['act'] ?? '/';
 
-if($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin' ){
+if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
   checkLoginAdmin();
 }
 
@@ -36,21 +36,21 @@ match ($act) {
   // Trang chủ
   // router danh muc
   '/' => (new AdminBaoCaoThongKeController())->home(),
-    "danh-muc-mi-pham" => (new AdminDanhMucController())->danhSachDanhMuc(),
-    "form-them-danh-muc" => (new AdminDanhMucController())->formAddDanhMuc(),
-    "them-danh-muc" => (new AdminDanhMucController())->postAddDanhMuc(),
-    "form-sua-danh-muc" => (new AdminDanhMucController())->formEditDanhMuc(),
-    "sua-danh-muc" => (new AdminDanhMucController())->postEditDanhMuc(),
-    "form-xoa-danh-muc" => (new AdminDanhMucController())->deleteDanhMuc(),
+  "danh-muc-mi-pham" => (new AdminDanhMucController())->danhSachDanhMuc(),
+  "form-them-danh-muc" => (new AdminDanhMucController())->formAddDanhMuc(),
+  "them-danh-muc" => (new AdminDanhMucController())->postAddDanhMuc(),
+  "form-sua-danh-muc" => (new AdminDanhMucController())->formEditDanhMuc(),
+  "sua-danh-muc" => (new AdminDanhMucController())->postEditDanhMuc(),
+  "form-xoa-danh-muc" => (new AdminDanhMucController())->deleteDanhMuc(),
 
-    // router san pham
+  // router san pham
 
-    "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
-    "form-them-san-pham" => (new AdminSanPhamController())->formAddSanPham(),
-    "them-san-pham" => (new AdminSanPhamController())->postAddSanPham(),
-    "form-sua-san-pham" => (new AdminSanPhamController())->formEditSanPham(),
-    "sua-san-pham" => (new AdminSanPhamController())->postEditSanPham(),
-    "form-xoa-san-pham" => (new AdminSanPhamController())->deleteSanPham(),
+  "san-pham" => (new AdminSanPhamController())->danhSachSanPham(),
+  "form-them-san-pham" => (new AdminSanPhamController())->formAddSanPham(),
+  "them-san-pham" => (new AdminSanPhamController())->postAddSanPham(),
+  "form-sua-san-pham" => (new AdminSanPhamController())->formEditSanPham(),
+  "sua-san-pham" => (new AdminSanPhamController())->postEditSanPham(),
+  "form-xoa-san-pham" => (new AdminSanPhamController())->deleteSanPham(),
   "sua-album-anh-san-pham" => (new AdminSanPhamController())->postEditAnhSanPham(),
   "chi-tiet-san-pham" => (new AdminSanPhamController())->detailSanPham(),
 
@@ -98,5 +98,5 @@ match ($act) {
 
   'sua-mat-khau-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->postEditMatKhauCaNhan(),
   // bieu do thong ke
-  'bieu-do' =>(new AdminBaoCaoThongKeController)->bieuDo(),
+  'bieu-do' => (new AdminBaoCaoThongKeController)->bieuDo(),
 };

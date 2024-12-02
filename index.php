@@ -4,6 +4,12 @@ session_start();
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
 
+
+// thư viện php mailer
+require_once 'views/assets/PHPMailer-master/PHPMailer-master/src/Exception.php';
+require_once 'views/assets/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
+require_once 'views/assets/PHPMailer-master/PHPMailer-master/src/SMTP.php';
+
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
 require_once './controllers/GioHang.php';
@@ -33,8 +39,10 @@ match ($act) {
     // Trang chủ
     'chi-tiet-san-pham' => (new SanPhamController())->chitietSanPham(),
     'gui-binh-luan' => (new SanPhamController())->guiBinhLuan(),
-    
-    
+    'xoa-binh-luan' => (new SanPhamController())->xoaBinhLuan(),
+
+
+
     'lien-he' => (new HomeController())->lienHe(),
     'gioi-thieu' => (new HomeController())->gioiThieu(),
     'search' => (new HomeController())->timKiem(),
@@ -55,8 +63,8 @@ match ($act) {
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController())->xoaSp(),
     'da-dat-hang' => (new GioHangDonHangController())->daDatHang(),
-    
-
+    "cap-nhat-so-luong" => (new GioHangDonHangController())->capNhatSoLuong(),
+    // "cap-nhat-gio-hang" => (new GioHangDonHangController())->capNhatSoLuong(),
     //authe
     'login' => (new TaiKhoanController())->formLogin(),
     'check-login' => (new TaiKhoanController())->postlogin(),

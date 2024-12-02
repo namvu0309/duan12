@@ -1,10 +1,12 @@
 <?php
 class AdminDonHangController
 {
+    public $modelSanPham;
     public $modelDonHang;
     public $modelDanhMuc;
     public function __construct()
     {
+        $this->modelSanPham = new AdminSanPham();
         $this->modelDonHang = new AdminDonHang();
         $this->modelDanhMuc = new AdminDanhMuc();
     }
@@ -15,13 +17,34 @@ class AdminDonHangController
     }
     public function detailDonHang()
     {
+
+
         $don_hang_id = $_GET['id_don_hang'];
-        // Lấy thông tin đơn hàng ở bảng don_hangs
+
+        // Lấy thông tin đơn hàng từ bảng don_hangs
         $donHang = $this->modelDonHang->getDetailDonHang($don_hang_id);
-        // Lấy danh sách sản phẩm đã đặt của đơn hàng ở bảng chi_tiet_don_hangs
+
+        // Lấy danh sách sản phẩm đã đặt của đơn hàng từ bảng chi_tiet_don_hangs
         $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($don_hang_id);
+
+        // Lấy danh sách trạng thái của đơn hàng từ bảng trang_thai_don_hangs
         $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
-        // var_dump($sanPhamDonHang);DIE();
+
+        // Lấy bình luận cho từng sản phẩm trong đơn hàng
+        $listBinhLuan = [];
+        foreach ($sanPhamDonHang as $sanPham) {
+            $listBinhLuan[$sanPham['id']] = $this->modelSanPham->getBinhLuanFromSanPham($sanPham['id']);
+        }
+
+        // Gom tất cả dữ liệu vào mảng $data
+        $data = [
+            'donHang' => $donHang,
+            'sanPhamDonHang' => $sanPhamDonHang,
+            'listTrangThaiDonHang' => $listTrangThaiDonHang,
+            'listBinhLuan' => $listBinhLuan
+        ];
+
+        // Truyền dữ liệu vào view
         require_once './views/donhang/detailDonHang.php';
     }
 
@@ -315,4 +338,3 @@ class AdminDonHangController
     // }
 
 }
-

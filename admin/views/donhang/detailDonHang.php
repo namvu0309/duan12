@@ -66,7 +66,8 @@ include "./views/layout/header.php"
                                     <div class="col-12">
                                         <h4>
                                             <i class="fas fa-cat"></i> Shop thú cưng
-                                            <small class="float-right">Ngày đặt: <?= formatDate($donHang['ngay_dat']); ?></small>
+                                            <small class="float-right">Ngày đặt:
+                                                <?= formatDate($donHang['ngay_dat']); ?></small>
                                         </h4>
                                     </div>
                                     <!-- /.col -->
@@ -108,128 +109,80 @@ include "./views/layout/header.php"
 
                                 <!-- Table row -->
                                 <div>
-                                    <table id="example1" class="table table-bordered table-striped ">
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>STT</th>
-                                                <th>Người bình luận</th>
-                                                <th>Nội dung</th>
-                                                <th>Ngày bình luận</th>
-
-                                                <th>Thao tác</th>
+                                                <th>#</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Đơn giá</th>
+                                                <th>Số lượng</th>
+                                                <th>Thành tiền</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($listBinhLuan as $key => $binhLuan) { ?>
+                                            <?php $tong_tien = 0; ?>
+                                            <?php foreach ($sanPhamDonHang as $key => $sanPham) { ?>
+                                            <tr>
+                                                <td><?= $key + 1 ?></td>
+                                                <td><?= $sanPham['ten_san_pham'] ?></td>
+                                                <td><?= $sanPham['don_gia'] ?></td>
+                                                <td><?= $sanPham['so_luong'] ?></td>
+                                                <td><?= $sanPham['thanh_tien'] ?></td>
+                                            </tr>
+                                            <?php $tong_tien += $sanPham['thanh_tien']; ?>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- /.row -->
+
+                                <div class="row">
+                                    <!-- accepted payments column -->
+
+                                    <!-- /.col -->
+                                    <div class="col-6">
+                                        <p class="lead">Ngày đặt hàng: <?= $donHang['ngay_dat'] ?></p>
+
+                                        <div class="table-responsive">
+                                            <table class="table">
                                                 <tr>
-                                                    <td><?= $key + 1 ?></td>
-                                                    <td><a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $binhLuan['tai_khoan_id'] ?>"><?= $binhLuan['ho_ten'] ?></a></td>
-                                                    <td><?= $binhLuan['noi_dung'] ?></td>
-                                                    <td><?= $binhLuan['ngay_dang'] ?></td>
-                                                    <td>
-                                                        <form action="<?= BASE_URL_ADMIN . '?act=xoa-binh-luan' ?>" method="POST">
-                                                            <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
-
-                                                            <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
-                                                                Xóa
-                                                            </button>
-
-                                                            </a>
-
-
-                                </div>
-
-                                </form>
-
-                                </td>
-                                </tr>
-                            <?php } ?>
-                            </tbody>
-                            </table>
-                            </div>
-                            <!-- /.row -->
-
-                            <div class="row">
-                                <!-- accepted payments column -->
-
-                                <!-- /.col -->
-                                <div class="col-6">
-                                    <p class="lead">Ngày đặt hàng: <?= $donHang['ngay_dat'] ?></p>
-
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <tr>
-                                                <th style="width:50%">Thành tiền:</th>
-                                                <td><?= $tong_tien ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Vận chuyển:</th>
-                                                <td>200000</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Tổng tiền:</th>
-                                                <td><?= $tong_tien + 200000 ?></td>
-                                            </tr>
-                                        </table>
+                                                    <th style="width:50%">Thành tiền:</th>
+                                                    <td><?= $tong_tien ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Vận chuyển:</th>
+                                                    <td>200000</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Tổng tiền:</th>
+                                                    <td><?= $tong_tien + 200000 ?></td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
+                                    <!-- /.col -->
                                 </div>
-                                <!-- /.col -->
+                                <!-- /.row -->
+
+                                <!-- this row will not appear when printing -->
+
                             </div>
-                            <!-- /.row -->
-
-                            <!-- this row will not appear when printing -->
-
-                        </div>
-                        <!-- /.invoice -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-        </section>
+                            <!-- /.invoice -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </section>
 
 
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <!--footer-->
-    <?php include './views/layout/footer.php'; ?>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!--footer-->
+        <!-- footer -->
+        <?php include './views/layout/footer.php' ?>
+        <!-- end footer -->
 
-    <!-- /.control-sidebar -->
-    </div>
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-        var faqs_row = 0;
-
-        function addfaqs() {
-
-            html = '<tr id="faqs-row' + faqs_row + '">';
-            html += '<td><input type="text" class="form-control" placeholder="User name"></td>';
-            html += '<td><input type="text" placeholder="Product name" class="form-control"></td>';
-            html += '<td class="text-danger mt-10"> 18.76% <i class="fa fa-arrow-down"></i></td>';
-            html += '<td class="mt-10"><button class="badge badge-danger" onclick="$(\'#faqs-row' + faqs_row + '\').remove();"><i class="fa fa-trash"></i> Delete</button></td>';
-
-            html += '</tr>';
-
-            $('#faqs tbody').append(html);
-
-            faqs_row++;
-        }
-    </script>
 </body>
 
 </html>

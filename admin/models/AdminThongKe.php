@@ -6,6 +6,11 @@ class AdminThongKe{
     {
         $this->conn = connectDB();
     }
+    public function convertToVND($amount)
+    {
+        return number_format($amount, 0, ',', '.') . ' ₫';  // Định dạng số và thêm "₫" sau tiền
+    }
+    
     public function getAllThongKe(){
         try{
             $sql = "SELECT danh_mucs.ten_danh_muc, danh_mucs.id, 
@@ -19,7 +24,19 @@ class AdminThongKe{
     
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
-            return $stmt->fetchAll();
+            $thongKe = $stmt->fetchAll();
+
+        // Chuyển đổi giá trị tiền tệ sang VND cho các giá trị liên quan
+        foreach ($thongKe as &$item) {
+            if (isset($item['currentPrice'])) {
+                $item['currentPrice'] = $this->convertToVND($item['currentPrice']);
+            }
+            if (isset($item['discountPrice'])) {
+                $item['discountPrice'] = $this->convertToVND($item['discountPrice']);
+            }
+        }
+
+        return $thongKe;
     
         } catch(Exception $e){
             echo "Lỗi: ".$e->getMessage();

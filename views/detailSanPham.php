@@ -32,7 +32,8 @@
                     <div class="breadcrumb-wrap">
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a>
+                                </li>
                                 <li class="breadcrumb-item"><a href="<?= BASE_URL . '?act=' ?>">Sản Phẩm</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm </li>
                             </ul>
@@ -57,7 +58,8 @@
                                 <div class="product-large-slider">
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham) { ?>
                                         <div class="pro-large-img">
-                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
+                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>"
+                                                alt="product-details" />
                                         </div>
                                     <?php } ?>
 
@@ -67,7 +69,8 @@
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham) { ?>
 
                                         <div class="pro-nav-thumb">
-                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
+                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details"
+                                                style='width:75px; height: 75px;' />
                                         </div>
                                     <?php } ?>
 
@@ -87,10 +90,13 @@
                                     </div>
                                     <div class="price-box">
                                         <?php if ($sanPham['gia_khuyen_mai'] > 0) { ?>
-                                            <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
-                                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                            <span
+                                                class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
+                                            <span
+                                                class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                         <?php } else { ?>
-                                            <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) . 'đ' ?></span>
+                                            <span
+                                                class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) . 'đ' ?></span>
                                         <?php }    ?>
 
                                     </div>
@@ -128,7 +134,8 @@
                                     <ul class="nav review-tab">
 
                                         <li>
-                                            <a class="active" data-bs-toggle="tab" href="#tab_three">Bình luận (<?= $countComment ?>)</a>
+                                            <a class="active" data-bs-toggle="tab" href="#tab_three">Bình luận
+                                                (<?= $countComment ?>)</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content reviews-tab">
@@ -140,15 +147,28 @@
 
                                                     <!-- Hiển thị danh sách bình luận -->
                                                     <?php foreach ($listBinhLuan as $binhLuan): ?>
-                                                        <div class="total-reviews">
-                                                            <div class="rev-avatar">
-                                                                <img src="<?= htmlspecialchars($binhLuan['anh_dai_dien']) ?>" alt="Avatar">
+                                                        <div class="total-reviews d-flex align-items-start mb-3">
+                                                            <div class="rev-avatar me-3">
+                                                                <img src="<?= htmlspecialchars($binhLuan['anh_dai_dien']) ?>" alt="Avatar" class="rounded-circle" style="width: 50px; height: 50px;">
                                                             </div>
-                                                            <div class="review-box">
-                                                                <div class="post-author">
-                                                                    <p><span><?= htmlspecialchars($binhLuan['ho_ten']) ?></span> <?= htmlspecialchars($binhLuan['ngay_dang']) ?></p>
+                                                            <div class="review-box w-100">
+                                                                <div class="post-author mb-2">
+                                                                    <p class="mb-1">
+                                                                        <strong><?= htmlspecialchars($binhLuan['ho_ten']) ?></strong>
+                                                                        <small class="text-muted ms-2"><?= htmlspecialchars($binhLuan['ngay_dang']) ?></small>
+                                                                    </p>
                                                                 </div>
-                                                                <p><?= htmlspecialchars($binhLuan['noi_dung']) ?></p>
+                                                                <p class="mb-2"><?= htmlspecialchars($binhLuan['noi_dung']) ?></p>
+                                                                <!-- Nút "Thu Hồi Bình Luận" căn phải -->
+                                                                <div class="text-end">
+                                                                    <form action="<?= BASE_URL . '?act=xoa-binh-luan' ?>" method="POST">
+                                                                        <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
+                                                                        <button class="btn btn-danger btn-lg" type="submit"
+                                                                            onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
+                                                                            Thu Hồi Bình luận
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     <?php endforeach; ?>
@@ -160,27 +180,27 @@
 
                                                         <!-- Kiểm tra nếu người dùng chưa đăng nhập -->
                                                         <?php if (!isset($_SESSION['user_client'])): ?>
-                                                            <p class="text-danger">Vui lòng <a href="<?= BASE_URL . '?act=dang-nhap' ?>">đăng nhập</a> để gửi bình luận.</p>
+                                                            <p class="text-danger">Vui lòng <a href="<?= BASE_URL . '?act=login' ?>">đăng nhập</a> để gửi bình luận.</p>
                                                         <?php else: ?>
                                                             <!-- Gửi ID tài khoản người dùng qua form -->
-                                                            <input type="hidden" name="tai_khoan_id" value="<?= $_SESSION['user_client']?>">
+                                                            <input type="hidden" name="tai_khoan_id" value="<?= $_SESSION['user_client'] ?>">
 
                                                             <div class="form-group row">
                                                                 <div class="col">
                                                                     <label for="binh_luan" class="col-form-label">
                                                                         <span class="text-danger">*</span> Nội Dung Bình Luận
                                                                     </label>
-                                                                    <textarea name="binh_luan" class="form-control" required></textarea>
+                                                                    <textarea name="binh_luan" class="form-control" id="binh_luan" rows="3" required></textarea>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="form-group">
-                                                                <button type="submit" class="btn btn-sqr">Gửi Bình Luận</button>
+                                                            <div class="form-group mt-3">
+                                                                <button type="submit" class="btn btn-primary">Gửi Bình Luận</button>
                                                             </div>
                                                         <?php endif; ?>
                                                     </form>
-
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -261,15 +281,19 @@
                                 <div class="product-caption text-center">
 
                                     <h6 class="product-name">
-                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
+                                        <a
+                                            href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
                                     </h6>
                                     <div class="price-box">
                                         <?php if ($sanPham['gia_khuyen_mai']) { ?>
 
-                                            <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
-                                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                            <span
+                                                class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
+                                            <span
+                                                class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                         <?php } else {  ?>
-                                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
+                                            <span
+                                                class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                         <?php } ?>
 
                                     </div>

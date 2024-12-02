@@ -30,14 +30,15 @@ include "./views/layout/header.php"
                             <div class="col-12 col-sm-6">
 
                                 <div class="col-12">
-                                    <img style='width:500px; height:500px' src="<?= '.' . $sanpham['hinh_anh'] ?>" class="product-image" alt="Product Image">
+                                    <img style='width:500px; height:500px' src="<?= '.' . $sanpham['hinh_anh'] ?>"
+                                        class="product-image" alt="Product Image">
 
                                 </div>
                                 <div class="col-12 product-image-thumbs">
                                     <?php foreach ($listAnhSanPham as $key => $anhSP): ?>
-                                        <div class="product-image-thumb <?= $key == 0 ? 'active' : '' ?>">
-                                            <img src="<?= '.' . $anhSP['link_hinh_anh'] ?>" alt="Product Image">
-                                        </div>
+                                    <div class="product-image-thumb <?= $key == 0 ? 'active' : '' ?>">
+                                        <img src="<?= '.' . $anhSP['link_hinh_anh'] ?>" alt="Product Image">
+                                    </div>
                                     <?php endforeach; ?>
                                 </div>
 
@@ -51,7 +52,9 @@ include "./views/layout/header.php"
                                 <h4 class="mt-3">Lượt xem: <small><?= $sanpham['luot_xem'] ?></small></h4>
                                 <h4 class="mt-3">Ngày nhập: <small><?= $sanpham['ngay_nhap'] ?></small></h4>
                                 <h4 class="mt-3">Danh mục: <small><?= $sanpham['ten_danh_muc'] ?></small></h4>
-                                <h4 class="mt-3">Trạng thái: <small><?= $sanpham['trang_thai'] == 1 ? 'Còn bán' : 'Dừng bán' ?></small></h4>
+                                <h4 class="mt-3">Trạng thái:
+                                    <small><?= $sanpham['trang_thai'] == 1 ? 'Còn bán' : 'Dừng bán' ?></small>
+                                </h4>
                                 <h4 class="mt-3">Mô tả Sản Phẩm: <small><?= $sanpham['mo_ta'] ?></small></h4>
 
                             </div>
@@ -60,7 +63,9 @@ include "./views/layout/header.php"
                             <div class="row">
                                 <nav class="w-100">
                                     <div class="nav nav-tabs" id="product-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="binh-luan" data-toggle="tab" href="#binh-luan" role="tab" aria-controls="product-desc" aria-selected="true">Bình Luận của Sản Phẩm</a>
+                                        <a class="nav-item nav-link active" id="binh-luan" data-toggle="tab"
+                                            href="#binh-luan" role="tab" aria-controls="product-desc"
+                                            aria-selected="true">Bình Luận của Sản Phẩm</a>
                                     </div>
                                 </nav>
                             </div>
@@ -79,31 +84,36 @@ include "./views/layout/header.php"
                                     </thead>
                                     <tbody>
                                         <?php foreach ($listBinhLuan as $key => $binhLuan) { ?>
-                                            <tr>
-                                                <td><?= $key + 1 ?></td>
-                                                <td><a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $binhLuan['tai_khoan_id'] ?>"><?= $binhLuan['ho_ten'] ?></a></td>
-                                                <td><?= $binhLuan['noi_dung'] ?></td>
-                                                <td><?= $binhLuan['ngay_dang'] ?></td>
-                                                <td>
-                                                    <form action="<?= BASE_URL_ADMIN . '?act=xoa-binh-luan' ?>" method="POST">
-                                                        <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
+                                        <tr>
+                                            <td><?= $key + 1 ?></td>
+                                            <td><a
+                                                    href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $binhLuan['tai_khoan_id'] ?>"><?= $binhLuan['ho_ten'] ?></a>
+                                            </td>
+                                            <td><?= $binhLuan['noi_dung'] ?></td>
+                                            <td><?= $binhLuan['ngay_dang'] ?></td>
+                                            <td>
+                                                <form action="<?= BASE_URL_ADMIN . '?act=xoa-binh-luan' ?>"
+                                                    method="POST">
+                                                    <input type="hidden" name="id_binh_luan"
+                                                        value="<?= $binhLuan['id'] ?>">
 
-                                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
-                                                            Xóa
-                                                        </button>
+                                                    <button class="btn btn-danger" type="submit"
+                                                        onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
+                                                        Xóa
+                                                    </button>
 
-                                                        </a>
+                                                    </a>
+                                                </form>
 
 
                             </div>
 
-                            </form>
 
                             </td>
                             </tr>
-                        <?php } ?>
-                        </tbody>
-                        </table>
+                            <?php } ?>
+                            </tbody>
+                            </table>
                         </div>
                     </div>
 
@@ -147,14 +157,14 @@ include "./views/layout/header.php"
 </body>
 
 <script>
-    $(document).ready(function() {
-        $('.product-image-thumb').on('click', function() {
-            var $image_element = $(this).find('img')
-            $('.product-image').prop('src', $image_element.attr('src'))
-            $('.product-image-thumb.active').removeClass('active')
-            $(this).addClass('active')
-        })
+$(document).ready(function() {
+    $('.product-image-thumb').on('click', function() {
+        var $image_element = $(this).find('img')
+        $('.product-image').prop('src', $image_element.attr('src'))
+        $('.product-image-thumb.active').removeClass('active')
+        $(this).addClass('active')
     })
+})
 </script>
 
 

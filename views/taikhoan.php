@@ -1,5 +1,4 @@
 <?php require_once 'layout/header.php' ?>
-
 <?php require_once 'layout/menu.php' ?>
 <div class="my-account-wrapper section-padding">
     <div class="container">
@@ -10,28 +9,30 @@
                     <div class="myaccount-page-wrapper">
                         <!-- My Account Tab Menu Start -->
                         <?php if (isset($_SESSION['success'])): ?>
-                            <div class="alert alert-success">
-                                <?= htmlspecialchars($_SESSION['success']); ?>
-                            </div>
-                            <?php unset($_SESSION['success']); ?>
+                        <div class="alert alert-success">
+                            <?= htmlspecialchars($_SESSION['success']); ?>
+                        </div>
+                        <?php unset($_SESSION['success']); ?>
                         <?php endif; ?>
 
                         <?php if (isset($_SESSION['successTt'])): ?>
-                            <div class="alert alert-success">
-                                <?= htmlspecialchars($_SESSION['successTt']); ?>
-                            </div>
-                            <?php unset($_SESSION['successTt']); ?>
+                        <div class="alert alert-success">
+                            <?= htmlspecialchars($_SESSION['successTt']); ?>
+                        </div>
+                        <?php unset($_SESSION['successTt']); ?>
                         <?php endif; ?>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4">
                                 <div class="myaccount-tab-menu nav" role="tablist">
 
-                                    <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i> Thông Tin Tài Khoản</a>
+                                    <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i> Thông Tin
+                                        Tài Khoản</a>
                                     <a href="#orders" data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                         Đơn Hàng</a>
 
-                                    <a href="<?= BASE_URL . '?act=logout' ?>"><i class="fa fa-sign-out"></i> Đăng Xuất</a>
+                                    <a href="<?= BASE_URL . '?act=logout' ?>"><i class="fa fa-sign-out"></i> Đăng
+                                        Xuất</a>
                                 </div>
                             </div>
                             <!-- My Account Tab Menu End -->
@@ -45,47 +46,66 @@
                                         <div class="myaccount-content">
                                             <h5>Chi Tiết Tài Khoản</h5>
                                             <div class="account-details-form">
-                                                <form action="<?= BASE_URL . '?act=sua-thong-tin-ca-nhan' ?>" method="POST">
-                                                    <input type="hidden" name="tai_khoan_id" value="<?= $thongTin['id'] ?>">
+                                                <form action="<?= BASE_URL . '?act=sua-thong-tin-ca-nhan' ?>"
+                                                    method="POST">
+                                                    <input type="hidden" name="tai_khoan_id"
+                                                        value="<?= $thongTin['id'] ?>">
                                                     <input type="hidden" name="trang_thai" value="1">
 
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
                                                                 <label for="first-name" class="required">Họ Tên</label>
-                                                                <input type="text" id="first-name" name="ho_ten" placeholder="Nhập họ" value="<?= htmlspecialchars(explode(' ', $thongTin['ho_ten'])[0]) ?>">
+                                                                <input type="text" id="first-name" name="ho_ten"
+                                                                    placeholder="Nhập họ"
+                                                                    value="<?= htmlspecialchars(explode(' ', $thongTin['ho_ten'])[0]) ?>">
                                                                 <?php if (isset($_SESSION['errors']['ho_ten'])) { ?>
-                                                                    <p class="text-danger"><?= $_SESSION['errors']['ho_ten'] ?></p>
+                                                                <p class="text-danger">
+                                                                    <?= $_SESSION['errors']['ho_ten'] ?></p>
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="last-name" class="required">Số Điện Thoại</label>
-                                                                <input class="form-control" type="text" value="<?= htmlspecialchars($thongTin['so_dien_thoai']) ?>" name="so_dien_thoai">
+                                                                <label for="last-name" class="required">Số Điện
+                                                                    Thoại</label>
+                                                                <input class="form-control" type="text"
+                                                                    value="<?= htmlspecialchars($thongTin['so_dien_thoai']) ?>"
+                                                                    name="so_dien_thoai">
                                                                 <?php if (isset($_SESSION['errors']['so_dien_thoai'])) { ?>
-                                                                    <p class="text-danger"><?= $_SESSION['errors']['so_dien_thoai'] ?></p>
+                                                                <p class="text-danger">
+                                                                    <?= $_SESSION['errors']['so_dien_thoai'] ?></p>
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="ngay_sinh" class="required">Ngày Sinh</label>
-                                                                <input type="date" id="ngay_sinh" name="ngay_sinh" value="<?= htmlspecialchars($thongTin['ngay_sinh']) ?>">
+                                                                <label for="ngay_sinh" class="required">Ngày
+                                                                    Sinh</label>
+                                                                <input type="date" id="ngay_sinh" name="ngay_sinh"
+                                                                    value="<?= htmlspecialchars($thongTin['ngay_sinh']) ?>">
                                                                 <?php if (isset($_SESSION['errors']['ngay_sinh'])) { ?>
-                                                                    <p class="text-danger"><?= $_SESSION['errors']['ngay_sinh'] ?></p>
+                                                                <p class="text-danger">
+                                                                    <?= $_SESSION['errors']['ngay_sinh'] ?></p>
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="gioi_tinh" class="required">Giới Tính</label>
-                                                                <select class="form-control" name="gioi_tinh" id="gioi_tinh">
-                                                                    <option value="1" <?= $thongTin['gioi_tinh'] == 1 ? 'selected' : '' ?>>Nam</option>
-                                                                    <option value="0" <?= $thongTin['gioi_tinh'] == 0 ? 'selected' : '' ?>>Nữ</option>
+                                                                <label for="gioi_tinh" class="required">Giới
+                                                                    Tính</label>
+                                                                <select class="form-control" name="gioi_tinh"
+                                                                    id="gioi_tinh">
+                                                                    <option value="1"
+                                                                        <?= $thongTin['gioi_tinh'] == 1 ? 'selected' : '' ?>>
+                                                                        Nam</option>
+                                                                    <option value="0"
+                                                                        <?= $thongTin['gioi_tinh'] == 0 ? 'selected' : '' ?>>
+                                                                        Nữ</option>
                                                                 </select>
                                                                 <?php if (isset($_SESSION['errors']['gioi_tinh'])) { ?>
-                                                                    <p class="text-danger"><?= $_SESSION['errors']['gioi_tinh'] ?></p>
+                                                                <p class="text-danger">
+                                                                    <?= $_SESSION['errors']['gioi_tinh'] ?></p>
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
@@ -93,17 +113,20 @@
 
                                                     <div class="single-input-item">
                                                         <label for="display-name" class="required">Địa Chỉ</label>
-                                                        <input class="form-control" type="text" value="<?= htmlspecialchars($thongTin['dia_chi']) ?>" name="dia_chi">
+                                                        <input class="form-control" type="text"
+                                                            value="<?= htmlspecialchars($thongTin['dia_chi']) ?>"
+                                                            name="dia_chi">
                                                         <?php if (isset($_SESSION['errors']['dia_chi'])) { ?>
-                                                            <p class="text-danger"><?= $_SESSION['errors']['dia_chi'] ?></p>
+                                                        <p class="text-danger"><?= $_SESSION['errors']['dia_chi'] ?></p>
                                                         <?php } ?>
                                                     </div>
 
                                                     <div class="single-input-item">
                                                         <label for="email" class="required">Email</label>
-                                                        <input type="email" id="email" name="email" placeholder="Email" value="<?= htmlspecialchars($thongTin['email']) ?>">
+                                                        <input type="email" id="email" name="email" placeholder="Email"
+                                                            value="<?= htmlspecialchars($thongTin['email']) ?>">
                                                         <?php if (isset($_SESSION['errors']['email'])) { ?>
-                                                            <p class="text-danger"><?= $_SESSION['errors']['email'] ?></p>
+                                                        <p class="text-danger"><?= $_SESSION['errors']['email'] ?></p>
                                                         <?php } ?>
                                                     </div>
 
@@ -119,28 +142,38 @@
                                                     <fieldset>
                                                         <legend>Đổi mật khẩu</legend>
                                                         <div class="single-input-item">
-                                                            <label for="current-pwd" class="required">Mật khẩu hiện tại</label>
-                                                            <input type="password" id="current-pwd" name="old_pass" placeholder="Mật khẩu hiện tại">
+                                                            <label for="current-pwd" class="required">Mật khẩu hiện
+                                                                tại</label>
+                                                            <input type="password" id="current-pwd" name="old_pass"
+                                                                placeholder="Mật khẩu hiện tại">
                                                             <?php if (isset($_SESSION['errors']['old_pass'])) { ?>
-                                                                <p class="text-danger"><?= $_SESSION['errors']['old_pass'] ?></p>
+                                                            <p class="text-danger">
+                                                                <?= $_SESSION['errors']['old_pass'] ?></p>
                                                             <?php } ?>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
-                                                                    <label for="new-pwd" class="required">Mật khẩu mới</label>
-                                                                    <input type="password" id="new-pwd" name="new_pass" placeholder="Mật khẩu mới">
+                                                                    <label for="new-pwd" class="required">Mật khẩu
+                                                                        mới</label>
+                                                                    <input type="password" id="new-pwd" name="new_pass"
+                                                                        placeholder="Mật khẩu mới">
                                                                     <?php if (isset($_SESSION['errors']['new_pass'])) { ?>
-                                                                        <p class="text-danger"><?= $_SESSION['errors']['new_pass'] ?></p>
+                                                                    <p class="text-danger">
+                                                                        <?= $_SESSION['errors']['new_pass'] ?></p>
                                                                     <?php } ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
-                                                                    <label for="confirm-pwd" class="required">Xác nhận mật khẩu</label>
-                                                                    <input type="password" id="confirm-pwd" name="confirm_pass" placeholder="Nhập lại mật khẩu mới">
+                                                                    <label for="confirm-pwd" class="required">Xác nhận
+                                                                        mật khẩu</label>
+                                                                    <input type="password" id="confirm-pwd"
+                                                                        name="confirm_pass"
+                                                                        placeholder="Nhập lại mật khẩu mới">
                                                                     <?php if (isset($_SESSION['errors']['confirm_pass'])) { ?>
-                                                                        <p class="text-danger"><?= $_SESSION['errors']['confirm_pass'] ?></p>
+                                                                    <p class="text-danger">
+                                                                        <?= $_SESSION['errors']['confirm_pass'] ?></p>
                                                                     <?php } ?>
                                                                 </div>
                                                             </div>

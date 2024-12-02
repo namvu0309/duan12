@@ -272,7 +272,7 @@ class AdminTaiKhoanController
             } else {
                 // Lỗi thì lưu lỗi vào session
                 $_SESSION['errors'] = $user;
-                 //var_dump($_SESSION['errors']);die();
+                //var_dump($_SESSION['errors']);die();
 
                 $_SESSION['flash'] = true;
 
@@ -375,7 +375,8 @@ class AdminTaiKhoanController
             $tai_khoan_id = $_POST['tai_khoan_id'];
             $ho_ten = $_POST['ho_ten'] ?? '';
             // Truy vấn 
-
+            // var_dump($_POST);
+            // die();
             $email = $_POST['email'] ?? '';
             $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
             $dia_chi = $_POST['dia_chi'] ?? '';
@@ -401,7 +402,8 @@ class AdminTaiKhoanController
             // Nếu k có lỗi thì thêm sản phẩm
             if (empty($errors)) {
                 $status = $this->modelTaiKhoan->updateTaiKhoanCaNhan($tai_khoan_id, $ho_ten, $email, $so_dien_thoai, $dia_chi);
-
+// var_dump($status);
+//             die();
                 if ($status) {
                     $_SESSION['thongtin'] = "Đã đổi thông tin thành công";
                     $_SESSION['flash'] = true;
