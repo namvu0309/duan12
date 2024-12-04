@@ -31,9 +31,14 @@
                     <div class="col-lg-12">
                         <div class="login-reg-form-wrap">
                             <h5 class="text-center">Đăng nhập</h5>
-                            <?php if (isset($_SESSION['errors'])) { ?>
-                                <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
-                            <?php } ?>
+                            <?php
+                            if (isset($_SESSION['errors']) && is_array($_SESSION['errors'])) {
+                                foreach ($_SESSION['errors'] as $error) {
+                                    echo "<p class='login-box-msg text-center text-danger'>$error</p>";
+                                }
+                                unset($_SESSION['errors']); // Xóa lỗi sau khi hiển thị
+                            }
+                            ?>
 
                             <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
                                 <div class="single-input-item">
