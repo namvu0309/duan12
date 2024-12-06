@@ -89,6 +89,45 @@ class GioHangDonHangController
             header('Location:' . BASE_URL . '?act=login');
         }
     }
+    public function capNhatGioHang()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_SESSION['user_client'])) {
+                // Lấy thông tin tài khoản
+                $mail = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+                $gioHang = $this->modelGioHang->getGioHangFromUser($mail['id']);
+
+                if ($gioHang) {
+                   
+                    // Kiểm tra dữ liệu POST
+                    if (
+                        isset($_POST['san_pham_id'], $_POST['so_luong']) &&
+                        is_array($_POST['san_pham_id']) && is_array($_POST['so_luong']) &&
+                        count($_POST['san_pham_id']) === count($_POST['so_luong'])
+                    ) {
+                        // Duyệt qua từng sản phẩm và cập nhật số lượng
+                        foreach ($_POST['san_pham_id'] as $index => $sanPhamId) {
+                            $sanPhamId = intval($sanPhamId); // Chuyển sanPhamId sang integer
+                            $soLuong = max(1, intval($_POST['so_luong'][$index])); // Đảm bảo số lượng >= 1 và chuyển soLuong sang integer
+                            var_dump($sanPhamId, $soLuong);
+                            die(); // Kiểm tra lại các giá trị
+                            $this->modelGioHang->updateSoLuong($gioHang['id'], $sanPhamId, $soLuong);
+                        }
+
+                    }
+                }
+
+                // Quay lại trang giỏ hàng
+                header('Location:' . BASE_URL . '?act=gio-hang');
+                exit;
+            } else {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                header('Location:' . BASE_URL . '?act=login');
+                exit;
+            }
+        }
+    }
+
     public function daDatHang()
     {
         // Kiểm tra nếu có thông tin đơn hàng trong session
@@ -255,25 +294,9 @@ class GioHangDonHangController
             echo "Gửi mail thất bại Mailer Error: {$mail->ErrorInfo}";
         }
     }
-    public function capNhatSoLuong()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $gio_hang_id = $_POST['gio_hang_id']; // ID của giỏ hàng
-            $soLuongMoi = $_POST['so_luong']; // Mảng số lượng từ form
-            var_dump($_POST['so_luong']);
-            die();
-            foreach ($soLuongMoi as $sanPhamId => $soLuong) {
-                // Kiểm tra số lượng có hợp lệ không
-                if ($soLuong > 0) {
-                    // Cập nhật số lượng trong cơ sở dữ liệu
-                    $this->modelGioHang->updateSoLuong($gio_hang_id, $sanPhamId, $soLuong);
-                }
-            }
-            // Sau khi cập nhật, chuyển hướng về trang giỏ hàng
-            header('Location: ' . BASE_URL . '?act=gio-hang');
-            exit;
-        }
-    }
+   
+
+
 
 
 

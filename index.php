@@ -42,7 +42,6 @@ match ($act) {
     'xoa-binh-luan' => (new SanPhamController())->xoaBinhLuan(),
 
 
-
     'lien-he' => (new HomeController())->lienHe(),
     'gioi-thieu' => (new HomeController())->gioiThieu(),
     'search' => (new HomeController())->timKiem(),
@@ -63,7 +62,7 @@ match ($act) {
     'xu-ly-thanh-toan' => (new GioHangDonHangController())->postThanhToan(),
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController())->xoaSp(),
     'da-dat-hang' => (new GioHangDonHangController())->daDatHang(),
-    "cap-nhat-so-luong" => (new GioHangDonHangController())->capNhatSoLuong(),
+    "cap-nhat-gio-hang" => (new GioHangDonHangController())->capNhatGioHang(),
     // "cap-nhat-gio-hang" => (new GioHangDonHangController())->capNhatSoLuong(),
     //authe
     'login' => (new TaiKhoanController())->formLogin(),

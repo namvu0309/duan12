@@ -86,27 +86,26 @@ include "./views/layout/header.php"
                                             <?php foreach ($listTrangThaiDonHang as $trangThai): ?>
                                                 <option
                                                     <?php
+                                                    // Logic kiểm tra trạng thái để cho phép hoặc vô hiệu hóa
                                                     if (
-                                                        $donHang['trang_thai_id'] > $trangThai['id']
-                                                        || $donHang['trang_thai_id'] == 5
-                                                        || $donHang['trang_thai_id'] == 6
-                                                        || $donHang['trang_thai_id'] == 7
+                                                        ($donHang['trang_thai_id'] >= 12) || // Đơn hàng "Thành Công" hoặc trạng thái sau đó
+                                                        ($donHang['trang_thai_id'] == 15) || // Đơn hàng "Đã Hủy"
+                                                        ($donHang['trang_thai_id'] > $trangThai['id']) || // Chỉ cho phép nâng cấp trạng thái
+                                                        ($trangThai['id'] == 1 && $donHang['trang_thai_id'] > 1) // Không cho phép quay lại "Chưa Xác Nhận"
                                                     ) {
-                                                        echo 'disabled';
+                                                        echo 'disabled'; // Không cho phép thay đổi đến các trạng thái không hợp lệ
                                                     }
                                                     ?>
-                                                    <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selecter' : '' ?>
-                                                    value="<?= $trangThai['id'] ?>"><?= $trangThai['ten_trang_thai'] ?>
+                                                    <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selected' : '' ?>
+                                                    value="<?= htmlspecialchars($trangThai['id']) ?>"><?= htmlspecialchars($trangThai['ten_trang_thai']) ?>
                                                 </option>
                                             <?php endforeach ?>
                                         </select>
-                                        <?php if (isset($_SESSION['error']['danh_muc_id'])) {
-                                        ?>
-                                            <p class="text-danger"><?= $_SESSION['error']['danh_muc_id'] ?></p>
-                                        <?php
-                                        }
-                                        ?>
+                                        <?php if (isset($_SESSION['error']['danh_muc_id'])): ?>
+                                            <p class="text-danger"><?= htmlspecialchars($_SESSION['error']['danh_muc_id']) ?></p>
+                                        <?php endif; ?>
                                     </div>
+
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>

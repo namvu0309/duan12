@@ -75,10 +75,12 @@
                                 </div>
                                 <div class="single-input-item">
                                     <label for="">Giới tính</label>
-                                    <select class="form-control" name="gioi_tinh" aria-label="exampleFormControlSelect1" value="<?= isset($_SESSION['old_data']['gioi_tinh']) ? $_SESSION['old_data']['gioi_tinh'] : '' ?>">
-                                        <option value="1">Nam</option>
-                                        <option value="2">Nữ</option>
+                                    <select class="form-control" name="gioi_tinh" aria-label="exampleFormControlSelect1">
+                                        <option value="1" <?= isset($_SESSION['old_data']['gioi_tinh']) && $_SESSION['old_data']['gioi_tinh'] == 1 ? 'selected' : '' ?>>Nam</option>
+                                        <option value="2" <?= isset($_SESSION['old_data']['gioi_tinh']) && $_SESSION['old_data']['gioi_tinh'] == 2 ? 'selected' : '' ?>>Nữ</option>
                                     </select>
+
+
                                 </div>
 
 

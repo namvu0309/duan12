@@ -30,82 +30,58 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Cart Table Area -->
-                            <div class="cart-table table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th class="pro-thumbnail">Ảnh sản phẩm</th>
-                                            <th class="pro-title">Tên sản phẩm</th>
-                                            <th class="pro-price">Giá</th>
-                                            <th class="pro-quantity">Số lượng</th>
-                                            <th class="pro-subtotal">Tổng tiền</th>
-                                            <th class="pro-remove">Thao tác</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                            <form action="<?= BASE_URL . '?act=cap-nhat-gio-hang' ?>" method="POST">
+                                <div class="cart-table table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="pro-thumbnail">Ảnh sản phẩm</th>
+                                                <th class="pro-title">Tên sản phẩm</th>
+                                                <th class="pro-price">Giá</th>
+                                                <th class="pro-quantity">Số lượng</th>
+                                                <th class="pro-subtotal">Tổng tiền</th>
+                                                <th class="pro-remove">Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $tongGioHang = 0;
 
-
-                                        <?php
-                                        $tongGioHang = 0;
-
-                                        foreach ($chiTietGioHang as $key => $sanPham) {
-                                        ?>
-                                            <form action="<?= BASE_URL . '?act=xoa-san-pham-gio-hang' ?>" method="POST">
-                                                <input type="hidden" name="chi_tiet_gio_hang_id"
-                                                    value="<?= $sanPham['id'] ?>">
+                                            foreach ($chiTietGioHang as $sanPham) {
+                                                $giaSanPham = $sanPham['gia_khuyen_mai'] > 0 ? $sanPham['gia_khuyen_mai'] : $sanPham['gia_san_pham'];
+                                                $tongTien = $giaSanPham * $sanPham['so_luong'];
+                                                $tongGioHang += $tongTien;
+                                            ?>
                                                 <tr>
-                                                    <td class="pro-thumbnail"><img class="img-fluid"
-                                                            src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
-                                                            alt="Product" /></a></td>
+                                                    <td class="pro-thumbnail">
+                                                        <img class="img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="<?= $sanPham['ten_san_pham'] ?>">
+                                                    </td>
                                                     <td class="pro-title"><?= $sanPham['ten_san_pham'] ?></td>
-                                                    <td class="pro-price"><span>
-                                                            <?php if ($sanPham['gia_khuyen_mai'] > 0) { ?>
-                                                                <?= formatPrice($sanPham['gia_khuyen_mai']) . ' đ' ?>
-                                                            <?php } else { ?>
-                                                                <?= formatPrice($sanPham['gia_san_pham']) . ' đ' ?>
-                                                            <?php } ?>
-                                                        </span></td>
+                                                    <td class="pro-price">
+                                                        <span><?= formatPrice($giaSanPham) . ' đ' ?></span>
+                                                    </td>
                                                     <td class="pro-quantity">
                                                         <div class="pro-qty">
-                                                            <input type="number" name="so_luong"
-                                                                value="<?= $sanPham['so_luong'] ?>" min="1">
+                                                            <input type="number" name="so_luong[]" value="<?= $sanPham['so_luong'] ?>" min="1">
+                                                            <input type="hidden" name="san_pham_id[]" value="<?= $sanPham['id'] ?>" min="1">
                                                         </div>
                                                     </td>
-
-                                                    <td class="pro-subtotal"><span>
-                                                            <?php
-                                                            $tongTien = 0;
-                                                            if ($sanPham['gia_khuyen_mai'] > 0) {
-                                                                $tongTien =  $sanPham['gia_khuyen_mai'] * $sanPham['so_luong'];
-                                                            } else {
-                                                                $tongTien = $sanPham['gia_san_pham'] * $sanPham['so_luong'];
-                                                            }
-                                                            $tongGioHang += $tongTien;
-                                                            echo formatPrice($tongTien) . 'đ';
-                                                            ?>
-                                                        </span></td>
-                                                    <td class="pro-remove"><button type="submit"><i
-                                                                class="fa fa-trash-o"></i></button></td>
+                                                    <td class="pro-subtotal">
+                                                        <span><?= formatPrice($tongTien) . ' đ' ?></span>
+                                                    </td>
+                                                    <td class="pro-remove">
+                                                        <button type="submit" formaction="<?= BASE_URL . '?act=xoa-san-pham-gio-hang' ?>" name="chi_tiet_gio_hang_id" value="<?= $sanPham['id'] ?>" class="btn btn-danger">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </button>
+                                                    </td>
                                                 </tr>
-                                            </form>
-                                        <?php } ?>
-
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- Cart Update Option -->
-                            <div class="cart-update-option d-block d-md-flex justify-content-between">
-                                <div class="apply-coupon-wrapper">
-                                    <form action="#" method="post" class=" d-block d-md-flex">
-                                        <input type="text" placeholder="Enter Your Coupon Code" required="">
-                                        <button class="btn btn-sqr">Nhập Mã Giảm Giá</button>
-                                    </form>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <button type="submit" class="btn btn-sqr">Cập Nhật Giỏ Hàng</button>
-                            </div>
-                        </div>
+                                <button type="submit" class="btn btn-sqr btn-primary">Cập Nhật Giỏ Hàng</button>
+                            </form>
+
                     </div>
                     <div class="row">
                         <div class="col-lg-5 ml-auto">

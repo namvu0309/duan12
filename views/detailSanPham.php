@@ -161,13 +161,7 @@
                                                                 <p class="mb-2"><?= htmlspecialchars($binhLuan['noi_dung']) ?></p>
                                                                 <!-- Nút "Thu Hồi Bình Luận" căn phải -->
                                                                 <div class="text-end">
-                                                                    <form action="<?= BASE_URL . '?act=xoa-binh-luan' ?>" method="POST">
-                                                                        <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
-                                                                        <button class="btn btn-danger btn-lg" type="submit"
-                                                                            onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
-                                                                            Thu Hồi Bình luận
-                                                                        </button>
-                                                                    </form>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
