@@ -62,6 +62,11 @@ class GioHang
 
     public function updateSoLuong($gio_hang_id, $san_pham_id, $so_luong)
     {
+        //   var_dump($gio_hang_id);
+        // var_dump($san_pham_id);
+        // var_dump($so_luong);
+
+        //                 die;
         try {
             $sql = "UPDATE chi_tiet_gio_hangs 
       SET so_luong = :so_luong
@@ -81,6 +86,8 @@ class GioHang
             echo "Lỗi: " . $e->getMessage();
         }
     }
+ 
+
 
 
     public function addDetailGioHang($gio_hang_id, $san_pham_id, $so_luong)
@@ -105,19 +112,16 @@ class GioHang
 
 
 
-    public function deleteSanPhamGioHang($id)
+    public function deleteSanPhamGioHang($gioHangId)
     {
         try {
-            $sql = "DELETE FROM chi_tiet_gio_hangs WHERE id=:id";
+            $sql = "DELETE FROM chi_tiet_gio_hangs WHERE gio_hang_id = :gioHangId";
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute(
-                [
-                    ':id' => $id
-                ]
-            );
+            $stmt->execute([':gioHangId' => $gioHangId]);
             return true;
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
+
 }

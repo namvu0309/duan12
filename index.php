@@ -63,8 +63,8 @@ match ($act) {
     'xoa-san-pham-gio-hang' => (new GioHangDonHangController())->xoaSp(),
     'da-dat-hang' => (new GioHangDonHangController())->daDatHang(),
     "cap-nhat-gio-hang" => (new GioHangDonHangController())->capNhatGioHang(),
-    // "cap-nhat-gio-hang" => (new GioHangDonHangController())->capNhatSoLuong(),
-    //authe
+
+    
     'login' => (new TaiKhoanController())->formLogin(),
     'check-login' => (new TaiKhoanController())->postlogin(),
     'logout' => (new TaiKhoanController())->logout(),

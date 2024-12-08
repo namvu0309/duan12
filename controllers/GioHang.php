@@ -78,10 +78,12 @@ class GioHangDonHangController
 
                 $gioHang = ['id' => $gioHangId];
                 $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
-                // var_dump($chiTietGioHang);die();
 
             } else {
                 $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+                // var_dump($chiTietGioHang);
+                // die();
+
             }
 
             require_once './views/gioHang.php';
@@ -93,30 +95,25 @@ class GioHangDonHangController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_SESSION['user_client'])) {
-                // Lấy thông tin tài khoản
+        
                 $mail = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
                 $gioHang = $this->modelGioHang->getGioHangFromUser($mail['id']);
+            
 
-                if ($gioHang) {
-                   
-                    // Kiểm tra dữ liệu POST
-                    if (
-                        isset($_POST['san_pham_id'], $_POST['so_luong']) &&
-                        is_array($_POST['san_pham_id']) && is_array($_POST['so_luong']) &&
-                        count($_POST['san_pham_id']) === count($_POST['so_luong'])
-                    ) {
-                        // Duyệt qua từng sản phẩm và cập nhật số lượng
-                        foreach ($_POST['san_pham_id'] as $index => $sanPhamId) {
-                            $sanPhamId = intval($sanPhamId); // Chuyển sanPhamId sang integer
-                            $soLuong = max(1, intval($_POST['so_luong'][$index])); // Đảm bảo số lượng >= 1 và chuyển soLuong sang integer
-                            var_dump($sanPhamId, $soLuong);
-                            die(); // Kiểm tra lại các giá trị
-                            $this->modelGioHang->updateSoLuong($gioHang['id'], $sanPhamId, $soLuong);
-                        }
+                $san_pham_ids = $_POST['san_pham_id'];
+             
+                $so_luongs = $_POST['so_luong'];
+                foreach ($san_pham_ids as $index => $san_pham_id) {
+
+                    $so_luong = $so_luongs[$index];
+                 
+                    if ($so_luong>0) {
+                     
+                        $s = $this->modelGioHang->updateSoLuong($gioHang['id'], $san_pham_id, $so_luong);
+                        
 
                     }
                 }
-
                 // Quay lại trang giỏ hàng
                 header('Location:' . BASE_URL . '?act=gio-hang');
                 exit;
@@ -139,14 +136,13 @@ class GioHangDonHangController
             header('Location:' . BASE_URL);
             exit;
         }
+
         $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
         if (isset($_SESSION['user_client'])) {
-
             $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
-            //    var_dump($mail['id']);die();
 
-            // lẤy dl giỏ hàng
+            // Lấy thông tin giỏ hàng
             $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
             if (!$gioHang) {
                 $_SESSION['flash'] = true;
@@ -159,12 +155,17 @@ class GioHangDonHangController
                 $_SESSION['dat_hang_thanh_cong'] = 'Đã đặt hàng thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi';
                 $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
             }
+
+            // Xóa toàn bộ sản phẩm trong giỏ hàng
+            $this->modelGioHang->deleteSanPhamGioHang($gioHang['id']);
         } else {
             header('Location:' . BASE_URL . '?act=login');
         }
+
         require_once './views/daDatHang.php';
         deleteSessionErrors();
     }
+
     public function thanhToan()
     {
         deleteSessionErrors();
@@ -294,7 +295,7 @@ class GioHangDonHangController
             echo "Gửi mail thất bại Mailer Error: {$mail->ErrorInfo}";
         }
     }
-   
+
 
 
 
