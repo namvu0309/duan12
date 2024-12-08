@@ -136,7 +136,6 @@ class SanPham
             throw new Exception("Error searching for products: " . $e->getMessage());
         }
     }
-
     public function top10()
     {
         try {
@@ -150,6 +149,7 @@ class SanPham
             echo "Lỗi: " . $e->getMessage();
         }
     }
+    
 
     public function getAllDanhMuc()
     {
