@@ -31,9 +31,21 @@
                     <div class="col-lg-12">
                         <div class="login-reg-form-wrap">
                             <h5 class="text-center">Đăng nhập</h5>
-                            <?php if (isset($_SESSION['errors'])) { ?>
+                            <?php if (isset($_SESSION['errors'])): ?>
+                                <?php
+                                // Nếu $_SESSION['errors'] là mảng, hãy hiển thị thông báo lỗi từng cái
+                                if (is_array($_SESSION['errors'])) {
+                                    foreach ($_SESSION['errors'] as $error) {
+                                        echo '<p class="text-danger text-center">' . htmlspecialchars($error) . '</p>';
+                                    }
+                                } else {
+                                    // Nếu không phải mảng, hiển thị lỗi như một chuỗi
+                                    echo '<p class="text-danger text-center">' . htmlspecialchars($_SESSION['errors']) . '</p>';
+                                }
+                                ?>
+                            <?php else: ?>
                                 <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
-                            <?php } ?>
+                            <?php endif; ?>
 
                             <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
                                 <div class="single-input-item">
