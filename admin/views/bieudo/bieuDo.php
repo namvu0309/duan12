@@ -23,7 +23,7 @@ include "./views/layout/header.php"
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Biểu đồ</h1>
+                            <h1>Biểu đồ thống kê doanh thu đơn hàng</h1>
                         </div>
                     </div><!-- /.container-fluid -->
             </section>
@@ -34,15 +34,13 @@ include "./views/layout/header.php"
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-
                                 <div id="myChart" style="width:100%; height:800px;">
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
-                    <!-- /.container-fluid -->
+                </div>
+                <!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>
@@ -56,34 +54,50 @@ include "./views/layout/header.php"
 
     <script>
         google.charts.load('current', {
-            'packages': ['corechart']
+            'packages': ['corechart', 'bar']
         });
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-
-            // Set Data
             const data = google.visualization.arrayToDataTable([
-                ['Danh mục', 'Số lượng sản phẩm'],
+                ['Ngày đặt', 'Tổng doanh thu (₫)'], // Gồm Ngày đặt và Tổng doanh thu
                 <?php
-                $tongDanhMuc = count($listThongKe);
-                for ($i = 0; $i < $tongDanhMuc; $i++) {
-                    $dauPhay = ($i < $tongDanhMuc - 1) ? ',' : '';
-                ?>['<?= $listThongKe[$i]['ten_danh_muc'] ?>', <?= $listThongKe[$i]['countSp'] ?>] <?= $dauPhay ?>
-                <?php } ?>
+                if (!empty($listThongKe) && is_array($listThongKe)) {
+                    foreach ($listThongKe as $index => $item) {
+                        // Loại bỏ định dạng không cần thiết (nếu có)
+                        $totalRevenue = str_replace(['₫', '.', ','], '', $item['totalRevenue']);
+                        echo "['{$item['ngay_dat']}', {$totalRevenue}]";
+                        echo $index < count($listThongKe) - 1 ? ',' : '';
+                    }
+                } else {
+                    echo "['Không có dữ liệu', 0]";
+                }
+                ?>
             ]);
 
-            // Set Options
             const options = {
-                title: 'Thống kê sản phẩm theo danh mục',
-                height: 800, // Điều chỉnh chiều cao của biểu đồ
-                width: '100%' // Điều chỉnh chiều rộng của biểu đồ
+                title: 'Thống kê doanh thu theo ngày đặt',
+                chartArea: { width: '70%' },
+                hAxis: {
+                    title: 'Ngày đặt',
+                },
+                vAxis: {
+                    title: 'Doanh thu (₫)',
+                },
+                height: 800,
+                width: '100%',
+                colors: ['#FF5733'],
             };
 
-            // Draw
-            const chart = new google.visualization.PieChart(document.getElementById('myChart'));
-            chart.draw(data, options);
+            const chart = new google.visualization.ColumnChart(document.getElementById('myChart'));
 
+            // Định dạng số tiền với đầy đủ đơn vị "₫"
+            const formatter = new google.visualization.NumberFormat({
+                pattern: '#,###₫' // Định dạng tiền tệ với dấu phân cách hàng nghìn và "₫"
+            });
+            formatter.format(data, 1); // Định dạng cột thứ 2 (Tổng doanh thu)
+
+            chart.draw(data, options);
         }
     </script>
 

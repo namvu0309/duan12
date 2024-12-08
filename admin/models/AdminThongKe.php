@@ -11,36 +11,40 @@ class AdminThongKe{
         return number_format($amount, 0, ',', '.') . ' ₫';  // Định dạng số và thêm "₫" sau tiền
     }
     
-    public function getAllThongKe(){
-        try{
-            $sql = "SELECT danh_mucs.ten_danh_muc, danh_mucs.id, 
-                           COUNT(san_phams.id) as countSp, 
-                           AVG(san_phams.gia_san_pham) as currentPrice,  -- Giá hiện tại
-                           AVG(san_phams.gia_khuyen_mai) as discountPrice  -- Giá khuyến mãi
-                    FROM san_phams 
-                    LEFT JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id
-                    GROUP BY danh_mucs.ten_danh_muc, danh_mucs.id
-                    ORDER BY danh_mucs.id DESC";
-    
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-            $thongKe = $stmt->fetchAll();
+    public function getAllThongKe()
+{
+    try {
+        // Cập nhật truy vấn để lấy thêm ngày đặt (ngay_dat)
+        $sql = "SELECT 
+                    trang_thai_don_hangs.ten_trang_thai, 
+                    DATE(don_hangs.ngay_dat) as ngay_dat,  -- Lấy ngày đặt
+                    COUNT(don_hangs.id) as totalOrders, 
+                    SUM(don_hangs.tong_tien) as totalRevenue,
+                    AVG(don_hangs.tong_tien) as avgOrderValue
+                FROM don_hangs
+                INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
+                GROUP BY trang_thai_don_hangs.ten_trang_thai, DATE(don_hangs.ngay_dat)
+                ORDER BY totalRevenue DESC";
 
-        // Chuyển đổi giá trị tiền tệ sang VND cho các giá trị liên quan
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $thongKe = $stmt->fetchAll();
+
+        // Chuyển đổi giá trị tiền tệ sang VND cho các cột liên quan
         foreach ($thongKe as &$item) {
-            if (isset($item['currentPrice'])) {
-                $item['currentPrice'] = $this->convertToVND($item['currentPrice']);
+            if (isset($item['totalRevenue'])) {
+                $item['totalRevenue'] = $this->convertToVND($item['totalRevenue']);
             }
-            if (isset($item['discountPrice'])) {
-                $item['discountPrice'] = $this->convertToVND($item['discountPrice']);
+            if (isset($item['avgOrderValue'])) {
+                $item['avgOrderValue'] = $this->convertToVND($item['avgOrderValue']);
             }
         }
 
         return $thongKe;
-    
-        } catch(Exception $e){
-            echo "Lỗi: ".$e->getMessage();
-        }
+    } catch (Exception $e) {
+        echo "Lỗi: " . $e->getMessage();
     }
+}
+
     
 }
