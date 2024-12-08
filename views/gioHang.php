@@ -63,7 +63,7 @@
                                                     <td class="pro-quantity">
                                                         <div class="pro-qty">
                                                             <input type="number" name="so_luong[]" value="<?= $sanPham['so_luong'] ?>" min="1">
-                                                            <input type="hidden" name="san_pham_id[]" value="<?= $sanPham['id'] ?>" min="1">
+                                                            <input type="hidden" name="san_pham_id[]" value="<?= $sanPham['san_pham_id'] ?>" >
                                                         </div>
                                                     </td>
                                                     <td class="pro-subtotal">
